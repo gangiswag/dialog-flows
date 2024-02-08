@@ -1,0 +1,61 @@
+%% Initial Bot Greeting
+B0[Bot: Greet and Ask for Assistance/Preferences] --> U1[User: Request to Order Pizza]
+B0 --> U2[User: Asks for Recommendations]
+B0 --> U3[User: Inquires About Special Deals]
+
+style B0 fill:#f9d5e5
+
+
+%% User Responses and Bot Follow-ups
+U1 --> B1[Bot: Ask About Pizza Details - Size, Toppings, Types]
+U2 --> B2[Bot: Suggests Popular Pizzas]
+U3 --> B3[Bot: Describes Specials - Veg and Non-Veg]
+
+
+style B1 fill:#f9d5e5
+style B2 fill:#f9d5e5
+style B3 fill:#f9d5e5
+
+
+%% Further User Choices and Bot Responses
+B1 --> U4[User: Specifies Pizza Details]
+B1 --> U5[User: Asks for Customization Options]
+B2 --> U6[User: Chooses a Recommended Pizza]
+B3 --> U7[User: Chooses Special Deal]
+
+
+U4 --> B4[Bot: Confirm Order with Specified Details]
+U5 --> B5[Bot: Provides Customization Choices]
+U6 --> B4
+U7 --> B6[Bot: Confirms Special Deal Order]
+
+
+style B4 fill:#f9d5e5
+style B5 fill:#f9d5e5
+style B6 fill:#f9d5e5
+
+
+%% Final User Decisions
+B4 --> U8[User: Confirms and Completes Order]
+B4 --> U9[User: Requests Modification or Cancellation]
+B5 --> U10[User: Makes Final Customization Choices]
+B6 --> U11[User: Decides on Combo Deal]
+
+
+%% Bot Finalization and Feedback
+U8 --> B7[Bot: Provides Order Summary and Payment Details]
+U9 --> B8[Bot: Handle Modification or Cancellation]
+U10 --> B7
+U11 --> B7
+
+
+style B7 fill:#f9d5e5
+style B8 fill:#f9d5e5
+
+
+%% Feedback and Conclusion
+B7 --> U12[User: Provides Feedback or Rating]
+U12 --> B9[Bot: Acknowledges Feedback and Concludes Conversation]
+
+
+style B9 fill:#f9d5e5

@@ -1,0 +1,98 @@
+%% Initial Bot Greeting
+b0("Bot: Greeting and Inquiry") --> u1("User: Requests Specific Movie")
+b0 --> u2("User: Requests Listings")
+b0 --> u3("User: General Inquiry")
+b0 --> u4("User: Requests Movie Showing Time")
+b0 --> u5("User: Requests Ticket Information")
+b0 --> u12("User: Asks for Movies in a Specific Genre")
+b0 --> u13("User: Wants to Know About Kid-Friendly Movies")
+
+
+%% User Responses and Bot Follow-ups
+u1 --> b1("Bot: Provides Specific Movie Info")
+u2 --> b2("Bot: Lists Movies at Local Theater")
+u3 --> b3("Bot: Asks for Clarification")
+u4 --> b4("Bot: Provides Showtimes for Specific Movie")
+u5 --> b5("Bot: Informs About Ticket Prices")
+u12 --> b14("Bot: Suggests Movies in Chosen Genre")
+u13 --> b15("Bot: Lists Kid-Friendly Movies")
+
+
+%% Further User Choices and Bot Responses
+b1 --> u6("User: Requests Additional Info")
+b1 --> u7("User: Thanks and Ends Conversation")
+b2 --> u8("User: Asks About a Specific Movie from List")
+b2 --> u7
+b3 --> u1
+b3 --> u2
+b4 --> u9("User: Asks for Reservation")
+b4 --> u7
+b5 --> u10("User: Asks About Different Ticket Types")
+b5 --> u7
+b14 --> u16("User: Inquires About a Specific Movie in Genre")
+b15 --> u17("User: Wants to Know Age Suitability")
+
+
+%% Detailed Bot Responses and Further User Interaction
+u6 --> b6("Bot: Provides Additional Info")
+u8 --> b7("Bot: Provides Specific Movie Info from List")
+u9 --> b8("Bot: Explains Reservation Limitations")
+u10 --> b9("Bot: Informs About Other Ticket Prices")
+u16 --> b18("Bot: Gives Information on Specific Movie in Genre")
+u17 --> b19("Bot: Informs About Age Suitability and Ratings")
+
+
+%% Final Steps in Conversation
+b6 --> u7
+b7 --> u7
+b8 --> u11("User: Asks for Contact Info")
+b9 --> u7
+b18 --> u7
+b19 --> u7
+
+
+%% Additional Nodes from Schema 1
+b11[Bot: Handles Errors and Misunderstandings]
+b12[Bot: Asks for Feedback/Satisfaction]
+b13[Bot: Offers Escalation to Human Operator]
+u1 --> b11
+u2 --> b11
+u3 --> b11
+u4 --> b11
+u5 --> b11
+u6 --> b12
+u7 --> b12
+u8 --> b12
+u9 --> b13
+u10 --> b12
+u11 --> b12
+u11 --> b13
+u12 --> b11
+u13 --> b11
+u16 --> b12
+u17 --> b12
+
+
+%% Additional Nodes from Schema 2
+u11 --> b20("Bot: Provides Contact Info")
+b20 --> u7
+
+
+%% Styling for Bot Nodes
+style b0 fill:#f9d5e5
+style b1 fill:#f9d5e5
+style b2 fill:#f9d5e5
+style b3 fill:#f9d5e5
+style b4 fill:#f9d5e5
+style b5 fill:#f9d5e5
+style b6 fill:#f9d5e5
+style b7 fill:#f9d5e5
+style b8 fill:#f9d5e5
+style b9 fill:#f9d5e5
+style b11 fill:#f9d5e5
+style b12 fill:#f9d5e5
+style b13 fill:#f9d5e5
+style b14 fill:#f9d5e5
+style b15 fill:#f9d5e5
+style b18 fill:#f9d5e5
+style b20 fill:#f9d5e5
