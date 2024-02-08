@@ -71,12 +71,12 @@ def pick_closest_match_llm(query, candidates, attempts=10):
 # Helper - Generalized Chat Function for LLAMA
 # Initial Ref: https://huggingface.co/spaces/PiyushLavaniya/Llama2_Chatbot/blob/main/app.py
 def chat_model(system, user_assistant, temperature=1.0):
-    last_user_turn = user_assistant[-1]["content"]
+    last_user_turn = user_assistant[-1]["content"] if len(user_assistant) > 0 else ""
+    prev_conversation = user_assistant[:-1] if len(user_assistant) > 0 else []
     chat = user_assistant[:-1] + [
         {
             "role": "user",
             "content": f"{system} {last_user_turn}",
-            # "content": f" {last_user_turn}",
         },
     ]
     query = tokenizer.apply_chat_template(
@@ -147,31 +147,31 @@ def tag_conversation(conversation):
 
 # User Bot
 def user_bot(domain, conversation):
-    system_prompt = f"You are a user of a different chatbot that performs {domain}. [USER] indicates a user turn and [BOT] indicates a bot turn. Do not be verbose and do not use USER or BOT in your response."
+    system_prompt = f"You are a user of a different chatbot that performs {domain}"
 
-    # Use a random variable with a 0.3 probability of being true to determine whether to produce a relevant or irrelevant response.
-    tagged_conversation = tag_conversation(conversation)
-    user_prompt = f"Give only an example of a user response. Here is the conversation so far: {tagged_conversation}"
+    system_prompt += f"Give only an example of a user response by continuing this conversation as a user."
     is_adversarial = False
-    if random.random() < 0.3:
-        user_prompt += (
-            f"Produce only a user response that is completely irrelevant to {domain}."
-        )
-        is_adversarial = True
-    user_prompt += "\n\n[USER]:"
+    # Use a random variable with a 0.3 probability of being true to determine whether to produce a relevant or irrelevant response.
+    # if random.random() < 0.3:
+    #     user_prompt += (
+    #         f"Produce only a user response that is completely irrelevant to {domain}."
+    #     )
+    #     is_adversarial = True
+
+    user_response = chat_model(system_prompt, conversation)
 
     # user_response = chat_model(system_prompt, [user_prompt])
-    user_response = chat_model(
-        system_prompt, [{"role": "user", "content": user_prompt}]
-    )
+    # user_response = chat_model(
+    #     system_prompt, [{"role": "user", "content": user_prompt}]
+    # )
 
     # Remove "[USER]: " and related topics from the response
-    # user_response = (
-    #     user_response.replace("[USER] ", "")
-    #     .replace("[BOT] ", "")
-    #     .replace("[USER]: ", "")
-    #     .replace("[BOT]: ", "")
-    # )
+    user_response = (
+        user_response.replace("[USER] ", "")
+        .replace("[BOT] ", "")
+        .replace("[USER]: ", "")
+        .replace("[BOT]: ", "")
+    )
 
     return user_response, is_adversarial
 
@@ -285,8 +285,8 @@ def evaluate_conversation(
     log = []
     user_assistant = []
     for i in range(num_turns):
-        # user_turn, is_adversarial = user_bot(domain, user_assistant)
-        user_turn = input("\nUser: ")
+        user_turn, is_adversarial = user_bot(domain, user_assistant)
+        # user_turn = input("\nUser: ")
         if user_turn == "QUIT":
             break
         user_assistant += [{"role": "user", "content": user_turn}]
@@ -311,7 +311,7 @@ def evaluate_conversation(
         #     except:
         #         continue
         if verbose:
-            # print(f"User: {user_turn}")
+            print(f"User: {user_turn}")
             print(f"Assistant: {assistant_turn}")
             # print(f"Evaluation: {evaluator_turn}")
 
@@ -342,19 +342,19 @@ def evaluate(
     log = []
     for i in tqdm(range(num_conversations)):
         print(f"Conversation {i}")
-        try:
-            conversation_log = evaluate_conversation(
-                i,
-                domain,
-                num_turns,
-                schema=schema,
-                domain_level_actions=domain_level_actions,
-                verbose=verbose,
-            )
-            log.append(conversation_log)
-        except:
-            print(f"Conversation {i} failed.")
-            continue
+        # try:
+        conversation_log = evaluate_conversation(
+            i,
+            domain,
+            num_turns,
+            schema=schema,
+            domain_level_actions=domain_level_actions,
+            verbose=verbose,
+        )
+        log.append(conversation_log)
+        # except:
+        #     print(f"Conversation {i} failed.")
+        #     continue
 
     df_log = pd.DataFrame([turn for conversation in log for turn in conversation])
     return df_log
@@ -374,8 +374,8 @@ def main(domain):
     dir_log = f"../../conversations/simulated_dialogs/{modified_domain_name}"
     Path(dir_log).mkdir(parents=True, exist_ok=True)
 
-    num_conversations = 1
-    num_turns = 1
+    num_conversations = 5
+    num_turns = 5
 
     # Evaluate with schema
     df_with_schema = evaluate(
