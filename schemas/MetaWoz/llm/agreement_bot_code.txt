@@ -1,4 +1,4 @@
-graph TD
+
     B0[Bot: Greeting and Ask for User's Need] --> U1[User: States Specific Need]
     B0 --> U2[User: Asks for Information]
     B0 --> U3[User: Expresses Confusion]
