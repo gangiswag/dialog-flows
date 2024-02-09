@@ -29,14 +29,3 @@
    U10 --> B9
    U11 --> B1
 
-
-   style B0 fill:#f9d5e5
-   style B1 fill:#f9d5e5
-   style B2 fill:#f9d5e5
-   style B3 fill:#f9d5e5
-   style B4 fill:#f9d5e5
-   style B5 fill:#f9d5e5
-   style B6 fill:#f9d5e5
-   style B7 fill:#f9d5e5
-   style B8 fill:#f9d5e5
-   style B9 fill:#f9d5e5
