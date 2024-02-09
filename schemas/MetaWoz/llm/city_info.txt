@@ -1,0 +1,30 @@
+   B0[Bot: Greeting and Asks for City Information Inquiry] --> U1[User: Wants to Know About Attractions]
+   B0 --> U2[User: Inquires About City Services]
+   B0 --> U3[User: Asks About Local Regulations]
+   B0 --> U4[User: Interested in City Events]
+   B0 --> U45[User: Asks for Personalized Recommendations]
+   B0 --> U46[User: Inquires About Local Culture and History]
+   B0 --> U47[User: Wants Info on Dining and Shopping]
+   B0 --> U48[User: Seeks Accessibility and Accommodation Info]
+
+
+   U1 --> B1[Bot: Provides Information on Attractions]
+   U2 --> B2[Bot: Details City Services]
+   U3 --> B3[Bot: Explains Local Regulations]
+   U4 --> B4[Bot: Shares Information on Upcoming Events]
+   U45 --> B5[Bot: Gives Personalized Recommendations]
+   U46 --> B6[Bot: Discusses Local Culture and History]
+   U47 --> B7[Bot: Informs About Dining and Shopping]
+   U48 --> B8[Bot: Advises on Accessibility and Accommodation]
+  
+   B1 --> U9[User: Requests Further Details or Ready to Explore]
+   B2 --> U9
+   B3 --> U9
+   B4 --> U9
+   B5 --> U9
+   B6 --> U9
+   B7 --> U9
+   B8 --> U9
+
+   U9 --> B9[Bot: Provides Additional Info or Encourages Exploration]
+
