@@ -1,0 +1,66 @@
+  b0[Bot: Greet & Ask Destination] --> u1[User: Provide Destination]
+   b0 --> u2[User: Ask for Price Estimate]
+   b0 --> u3[User: Inquire about Car Types]
+  
+
+
+
+
+   u1 --> b1[Bot: Confirm Destination & Request Pickup Location]
+   u2 --> b2[Bot: Provide Price Estimate & Ask for Booking]
+   u3 --> b3[Bot: List Car Types & Ask for Choice]
+
+
+
+
+
+
+   b1 --> u4[User: Confirm Pickup Location]
+   b1 --> u5[User: Change Destination]
+   b2 --> u6[User: Proceed with Booking]
+   b2 --> u7[User: Decline & Exit]
+   b3 --> u8[User: Select Car Type]
+   b3 --> u9[User: Ask for Special Accommodations]
+
+
+   u4 --> b4[Bot: Book Taxi & Provide Arrival Time]
+   u5 --> b0
+   u6 --> b4
+   u8 --> b1
+   u9 --> b6[Bot: Address Accommodations & Proceed to Booking]
+
+
+
+
+   b4 --> u10[User: Confirm Booking & Thank]
+   b4 --> u11[User: Cancel Booking]
+   b6 --> u13[User: Confirm Booking with Accommodations]
+   b6 --> u14[User: No Longer Interested]
+
+
+   u10 --> b7[Bot: Confirm Booking & Provide Details]
+   u11 --> b8[Bot: Process Cancellation & Ask for Feedback]
+   u13 --> b7
+
+
+
+
+
+
+   b7 --> u15[User: End Conversation]
+   b8 --> u16[User: Provide Feedback & Exit]
+   u5 --> b9
+   u15 --> b9[Bot: End & Offer Further Help]
+   u16 --> b10[Bot: Thank for Feedback & Exit]
+
+
+
+
+   u11 --> b16[Bot: Handle Payment Method Selection]
+  b16 --> u16
+b21 --> u16
+   u13 --> b20[Bot: Address Common Misunderstandings]
+   u14 --> b21[Bot: Handle Real-Time Changes]
+   u15 --> b22[Bot: Offer Emergency Exit Option]
+   u7 --> b22
+b20 --> u16
