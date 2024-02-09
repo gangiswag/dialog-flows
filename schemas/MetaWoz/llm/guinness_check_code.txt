@@ -1,0 +1,34 @@
+   B0[Bot: Greeting and Asks for Guinness Inquiry] --> U1[User: Wants to Know About Specific Record]
+   B0 --> U2[User: Inquires How to Apply for a Record]
+   B0 --> U3[User: Asks About Record Verification Process]
+   B0 --> U4[User: Interested in Record Categories]
+   B0 --> U5[User: Queries About Previous Record Holders]
+   B0 --> U75[User: Wants to Know How to Break a Record]
+   B0 --> U76[User: Inquires About Record History]
+   B0 --> U77[User: Interested in Record Publicity and Celebration]
+   B0 --> U78[User: Seeks Trivia and Lesser-Known Record Facts]
+
+   U1 --> B1[Bot: Provides Information on Specific Record]
+   U2 --> B2[Bot: Explains Record Application Process]
+   U3 --> B3[Bot: Describes Record Verification Steps]
+   U4 --> B4[Bot: Lists Different Record Categories]
+   U5 --> B5[Bot: Shares Info on Previous Record Holders]
+   U75 --> B6[Bot: Discusses How to Break a Record]
+   U76 --> B7[Bot: Talks About Record History]
+   U77 --> B6
+   U78 --> B7
+ 
+
+   B1 --> U6[User: Asks for More Details or Similar Records]
+   B2 --> U6[User: Needs Guidance on Application Requirements]
+   B3 --> U6[User: Wants to Know Verification Timeframes]
+   B4 --> U6[User: Seeks Information on a Specific Category]
+   B5 --> U6[User: Inquires About Record Challenges]
+   B6 --> U6
+   B7 --> U6
+
+   U6 --> B8[Bot: Provides Additional Details and Clarifications]
+
+   B8 --> U7[User: Satisfied with Information or Has More Questions]
+   U7 --> B9[Bot: Concludes or Offers Further Assistance]
+
