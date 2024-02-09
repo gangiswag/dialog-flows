@@ -1,0 +1,28 @@
+   B0[Bot: Greet and ask what sports info the user wants] --> U1a[User: Asks for latest sports scores]
+   B0 --> U1b[User: Requests more detailed scores]
+   B0 --> U2[User: Requests info on a specific sports event]
+   B0 --> U3[User: Inquires about sports player statistics]
+   B0 --> U8[User: Requests future event schedules]
+   B0 --> U9[User: Inquires about ticket purchasing]
+   U1a --> B1[Bot: Provides latest sports scores]
+   U1b --> B4[Bot: Gives details on the specific game]
+   U2 --> B2[Bot: Provides information on specific sports event]
+   U3 --> B3[Bot: Shares sports player statistics]
+   U8 --> B7[Bot: Provides future event schedules]
+   U9 --> B8[Bot: Provides ticket purchasing info]
+   B1 --> U4[User: Asks for details on a specific game]
+   B1 --> U5[User: Thanks and ends conversation]
+   B2 --> U6[User: Asks for historical data of the event]
+   B2 --> U5
+   B3 --> U7[User: Requests comparison with another player]
+   B3 --> U5
+   B4 --> U5
+   B7 --> U5
+   B8 --> U5
+   U5 --> B10
+   U4 --> B9[Bot: Concludes with game details]
+   U6 --> B9
+   U7 --> B9
+   B9 --> U10[User: Expresses satisfaction or further queries]
+   U10 --> B10[Bot: Final closing and offers further assistance]
+
