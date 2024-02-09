@@ -1,5 +1,4 @@
-graph TD
-   B0[Bot: Greeting and Ask for Alarm Setting] --> U1[User: Specifies Time for Alarm]
+ B0[Bot: Greeting and Ask for Alarm Setting] --> U1[User: Specifies Time for Alarm]
    B0 --> U2[User: Asks How to Set Alarm]
    B0 --> U3[User: Requests Alarm Options]
    B0 --> U11[User: Encounters an Error in Setting Alarm]
