@@ -1,0 +1,64 @@
+B0[Bot: Greeting and Request for User's Needs] --> U1[User: Wants to Reserve Tickets for an Event]
+B0 --> U2[User: Inquires About Event Details]
+B0 --> U3[User: Needs to Manage Existing Reservation]
+B0 --> U4[User: Seeks Special Accommodations for an Event]
+B0 --> U5[User: Inquires About Event Cancellations]
+B0 --> U6[User: Asks About Refund Policies]
+B0 --> U7[User: Wants to Make Group Reservations]
+B0 --> U8[User: Seeks Loyalty Program Information]
+B0 --> U9[User: Request for account information]
+B0 --> U10[User: Report suspected account hacking]
+B0 --> U11[User: Inquire About Loans]
+B0 --> U12[User: Report Lost or Stolen Card]
+B0 --> U13[User: Discuss Credit Card Issue]
+B0 --> U14[User: Report Fraud Alert]
+B0 --> U15[User: Request Financial Advice]
+B0 --> U16[User: Ask About Interest Rates]
+B0 --> U17[User: Inquire About Bank Policies]
+
+U1 --> B1[Bot: Assists with Ticket Reservation]
+U2 --> B2[Bot: Provides Information on Event Details]
+U3 --> B3[Bot: Helps with Managing Existing Reservations]
+U4 --> B4[Bot: Discusses Special Accommodations]
+U5 --> B5[Bot: Informs About Cancellation Procedures]
+U6 --> B6[Bot: Explains Refund Policies]
+U7 --> B7[Bot: Facilitates Group Reservations]
+U8 --> B8[Bot: Shares Loyalty Program Benefits]
+U9 --> B9[Bot: Provide Account Information]
+U10 --> B10[Bot: Assist with Account Security]
+U11 --> B11[Bot: Provide Loan Information]
+U12 --> B12[Bot: Manage Lost/Stolen Card]
+U13 --> B13[Bot: Address Credit Card Issues]
+U14 --> B14[Bot: Handle Fraud Alert]
+U15 --> B15[Bot: Offer Financial Advice]
+U16 --> B15
+U17 --> B15
+
+B1 --> U18[User: Selects Event and Specifies Ticket Quantity]
+B2 --> U19[User: Asks Further Questions About the Event]
+B3 --> U20[User: Requests Changes to Reservation]
+B4 --> U21[User: Provides Details for Accommodations]
+B5 --> U22[User: Confirms or Has More Queries on Cancellations]
+B6 --> U22
+B7 --> U22
+B8 --> U22
+B9 --> U22
+B10 --> U22
+B11 --> U22
+B12 --> U22
+B13 --> U22
+B14 --> U22
+B15 --> U22
+
+U18 --> B16[Bot: Processes Ticket Reservation]
+U19 --> B17[Bot: Provides Further Event Details]
+U20 --> B18[Bot: Updates Reservation Details]
+U21 --> B19[Bot: Confirms Special Accommodations]
+
+B16 --> U23[User: Requests Further Assistance or Provides Feedback]
+B17 --> U23
+B18 --> U23
+B19 --> U23
+U22 --> B20[Bot: Concludes Assistance or Offers Further Help]
+
+U23 --> B20[Bot: Concludes Assistance or Offers Further Help]
