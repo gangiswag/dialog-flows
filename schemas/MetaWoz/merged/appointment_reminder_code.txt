@@ -1,0 +1,48 @@
+B0[Bot: Greeting and Inquiry Offer] --> U0[User: Request Help with Appointments]
+B0 --> U5[User: Ask for Help Navigating App]
+B0 --> U6[User: Inquire About Privacy Policy]
+B0 --> U20[User: Wants to Cancel Appointment]
+B0 --> U21[User: Has Special Requests]
+B0 --> U23[User: Experiences Technical Difficulties]
+B0 --> U24[User: Expresses Dissatisfaction with Options]
+
+U0 --> B1[Bot: Offer Appointment Management Options]
+
+B1 --> U1[User: Set Reminder]
+B1 --> U2[User: Erase Appointment]
+B1 --> U3[User: Set Appointment]
+B1 --> U4[User: Request Appointment Reminders]
+
+U1 --> B2[Bot: Request Specific Reminder Details]
+U2 --> B3[Bot: Request Appointment Date and Time to Erase]
+U3 --> B4[Bot: Request Appointment Date and Time]
+U4 --> B5[Bot: List Upcoming Appointments]
+
+U5 --> B13[Bot: Provide Help for Navigation]
+U6 --> B14[Bot: Explain Privacy Policy]
+U20 --> B9[Bot: Handles Appointment Cancellation]
+U21 --> B10[Bot: Addresses Special Requests]
+U23 --> B12[Bot: Assists with Technical Difficulties]
+U24 --> B15[Bot: Addresses User Dissatisfaction]
+
+U1 --> B6[Bot: Confirm Reminder Set]
+U3 --> B7[Bot: Confirm Appointment Erasure]
+U4 --> B8[Bot: Request Address for New Appointment]
+B0 --> U11
+U11[User: Provide New Appointment Details for Rescheduling] --> B19[Bot: Confirm Rescheduled Appointment]
+
+B2 --> U12
+B5 --> U12[User: Express Gratitude or Further Requests]
+B6 --> U12
+B7 --> U12
+B8 --> U12
+B9 --> U12
+B10 --> U12
+B12 --> U12
+B15 --> U12
+B19 --> U12
+B13 --> U12
+B14 --> U12
+B3 --> U12
+B4 --> U12
+U12 --> B20[Bot: End Conversation with Courtesy]
