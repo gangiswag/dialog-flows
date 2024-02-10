@@ -1,0 +1,22 @@
+B0[Bot: Greeting and Assistance Offer] --> U1[User: Received a Suspicious Communication]
+B0 --> U2[User: Encountered a Potential Online Scam]
+B0 --> U3[User: Wants to Learn About Scam Prevention]
+B0 --> U4[User: Needs to Report a Scam]
+
+U1 --> B1[Bot: Analyze Communication Content and Offer Advice]
+U2 --> B2[Bot: Guide on Verifying Online Authenticity and Safety Measures]
+U3 --> B3[Bot: Provide Scam Prevention Tips and Resources]
+U4 --> B4[Bot: Assist with Reporting Scam to Relevant Authorities]
+
+B1 --> U5[User: Provides More Details or Asks Further Questions]
+B2 --> U5
+B3 --> U5
+B4 --> U5
+
+U5 --> B5[Bot: Offer Detailed Analysis, Further Prevention Tips, or Next Steps]
+
+B5 --> U6[User: Satisfied with Information or Inquires About Additional Help]
+U6 --> B6[Bot: Conclude Assistance or Offer More Help]
+
+B6 --> U7[User: Thanks or Requests More Information on Specific Scams]
+U7 --> B7[Bot: Provide Specific Scam Information or Close Conversation]
