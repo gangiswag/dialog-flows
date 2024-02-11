@@ -1,0 +1,82 @@
+B0[Bot: Greeting and Intent Inquiry]
+    B0 --> U1[User: Requests Calendar Update]
+    B0 --> U2[User: Asks for Calendar Details]
+    B0 --> U3[User: Wants to Cancel Appointment]
+
+U1 --> B1[Bot: Ask for Update Details]
+U1 --> B2[Bot: Provide Calendar Overview]
+U1 --> B3[Bot: Confirm Cancellation Request]
+U1 --> B14[Bot: Inquire Participant Availability]
+U1 --> B15[Bot: Request Rescheduling]
+U1 --> B16[Bot: Manage Recurring Meetings]
+U1 --> B17[Bot: Integrate External Calendar]
+
+U2 --> B2
+
+U3 --> B3
+
+B1 --> U4[User: Provides Update Details]
+
+B2 --> U5[User: Requests to View Calendar First]
+
+B3 --> U6[User: Confirms Cancellation]
+
+B14 --> U11[User: Specify Participants]
+
+B15 --> U12[User: Provide New Meeting Details]
+
+B16 --> U13[User: Recurring Meeting Details]
+
+B17 --> U14[User: External Calendar Details]
+
+U4 --> B4[Bot: Update Calendar & Confirm]
+
+U5 --> B2
+
+U6 --> B7[Bot: Provide Schedule Information]
+
+U11 --> B18[Bot: Check Participant Availability]
+
+U12 --> B19[Bot: Process Rescheduling]
+
+U13 --> B20[Bot: Configure Recurring Meeting]
+
+U14 --> B21[Bot: Complete External Calendar Integration]
+
+B4 --> U7[User: Confirm Creation]
+
+B7 --> U8[User: Further Actions Query]
+
+B18 --> U15[User: Availability Confirmation]
+
+B19 --> U16[User: Rescheduling Confirmation]
+
+B20 --> U17[User: Recurring Setup Confirmation]
+
+B21 --> U18[User: Integration Confirmation]
+
+U7 --> B8[Bot: Offer Further Assistance]
+
+U8 --> B9[Bot: Provide Additional Help]
+
+U15 --> B22[Bot: Handle Scheduling Conflicts]
+
+U16 --> B23[Bot: Suggest Alternative Dates or Times]
+
+U17 --> B24[Bot: Manage Recurring Meetings Further]
+
+U18 --> B25[Bot: Next Steps After Integration]
+
+B9 --> U19[User: End Conversation or Additional Help]
+
+B22 --> U19
+
+B23 --> U19
+
+B24 --> U19
+
+B25 --> U19
+
+U1 --> B27[Bot: Escalate to Human Support]
+
+U19 --> B28[Bot: Wish User A Great Day]
