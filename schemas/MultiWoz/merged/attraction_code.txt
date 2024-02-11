@@ -1,4 +1,4 @@
-graph TD
+
    b0[Bot: Greet & Ask for Attraction Preferences] --> u1[User: Looking for Adventure Attractions]
    b0 --> u2[User: Interested in Cultural Attractions]
    b0 --> u3[User: Wants Family-Friendly Options]
@@ -60,18 +60,3 @@ graph TD
    u16 --> b6
    u17 --> b6
 
-
-   style b0 fill:#f9d5e5
-   style b1 fill:#f9d5e5
-   style b2 fill:#f9d5e5
-   style b3 fill:#f9d5e5
-   style b4 fill:#f9d5e5
-   style b5 fill:#f9d5e5
-   style b6 fill:#f9d5e5
-   style b7 fill:#f9d5e5
-   style b8 fill:#f9d5e5
-   style b10 fill:#f9d5e5
-   style b11 fill:#f9d5e5
-   style b2a fill:#f9d5e5
-   style b2b fill:#f9d5e5
-   style b3a fill:#f9d5e5
