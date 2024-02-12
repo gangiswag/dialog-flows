@@ -1,0 +1,16 @@
+{
+    "Account Services": {
+      "description": "Handling general account inquiries and specific account service requests.",
+      "user_actions": [
+        "Request for Bank Account Assistance",
+        "Request for Account Information",
+        "Needs Help with Online Banking"
+      ],
+      "bot_actions": [
+        "Assist with Account Services",
+        "Provide Account Information",
+        "Guide Through Online Banking"
+      ]
+    }
+  }
+  
