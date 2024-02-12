@@ -1,0 +1,67 @@
+{
+    "Transportation Schedule Assistance": {
+      "description": "Providing schedule information for buses and subways.",
+      "user_actions": [
+        "Request Bus Schedule Assistance",
+        "Request Subway Schedule Assistance",
+        "Check Another Bus Schedule",
+        "Check Another Train Schedule"
+      ],
+      "bot_actions": [
+        "Provide next bus arrival time",
+        "Provide next train schedule",
+        "Provide information about another bus arrival time",
+        "Provide information about another train schedule"
+      ]
+    },
+    "Service Availability and Location Information": {
+      "description": "Information on service availability, nearest stations, and real-time arrival.",
+      "user_actions": [
+        "Check Subway Service Availability",
+        "Get Nearest Subway Station",
+        "Provide Subway Station Name",
+        "Provide Location",
+        "Ask for Directions"
+      ],
+      "bot_actions": [
+        "Check Subway Station Service",
+        "Request User Location",
+        "Provide Subway Service Availability",
+        "Provide Nearest Subway Station",
+        "Provide Directions"
+      ]
+    },
+    "Fare and Services Inquiry": {
+      "description": "Inquiries about fares, stops, accessibility, special services, and service changes.",
+      "user_actions": [
+        "Asks About Bus Fares",
+        "Inquires About Bus Stop Locations",
+        "Inquires About Accessibility Options",
+        "Asks About Special Services",
+        "Queries Service Changes and Alerts",
+        "Seeks Multi-modal Transportation Info"
+      ],
+      "bot_actions": [
+        "Informs About Bus Fares",
+        "Lists Nearby Bus Stop Locations",
+        "Discusses Accessibility Options",
+        "Talks About Special Services",
+        "Informs About Service Changes and Alerts",
+        "Provides Multi-modal Transportation Info"
+      ]
+    },
+    "General Inquiry and Closure": {
+      "description": "General inquiries and concluding the interaction.",
+      "user_actions": [
+        "Say Hi",
+        "Make a Service Request",
+        "End Conversation"
+      ],
+      "bot_actions": [
+        "How may I help you?",
+        "Provide Requested Service Information",
+        "Bot ends conversation"
+      ]
+    }
+  }
+  

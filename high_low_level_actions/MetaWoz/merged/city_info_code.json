@@ -1,0 +1,15 @@
+{
+    "General City Information": {
+      "description": "Providing a broad overview of city facts, including general facts, the tallest building, city founding date, and cultural history.",
+      "user_actions": [
+        "Request City Facts",
+        "Get Tallest Building",
+        "Inquire About City Founding Date",
+        "Inquires About Local Culture and History"
+      ],
+      "bot_actions": [
+        "Provide General City Information"
+      ]
+    }
+  }
+  
