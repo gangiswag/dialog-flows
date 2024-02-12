@@ -1,0 +1,30 @@
+{
+    "Weather Information Assistance": {
+      "description": "Providing users with weather information, including specific weather details, general forecasts, updates, humidity levels, wind speeds, and historical data.",
+      "user_actions": [
+        "Requests Weather Info",
+        "Specific Weather Question",
+        "General Inquiry About Weather",
+        "Inquires About Weather Forecast Updates",
+        "Inquires About Humidity Levels",
+        "Asks About Wind Speed",
+        "Asks About Historical Weather Data",
+        "Expresses Dissatisfaction or Confusion",
+        "Provides Details",
+        "Asks for General Forecast",
+        "Asks for Additional Info",
+        "Gives Specific Details",
+        "Thanks or Additional Inquiry"
+      ],
+      "bot_actions": [
+        "Requests Location for Weather Info",
+        "Provides Specific Weather Info",
+        "Requests Date/Time for Forecast",
+        "Answers Additional Questions",
+        "Gives Specific Forecast Based on User Details",
+        "Offers Further Assistance",
+        "Closes or Offers More Help"
+      ]
+    }
+  }
+  
