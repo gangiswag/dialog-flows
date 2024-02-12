@@ -1,0 +1,28 @@
+{
+    "Name Selection Assistance": {
+      "description": "Assisting users in selecting names for various needs, including babies, pets, businesses, and characters, with a focus on preferences such as cultural significance, trends, and creativity.",
+      "user_actions": [
+        "Seeks a Baby Name",
+        "Looking for a Pet Name",
+        "Wants a Business Name",
+        "Needs a Character Name for a Story",
+        "Seeks Names with Cultural Significance",
+        "Interested in Trending or Popular Names",
+        "Looks for Unique and Creative Names"
+      ],
+      "bot_actions": [
+        "Asking for Context or Preferences in Baby Names",
+        "Inquires About Type of Pet and Preferences",
+        "Discusses Business Type and Naming Style",
+        "Seeks Details About Story and Character",
+        "Suggests Names with Cultural Relevance",
+        "Offers Trending and Popular Name Options",
+        "Provides Unique and Creative Name Ideas",
+        "Direct to Naming Suggestion",
+        "Handling Feedback and Offers Additional Suggestions",
+        "Finalizes the Suggestion or Provides More Options",
+        "End Conversation with Gratitude"
+      ]
+    }
+  }
+  

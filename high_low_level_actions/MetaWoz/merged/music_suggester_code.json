@@ -1,0 +1,53 @@
+{
+    "Music Discovery and Recommendations": {
+      "description": "Assisting users with discovering music based on their preferences, including genre, artists, mood, activities, and offering additional music discovery services.",
+      "user_actions": [
+        "Likes a Specific Genre",
+        "Prefers Certain Artists",
+        "Looking for Mood-Based Music",
+        "Wants Music for a Specific Activity",
+        "Needs Help Discovering New Music",
+        "Inquires About Music Events or Concerts",
+        "Interested in Music Trends and News",
+        "Negative Feedback"
+      ],
+      "bot_actions": [
+        "Suggests Songs from Chosen Genre",
+        "Recommends Tracks by Preferred Artists",
+        "Proposes Music Based on Mood",
+        "Provides Playlist for Activity",
+        "Offers Additional Suggestions and Expands Selection",
+        "Guides on Using Music Platforms",
+        "Offers Insights on Music Trends and News",
+        "Handle Negative Feedback"
+      ]
+    },
+    "User Feedback and Further Assistance": {
+      "description": "Handling user feedback including satisfaction, requests for further details, and offering more assistance based on user inquiries.",
+      "user_actions": [
+        "Asks for More Songs in Genre",
+        "Requests Similar Artists",
+        "Seeks Different Mood Music",
+        "Wants Other Activity-Based Playlists",
+        "Satisfied with Suggestions or Inquires More",
+        "Request different assistance"
+      ],
+      "bot_actions": [
+        "Offers Further Assistance and Expands Selection",
+        "Confirms Satisfaction or Provides More Assistance",
+        "Offer Alternative Assistance"
+      ]
+    },
+    "Platform Usage and Music Events Information": {
+      "description": "Providing information on how to utilize music platforms effectively, details about music events, concerts, and current music trends.",
+      "user_actions": [
+        "Inquires About Music Events or Concerts",
+        "Interested in Music Trends and News"
+      ],
+      "bot_actions": [
+        "Guides on Using Music Platforms",
+        "Offers Insights on Music Trends and News"
+      ]
+    }
+  }
+  
