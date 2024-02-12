@@ -1,0 +1,24 @@
+{
+    "Scam Awareness and Reporting": {
+      "description": "Assisting users with identifying, preventing, and reporting scams through detailed analysis, prevention tips, and guiding through the reporting process.",
+      "user_actions": [
+        "Received a Suspicious Communication",
+        "Encountered a Potential Online Scam",
+        "Wants to Learn About Scam Prevention",
+        "Needs to Report a Scam",
+        "Provides More Details or Asks Further Questions",
+        "Satisfied with Information or Inquires About Additional Help",
+        "Thanks or Requests More Information on Specific Scams"
+      ],
+      "bot_actions": [
+        "Analyze Communication Content and Offer Advice",
+        "Guide on Verifying Online Authenticity and Safety Measures",
+        "Provide Scam Prevention Tips and Resources",
+        "Assist with Reporting Scam to Relevant Authorities",
+        "Offer Detailed Analysis, Further Prevention Tips, or Next Steps",
+        "Conclude Assistance or Offer More Help",
+        "Provide Specific Scam Information or Close Conversation"
+      ]
+    }
+  }
+  
