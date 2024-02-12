@@ -1,0 +1,63 @@
+{
+    "Store Information Assistance": {
+      "description": "Providing users with information on store locations, hours, and directions.",
+      "user_actions": [
+        "Inquires about store location",
+        "Asks for store hours",
+        "Asks for directions to store"
+      ],
+      "bot_actions": [
+        "Provides store location",
+        "Shares store hours",
+        "Gives directions to store"
+      ]
+    },
+    "Product and Service Inquiry": {
+      "description": "Assisting users with inquiries about products, special services, return policies, loyalty programs, and service bookings.",
+      "user_actions": [
+        "Wants to know about products available",
+        "Requests information on special services",
+        "Inquires about return policies",
+        "Asks about loyalty programs",
+        "Ask About Services",
+        "Inquires about a specific product",
+        "Asks about service booking"
+      ],
+      "bot_actions": [
+        "Lists available products",
+        "Describes special services",
+        "Provides info on return policies",
+        "Details about loyalty programs",
+        "Describe Services Offered",
+        "Provides details on specific product",
+        "Explains how to book services"
+      ]
+    },
+    "Online Order Management": {
+      "description": "Handling user requests related to online orders, including inquiries, confirmations, modifications, and feedback.",
+      "user_actions": [
+        "Wants to manage online orders",
+        "Wishes to give feedback or read reviews",
+        "Confirm Purchase Details",
+        "Modify Purchase Request"
+      ],
+      "bot_actions": [
+        "Assists with online order inquiries",
+        "Offers feedback options or shows reviews",
+        "Process Purchase",
+        "Modify Purchase Request"
+      ]
+    },
+    "Additional Assistance and Conclusion": {
+      "description": "Providing further assistance based on user satisfaction, additional queries, or concluding the conversation.",
+      "user_actions": [
+        "Expresses satisfaction or has further queries",
+        "Requests more info or ends conversation",
+        "Satisfied, No Further Questions"
+      ],
+      "bot_actions": [
+        "Provides further assistance or concludes the conversation"
+      ]
+    }
+  }
+  
