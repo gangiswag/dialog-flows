@@ -1,0 +1,72 @@
+{
+    "Alarm Assistance Initiation": {
+      "description": "Initiation of alarm assistance by the user.",
+      "user_actions": [
+        "Express need for alarm assistance"
+      ],
+      "bot_actions": [
+        "Greeting",
+        "Prompt for alarm action"
+      ]
+    },
+    "Alarm Setting": {
+      "description": "Process of setting an alarm.",
+      "user_actions": [
+        "Set alarm",
+        "Confirm alarm set",
+        "Request to set repeat"
+      ],
+      "bot_actions": [
+        "Set Alarm",
+        "Confirm Completion",
+        "Set repeat and confirm"
+      ]
+    },
+    "Alarm Editing": {
+      "description": "Editing an existing alarm's details.",
+      "user_actions": [
+        "Specify alarm edit details",
+        "Confirm edit"
+      ],
+      "bot_actions": [
+        "Ask for alarm details",
+        "Perform edit and confirm"
+      ]
+    },
+    "Alarm Deletion": {
+      "description": "Deleting an existing alarm.",
+      "user_actions": [
+        "Specify alarm to delete",
+        "Request additional deletion",
+        "End conversation"
+      ],
+      "bot_actions": [
+        "Ask which alarm to delete",
+        "Delete alarm and confirm",
+        "Expressing gratitude and farewell"
+      ]
+    },
+    "Alarm Copying": {
+      "description": "Copying an alarm.",
+      "user_actions": [
+        "Confirm copy details",
+        "Request further changes",
+        "End conversation"
+      ],
+      "bot_actions": [
+        "Ask details for copying alarm",
+        "Copy alarm and confirm",
+        "Expressing gratitude and farewell"
+      ]
+    },
+    "Conversation Closure": {
+      "description": "Closure of the conversation.",
+      "user_actions": [
+        "End Conversation"
+      ],
+      "bot_actions": [
+        "Expressing gratitude and farewell"
+      ]
+    }
+  }
+  
