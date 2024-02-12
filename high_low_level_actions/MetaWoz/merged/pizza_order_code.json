@@ -1,0 +1,46 @@
+{
+    "Pizza Ordering Process": {
+      "description": "Guiding users through the process of ordering pizza, from selection to customization and final confirmation.",
+      "user_actions": [
+        "Request to Order Pizza",
+        "Specifies Pizza Details",
+        "Asks for Customization Options",
+        "Chooses a Recommended Pizza",
+        "Chooses Special Deal",
+        "Confirms and Completes Order",
+        "Requests Modification or Cancellation",
+        "Makes Final Customization Choices",
+        "Decides on Combo Deal"
+      ],
+      "bot_actions": [
+        "Ask About Pizza Details - Size, Toppings, Types",
+        "Provides Customization Choices",
+        "Confirm Order with Specified Details",
+        "Confirms Special Deal Order",
+        "Provides Order Summary and Payment Details",
+        "Handle Modification or Cancellation",
+        "Acknowledges Feedback and Concludes Conversation"
+      ]
+    },
+    "Inquiry and Recommendations": {
+      "description": "Handling user inquiries about pizza recommendations and special deals, offering suggestions based on popularity or promotions.",
+      "user_actions": [
+        "Asks for Recommendations",
+        "Inquires About Special Deals"
+      ],
+      "bot_actions": [
+        "Suggests Popular Pizzas",
+        "Describes Specials - Veg and Non-Veg"
+      ]
+    },
+    "Feedback and Conclusion": {
+      "description": "Collecting user feedback or ratings after completing the order and providing a summary or handling modifications.",
+      "user_actions": [
+        "Provides Feedback or Rating"
+      ],
+      "bot_actions": [
+        "Acknowledges Feedback and Concludes Conversation"
+      ]
+    }
+  }
+  
