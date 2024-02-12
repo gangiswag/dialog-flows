@@ -137,13 +137,13 @@ def user_bot(domain, user_setting, conversation):
     return user_response, is_adversarial
 
 
-def get_chatgpt_float(system_prompt, conversation, attempts=10):
+def get_chatgpt_float(system_prompt, conversation, model, attempts=10):
     for i in range(attempts):
         try:
             result = chat_chatgpt(
                 system_prompt,
                 conversation,
-                model="gpt-3.5-turbo",
+                model=model,
                 temperature=(i * 0.05),
             )
             result = float(result)
@@ -155,17 +155,19 @@ def get_chatgpt_float(system_prompt, conversation, attempts=10):
 
 # Evaluator Bot
 def evaluator_bot(domain, conversation, attempts=10):
+    model = "gpt-3.5-turbo"
+
     task_completion_prompt = f"You must evaluate how effective at task completion an assistant chatbot strictly meant for {domain} is. Punish the bot strongly if it is not completing the task. You should only be evaluating the 'assistant' turns.. Rate how on-topic the assistant is on a scale of 0.0 to 10.0, with 0.0 indicating completely uncompleted tasks and 10.0 denoting perfectly completed tasks. Use the full scoring range. Assign a score based solely on how good at task completion the bot is. Do not be verbose and give ONLY the score. Score the above assistant."
     task_completion_score = get_chatgpt_float(
-        task_completion_prompt, conversation, attempts=10
+        task_completion_prompt, conversation, model, attempts=10
     )
 
     ontopic_prompt = f"You must evaluate how on-topic an assistant chatbot strictly meant for {domain} is. Punish the bot strongly if it goes off-topic. You should only be evaluating the 'assistant' turns. Rate how on-topic the assistant is on a scale of 0.0 to 10.0, with 0.0 indicating completely off-topic bot responses and 10.0 denoting perfectly on-topic bot responses. Use the full scoring range. Assign a score based solely on how on-topic the assistant is. Do not be verbose and give ONLY the score. Score the above assistant."
-    ontopic_score = get_chatgpt_float(ontopic_prompt, conversation, attempts=10)
+    ontopic_score = get_chatgpt_float(ontopic_prompt, conversation, model, attempts=10)
 
     fluency_prompt = f"You must evaluate how fluent an assistant chatbot strictly meant for {domain} is. Punish the bot strongly if it is not fluently communicating. You should only be evaluating the 'assistant' turns. Rate how on-topic the assistant is on a scale of 0.0 to 10.0, with 0.0 indicating completely incomprehensible bot responses and 10.0 denoting perfectly fluent bot responses. Use the full scoring range. Assign a score based solely on how fluent the assistant is. Do not be verbose and give ONLY the score. Score the above assistant."
 
-    fluency_score = get_chatgpt_float(fluency_prompt, conversation, attempts=10)
+    fluency_score = get_chatgpt_float(fluency_prompt, conversation, model, attempts=10)
 
     return {
         "task_completion_score": task_completion_score,
@@ -433,5 +435,6 @@ if __name__ == "__main__":
 
 # TODO
 # Improve GPT evaluator. Switch to GPT 4 and find a good prompt.
+# Better way to generate max length. Think that might be why "Hey there movie" keeps happening, prompt is very long
 # Find a better way to handle the best match in response than substring matching
 # Add in information into the overleaf
