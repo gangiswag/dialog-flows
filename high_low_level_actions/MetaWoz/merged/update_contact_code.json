@@ -1,0 +1,62 @@
+{
+    "Contact Management": {
+      "description": "Assisting users with contact information updates, queries, removals, and feedback on the contact management system.",
+      "user_actions": [
+        "Update Contact Info",
+        "Query Contact Details",
+        "Remove Contact",
+        "No Action Needed - End Conversation",
+        "Provide Feedback"
+      ],
+      "bot_actions": [
+        "Ask Which Contact to Update",
+        "Provide Contact Details",
+        "Confirm Contact Removal",
+        "Acknowledge & End",
+        "Handle Input Error",
+        "Importing/Exporting Contacts",
+        "Execute Update & Confirm",
+        "Merge Duplicate Contacts",
+        "Export/Import Contact Info",
+        "Sync Contacts from Social Media",
+        "Cancel Removal & Continue",
+        "Asking for User Feedback"
+      ]
+    },
+    "Update Process": {
+      "description": "The process for updating contact details, including specifying the contact, providing new details, and confirming updates.",
+      "user_actions": [
+        "Specify Contact Name",
+        "Request Contact Search",
+        "Provide New Details",
+        "Cancel Update"
+      ],
+      "bot_actions": [
+        "Request Specific Update Details",
+        "Execute Update & Confirm"
+      ]
+    },
+    "Removal Process": {
+      "description": "The process for removing a contact, including confirmation of removal and handling of cancellation requests.",
+      "user_actions": [
+        "Confirm Removal",
+        "Cancel Removal"
+      ],
+      "bot_actions": [
+        "Confirm Contact Removal",
+        "Cancel Removal & Continue"
+      ]
+    },
+    "Feedback Process": {
+      "description": "Collecting user feedback on the contact management system and concluding the interaction.",
+      "user_actions": [
+        "Feedback Provided",
+        "End Conversation"
+      ],
+      "bot_actions": [
+        "Asking for User Feedback",
+        "Acknowledge & End"
+      ]
+    }
+  }
+  
