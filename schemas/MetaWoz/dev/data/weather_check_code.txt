@@ -1,0 +1,24 @@
+B0[Bot: Greet & Offer Help] --> U0[User: Requests Weather Info]
+B0 --> U1[User: Specific Weather Question]
+B0 --> U2[User: Asks About Historical Weather Data]
+B0 --> U3[User: Inquires About Weather Forecast Updates]
+B0 --> U4[User: General Inquiry About Weather]
+U0 --> B1[Bot: Requests Location for Weather Info]
+U1 --> B2[Bot: Provides Specific Weather Info]
+U2 --> B2
+U3 --> B3[Bot: Requests Date/Time for Forecast]
+U4 --> B3
+U4 --> B5[Bot: Handles Unexpected Queries]
+B1 --> U5[User: Provides Details]
+B1 --> U6[User: Asks for General Forecast]
+B2 --> U7[User: Asks for Additional Info]
+B3 --> U8[User: Gives Specific Details]
+B5 --> U9[User: Expresses Dissatisfaction or Confusion]
+U5 --> B6[Bot: Answers Additional Questions]
+U6 --> B6
+U7 --> B6
+U8 --> B7[Bot: Gives Specific Forecast Based on User Details]
+U9 --> B8[Bot: Closes or Offers More Help]
+B6 --> U10[User: Thanks or Additional Inquiry]
+U10 --> B5
+B7 --> U10
