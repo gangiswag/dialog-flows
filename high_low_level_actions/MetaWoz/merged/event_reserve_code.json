@@ -1,0 +1,53 @@
+{
+    "Event Assistance": {
+      "description": "Handling inquiries and actions related to events, including ticket reservations, event information, and special accommodations.",
+      "user_actions": [
+        "Wants to Reserve Tickets for an Event",
+        "Inquires About Event Details",
+        "Needs to Manage Existing Reservation",
+        "Seeks Special Accommodations for an Event",
+        "Inquires About Event Cancellations",
+        "Wants to Make Group Reservations"
+      ],
+      "bot_actions": [
+        "Assists with Ticket Reservation",
+        "Provides Information on Event Details",
+        "Helps with Managing Existing Reservations",
+        "Discusses Special Accommodations",
+        "Informs About Cancellation Procedures",
+        "Facilitates Group Reservations"
+      ]
+    },
+    "Financial Services": {
+      "description": "Offering assistance with various financial services inquiries, including account information, loans, and credit card issues.",
+      "user_actions": [
+        "Request for account information",
+        "Report suspected account hacking",
+        "Inquire About Loans",
+        "Report Lost or Stolen Card",
+        "Discuss Credit Card Issue",
+        "Report Fraud Alert",
+        "Ask About Interest Rates",
+        "Inquire About Bank Policies"
+      ],
+      "bot_actions": [
+        "Provide Account Information",
+        "Assist with Account Security",
+        "Provide Loan Information",
+        "Manage Lost/Stolen Card",
+        "Address Credit Card Issues",
+        "Handle Fraud Alert",
+        "Offer Financial Advice"
+      ]
+    },
+    "Customer Support and Feedback": {
+      "description": "Concluding the interaction by providing further assistance, addressing additional inquiries, or gathering feedback.",
+      "user_actions": [
+        "Requests Further Assistance or Provides Feedback"
+      ],
+      "bot_actions": [
+        "Concludes Assistance or Offers Further Help"
+      ]
+    }
+  }
+  

@@ -1,0 +1,56 @@
+{
+    "Playlist Management": {
+      "description": "Assisting with creating, editing, and managing playlists.",
+      "user_actions": [
+        "Requesting help with playlists",
+        "Create/Edit Playlist",
+        "Wants to Add Songs to Playlist",
+        "Needs to Remove Songs from Playlist",
+        "Inquires About Rearranging Tracks",
+        "Wants to Create New Playlist"
+      ],
+      "bot_actions": [
+        "Confirm Ability to Assist and Request Details",
+        "Request Playlist Action",
+        "Assists with Adding Songs to Playlist",
+        "Helps Remove Songs from Playlist",
+        "Guides on Rearranging Playlist Tracks",
+        "Assists with Creating New Playlist",
+        "Execute Requested Edits and Confirm"
+      ]
+    },
+    "Music Discovery": {
+      "description": "Providing song recommendations and music discovery based on user preferences.",
+      "user_actions": [
+        "Seeks Song Recommendations for Playlist",
+        "Seeks Music Based on Mood or Genre"
+      ],
+      "bot_actions": [
+        "Provides Song Recommendations",
+        "Suggests Music Based on Mood or Genre"
+      ]
+    },
+    "Integration and Syncing": {
+      "description": "Handling inquiries related to platform integration and syncing issues.",
+      "user_actions": [
+        "Inquires About Integrating with Other Platforms",
+        "Experiences Syncing Issues"
+      ],
+      "bot_actions": [
+        "Discusses Integration with Other Platforms",
+        "Addresses Syncing Issues"
+      ]
+    },
+    "Service Closure": {
+      "description": "Concluding the conversation based on user satisfaction or further assistance request.",
+      "user_actions": [
+        "End Conversation",
+        "End Conversation or Request Further Help"
+      ],
+      "bot_actions": [
+        "Greeting and Farewell",
+        "Provide Further Assistance or End Conversation"
+      ]
+    }
+  }
+  
