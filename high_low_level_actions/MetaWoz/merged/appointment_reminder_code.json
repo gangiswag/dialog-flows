@@ -1,0 +1,19 @@
+{
+    "Appointment Management": {
+      "description": "Handling of appointment-related requests.",
+      "user_actions": [
+        "Set Reminder",
+        "Erase Appointment",
+        "Set Appointment",
+        "Request Appointment Reminders"
+      ],
+      "bot_actions": [
+        "Offer Appointment Management Options",
+        "Request Specific Reminder Details",
+        "Request Appointment Date and Time to Erase",
+        "Request Appointment Date and Time",
+        "List Upcoming Appointments"
+      ]
+    }
+  }
+  
