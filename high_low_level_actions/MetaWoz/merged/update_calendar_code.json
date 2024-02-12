@@ -1,0 +1,48 @@
+{
+    "Calendar Management": {
+      "description": "Assisting users with calendar updates, details, appointment cancellations, rescheduling, recurring meetings, and external calendar integration.",
+      "user_actions": [
+        "Requests Calendar Update",
+        "Asks for Calendar Details",
+        "Wants to Cancel Appointment",
+        "Provides Update Details",
+        "Requests to View Calendar First",
+        "Confirms Cancellation",
+        "Specify Participants",
+        "Provide New Meeting Details",
+        "Recurring Meeting Details",
+        "External Calendar Details",
+        "Confirm Creation",
+        "Further Actions Query",
+        "Availability Confirmation",
+        "Rescheduling Confirmation",
+        "Recurring Setup Confirmation",
+        "Integration Confirmation",
+        "End Conversation or Additional Help"
+      ],
+      "bot_actions": [
+        "Ask for Update Details",
+        "Provide Calendar Overview",
+        "Confirm Cancellation Request",
+        "Inquire Participant Availability",
+        "Request Rescheduling",
+        "Manage Recurring Meetings",
+        "Integrate External Calendar",
+        "Update Calendar & Confirm",
+        "Provide Schedule Information",
+        "Check Participant Availability",
+        "Process Rescheduling",
+        "Configure Recurring Meeting",
+        "Complete External Calendar Integration",
+        "Offer Further Assistance",
+        "Provide Additional Help",
+        "Handle Scheduling Conflicts",
+        "Suggest Alternative Dates or Times",
+        "Manage Recurring Meetings Further",
+        "Next Steps After Integration",
+        "Escalate to Human Support",
+        "Wish User A Great Day"
+      ]
+    }
+  }
+  
