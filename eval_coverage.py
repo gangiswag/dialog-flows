@@ -9,19 +9,19 @@ import torch
 import time
 from tqdm import tqdm
 import os
-# os.environ["CUDA_VISIBLE_DEVICES"]="1"
+# os.environ["CUDA_VISIBLE_DEVICES"]="1,2"
 import re
 import numpy as np
 import json
+import traceback
 
 tokenizer = None
 llm_pipeline = None
 
 def run_model(model):
+    global tokenizer, llm_pipeline
     tokenizer = AutoTokenizer.from_pretrained(model)
     llm_pipeline = pipeline("text-generation", model=model, torch_dtype=torch.float16, device_map="auto")
-    tokenizer = tokenizer
-    llm_pipeline = llm_pipeline
 
 
 def get_label_name(line):  
@@ -278,9 +278,9 @@ def main(dataset, model, conversations, schemas, results):
     }
     
 
-    # Check if the provided paths exist
-    if not all(map(os.path.exists, [conversations, schemas, results])):
-        raise ValueError("One or more paths do not exist.")
+    # # Check if the provided paths exist
+    # if not all(map(os.path.exists, [conversations, schemas, results])):
+    #     raise ValueError("One or more paths do not exist.")
 
     # run the model
     run_model(model)
@@ -289,14 +289,15 @@ def main(dataset, model, conversations, schemas, results):
 
     methods = ["llm", "data", "merged"]
     for domain in domains[domains_to_use]:
+        print("running for", domain)
         domain_results = {}
         try:
             for method in methods:
                 schema_file = os.path.join(schemas, method, f"{domain}_code.txt")
                 conversation_file = os.path.join(conversations, f"{dataset}_test_{domain}.txt")
                 nodes_g, node_name_to_no, user_node_names, bot_node_names, schema_g = create_graph_from_edges(schema_file)
-                conversations = load_conversations(conversation_file)
-                convos_nodes = match_utterances_to_labels(dataset, conversations, user_node_names, bot_node_names, node_name_to_no)
+                convos = load_conversations(conversation_file)
+                convos_nodes = match_utterances_to_labels(dataset, convos, user_node_names, bot_node_names, node_name_to_no)
 
                 scores = [calculate_evaluation_score(convo_nodes, schema_g) for convo_nodes in convos_nodes]
                 domain_results[method] = {
@@ -309,6 +310,7 @@ def main(dataset, model, conversations, schemas, results):
                     json.dump(domain_results, results_file, indent=4)
         except Exception as e:
             print(f"An error occurred during setup: {e}")
+            traceback.print_exc()
 
 
 if __name__ == "__main__":
@@ -321,6 +323,7 @@ if __name__ == "__main__":
     parser.add_argument('results', type=str, help='Path to the folder where results will be saved')
 
     args = parser.parse_args()
+    print("args parsed")
     
     main(args.dataset, args.model, args.conversations, args.schemas, args.results)
 
