@@ -1,0 +1,44 @@
+    b0[Bot: Greet & Ask for Service Preferences] --> u1[User: Provide Destination]
+    b0 --> u2[User: Ask for Price Estimate]
+    b0 --> u3[User: Inquire about Car Types]
+    b0 --> u10[User: Request Departure Location]
+    b0 --> u11[User: Specify Departure Time]
+    b0 --> u12[User: Ask for driver's experience]
+
+    u1 --> b1[Bot: Confirm Destination & Request Pickup Location]
+    u2 --> b2[Bot: Provide Price Estimate & Ask for Booking]
+    u3 --> b3[Bot: List Car Types & Ask for Choice]
+    u10 --> b8[Bot: Provide Price Estimate]
+    u11 --> b9[Bot: Share Driver's Experience]
+    u12 --> b10[Bot: Confirm Cancellation]
+
+    b1 --> u4[User: Confirm Pickup Location]
+    b1 --> u5[User: Change Destination]
+    b2 --> u6[User: Proceed with Booking]
+    b2 --> u7[User: Decline & Exit]
+    b3 --> u8[User: Select Car Type]
+    b3 --> u9[User: Ask for Special Accommodations]
+    u10 --> b4[Bot: Confirm Booking]
+    u11 --> b4
+    u12 --> b4
+
+    u4 --> b4[Bot: Book Taxi & Provide Arrival Time]
+    u5 --> b17[Bot: Farewell & Assistance]
+    u6 --> b17
+    u7 --> b17
+    u8 --> b1
+    u9 --> b11[Bot: Address Accommodations & Proceed to Booking]
+
+    b4 --> u13[User: Confirm Booking & Thank]
+    b4 --> u14[User: Cancel Booking]
+    b4 --> u15[User: Change Car Type]
+    b4 --> u16[User: Provide Feedback]
+    b11 --> u19[User: Confirm Booking with Accommodations]
+    b11 --> u20[User: No Longer Interested]
+
+    u13 --> b17
+    u14 --> b17
+    u15 --> b17
+    u16 --> b17
+    u19 --> b17
+    u20 --> b17

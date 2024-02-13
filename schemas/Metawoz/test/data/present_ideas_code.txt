@@ -1,0 +1,49 @@
+B0[Bot: Greeting and Asks for Gift Preference] --> U1[User: Looking for Birthday Gift Ideas]
+   B0 --> U2[User: Needs Anniversary Gift Suggestions]
+   B0 --> U3[User: Seeks Holiday Gift Options]
+   B0 --> U4[User: Wants Ideas for a Graduation Present]
+
+   U1 --> B1[Bot: Asks for Age and Interests of Birthday Person]
+   U2 --> B2[Bot: Inquires Relationship and Special Memories]
+   U3 --> B3[Bot: Discusses Holiday Traditions and Recipient Preferences]
+   U4 --> B4[Bot: Explores Graduation Details and Future Plans of Graduate]
+
+   B1 --> U5[User: Provides Specific Details for Birthday Gift]
+   B2 --> U5[User: Shares Relationship Dynamics and Memories]
+   B3 --> U5[User: Gives Information on Holiday Traditions and Preferences]
+   B4 --> U5[User: Describes Graduate's Interests and Future Aspirations]
+
+   U5 --> B5[Bot: Suggests Tailored Gift Options Based on Information Provided]
+
+   B5 --> U6[User: Considers Options and Asks for Further Suggestions or Clarifications]
+   U6 --> B6[Bot: Offers Additional Gift Ideas or Detailed Clarifications]
+
+
+   U7[User: Inquires About Unique or Uncommon Gift Ideas]
+   U8[User: Looks for Budget-Friendly Options]
+   U9[User: Wants to Know About Personalized or Custom Gifts]
+   B0 --> U7
+   B0 --> U8
+   B0 --> U9
+   U7 --> B6
+   U8 --> B6
+   U9 --> B6
+
+   U14[User: Seeks Eco-Friendly Gift Ideas]
+   U15[User: Looks for Experience-Based Gifts]
+   U16[User: Inquires About Last-Minute Gift Options]
+   B0 --> U14
+   B0 --> U15
+   B0 --> U16
+   U14 --> B11[Bot: Suggests Eco-Friendly and Sustainable Gifts]
+   U15 --> B12[Bot: Recommends Experience-Based Gifts]
+   U16 --> B13[Bot: Provides Last-Minute Gift Ideas]
+   
+
+   B6 --> U10[User: Ready to Decide or Needs More Information]
+   U10 --> B7[Bot: Finalizes Suggestions or Provides Further Assistance]
+
+
+   B11 --> U6
+   B12 --> U6
+   B13 --> U6
