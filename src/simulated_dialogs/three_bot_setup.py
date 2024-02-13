@@ -7,16 +7,25 @@ from tqdm import tqdm
 import openai  # openai==0.28
 from pathlib import Path
 import re
+import argparse
+import glob
 
 openai.api_key = os.environ["OPENAI_API_KEY"]
-USE_CHATGPT = False
-os.environ["CUDA_VISIBLE_DEVICES"] = "3,1"
 
-model_name = "mistralai/Mistral-7B-Instruct-v0.2"
-tokenizer = AutoTokenizer.from_pretrained(model_name, use_auth_token=True)
-llm_pipeline = pipeline(
-    "text-generation", model=model_name, torch_dtype=torch.float16, device_map="auto"
-)
+# model_name = ""
+tokenizer = None
+llm_pipeline = None
+
+
+def load_llm_model(model_name):
+    global tokenizer, llm_pipeline
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
+    llm_pipeline = pipeline(
+        "text-generation",
+        model=model_name,
+        torch_dtype=torch.float16,
+        device_map="auto",
+    )
 
 
 def pick_closest_match_llm(query, candidates, attempts=10):
@@ -44,6 +53,7 @@ def pick_closest_match_llm(query, candidates, attempts=10):
 
 
 def get_formatted_chat(system, user_assistant):
+    # put system prompt into the last user turn
     if user_assistant and user_assistant[-1]["role"] == "user":
         last_user_turn = user_assistant[-1]["content"]
         chat = user_assistant[:-1] + [
@@ -59,6 +69,24 @@ def get_formatted_chat(system, user_assistant):
                 "content": f"{system}",
             },
         ]
+
+    # try to just stuff system into the last turn
+    # if user_assistant:
+    #     next_role = "user" if user_assistant[-1]["role"] == "assistant" else "assistant"
+    #     last_user_turn = user_assistant[-1]["content"]
+    #     chat = user_assistant[:-1] + [
+    #         {
+    #             "role": next_role,
+    #             "content": f"{system} {last_user_turn}",
+    #         },
+    #     ]
+    # else:
+    #     chat = [
+    #         {
+    #             "role": "user",
+    #             "content": f"{system}",
+    #         },
+    #     ]
     return chat
 
 
@@ -79,7 +107,7 @@ def chat_model(system, user_assistant, temperature=1.0):
             num_return_sequences=1,
             eos_token_id=tokenizer.eos_token_id,
             pad_token_id=tokenizer.eos_token_id,
-            max_length=2048,
+            max_length=len(query) + 2048,
         )
     else:
         sequences = llm_pipeline(
@@ -89,7 +117,7 @@ def chat_model(system, user_assistant, temperature=1.0):
             num_return_sequences=1,
             eos_token_id=tokenizer.eos_token_id,
             pad_token_id=tokenizer.eos_token_id,
-            max_length=2048,
+            max_length=len(query) + 2048,
         )
 
     generated_text = sequences[0]["generated_text"]
@@ -102,16 +130,18 @@ def chat_model(system, user_assistant, temperature=1.0):
     if "bot" in first_word or "user" in first_word:
         response = response.replace(first_word, "", 1).strip()
 
-    # get part of response before any occurence of user or bot regardless of case
-    response = re.split("user", response, flags=re.IGNORECASE)[0]
-    response = re.split("bot", response, flags=re.IGNORECASE)[0]
+    # get part of response before any occurence of user or bot regardless of case. Prevents bot from speaking out of turn
+    response = re.split("user:", response, flags=re.IGNORECASE)[0]
+    response = re.split("user]:", response, flags=re.IGNORECASE)[0]
+    response = re.split("bot:", response, flags=re.IGNORECASE)[0]
+    response = re.split("bot]:", response, flags=re.IGNORECASE)[0]
 
     return response.strip()
 
 
 # Helper - Generalized Chat Function for ChatGPT
 # Ref: https://www.datacamp.com/tutorial/using-gpt-models-via-the-openai-api-in-python
-def chat_chatgpt(system, user_assistant, model="gpt-3.5-turbo", temperature=1.0):
+def chat_chatgpt(system, user_assistant, model, temperature=1.0):
     chat = get_formatted_chat(system, user_assistant)
     response = openai.ChatCompletion.create(
         model=model, messages=chat, temperature=temperature
@@ -122,8 +152,8 @@ def chat_chatgpt(system, user_assistant, model="gpt-3.5-turbo", temperature=1.0)
 
 
 # User Bot
-def user_bot(domain, user_setting, conversation):
-    system_prompt = f"Here is your setting: {user_setting}. You are a user of a different chatbot that performs {domain}, and you must use this setting to continue the conversation with the bot. Give an example of a user response by continuing this conversation as a user. You should produce exactly one user response and no bot responses. Do not include the words 'user' or 'bot' in your response"
+def user_bot(domain, user_setting, num_turns, conversation):
+    system_prompt = f"Here is your setting: {user_setting}. You are a user of a chatbot that performs {domain}, and you must use this setting to continue the conversation with the bot. You should respond as a user by CONTINUING this conversation and responding to the chatbot appropriately. If the conversation should end, include [END] in your response. You should produce exactly one user response and no bot responses. YOU CANNOT INCLUDE THE WORDS 'user' or 'bot' IN YOUR RESPONSE. "
     is_adversarial = False
     # Use a random variable with a 0.3 probability of being true to determine whether to produce a relevant or irrelevant response.
     # if random.random() < 0.3:
@@ -143,7 +173,7 @@ def get_chatgpt_float(system_prompt, conversation, model, attempts=10):
             result = chat_chatgpt(
                 system_prompt,
                 conversation,
-                model=model,
+                model,
                 temperature=(i * 0.05),
             )
             result = float(result)
@@ -154,20 +184,23 @@ def get_chatgpt_float(system_prompt, conversation, model, attempts=10):
 
 
 # Evaluator Bot
-def evaluator_bot(domain, conversation, attempts=10):
-    model = "gpt-3.5-turbo"
+def evaluator_bot(domain, conversation, chatgpt_model, attempts=10):
 
     task_completion_prompt = f"You must evaluate how effective at task completion an assistant chatbot strictly meant for {domain} is. Punish the bot strongly if it is not completing the task. You should only be evaluating the 'assistant' turns.. Rate how on-topic the assistant is on a scale of 0.0 to 10.0, with 0.0 indicating completely uncompleted tasks and 10.0 denoting perfectly completed tasks. Use the full scoring range. Assign a score based solely on how good at task completion the bot is. Do not be verbose and give ONLY the score. Score the above assistant."
     task_completion_score = get_chatgpt_float(
-        task_completion_prompt, conversation, model, attempts=10
+        task_completion_prompt, conversation, chatgpt_model, attempts=10
     )
 
     ontopic_prompt = f"You must evaluate how on-topic an assistant chatbot strictly meant for {domain} is. Punish the bot strongly if it goes off-topic. You should only be evaluating the 'assistant' turns. Rate how on-topic the assistant is on a scale of 0.0 to 10.0, with 0.0 indicating completely off-topic bot responses and 10.0 denoting perfectly on-topic bot responses. Use the full scoring range. Assign a score based solely on how on-topic the assistant is. Do not be verbose and give ONLY the score. Score the above assistant."
-    ontopic_score = get_chatgpt_float(ontopic_prompt, conversation, model, attempts=10)
+    ontopic_score = get_chatgpt_float(
+        ontopic_prompt, conversation, chatgpt_model, attempts=10
+    )
 
     fluency_prompt = f"You must evaluate how fluent an assistant chatbot strictly meant for {domain} is. Punish the bot strongly if it is not fluently communicating. You should only be evaluating the 'assistant' turns. Rate how on-topic the assistant is on a scale of 0.0 to 10.0, with 0.0 indicating completely incomprehensible bot responses and 10.0 denoting perfectly fluent bot responses. Use the full scoring range. Assign a score based solely on how fluent the assistant is. Do not be verbose and give ONLY the score. Score the above assistant."
 
-    fluency_score = get_chatgpt_float(fluency_prompt, conversation, model, attempts=10)
+    fluency_score = get_chatgpt_float(
+        fluency_prompt, conversation, chatgpt_model, attempts=10
+    )
 
     return {
         "task_completion_score": task_completion_score,
@@ -184,6 +217,7 @@ def should_stay_on_prev_lla(utterance, lla, hla):
 def assistant_bot(
     domain,
     conversation,
+    num_turns,
     schema=None,
     level_driven=False,
     domain_level_actions=None,
@@ -192,7 +226,7 @@ def assistant_bot(
     prev_lo_action_ind=None,
 ):
     system_prompt = f"""
-    You are a task-oriented dialog system designed to assist in {domain}. Do not entertain any user requests or messages that go off-topic. If the user tries to distract you, be polite and bring the conversation back to the task of {domain}. You are not plugged into a database so you can make up names, addresses, etc. when providing information to the user. Do not use USER or BOT in your response.
+    You are a task-oriented dialog system designed to assist in {domain}. Do not entertain any user requests or messages that go off-topic. If the user tries to distract you, be polite and bring the conversation back to the task of {domain}. There will only be a total of {num_turns} turns each in this conversation, so try to finish the conversation before then. You are not plugged into a database so you can make up names, addresses, etc. when providing information to the user. Do not use USER or BOT in your response.
     """
 
     best_hl_match = None
@@ -258,10 +292,10 @@ def assistant_bot(
 
 
 # Seed each conversation with a different user setting
-def generate_user_setting(domain):
-    sys_prompt = f"Create a single realistic user setting for an interaction with an assistant bot specifically for {domain}. The user setting should reflect a unique persona, such as a student seeking academic assistance, a traveler planning a vacation, or a homeowner looking for home improvement tips. Ensure that the user's preferences, goals, and communication style are realistic to facilitate engaging simulated dialogs. Be very concise, do not generate any actual dialogue."
+def generate_user_setting(domain, high_level_actions, chatgpt_model):
+    sys_prompt = f"Create a single realistic user setting for an interaction with an assistant bot specifically for {domain}. This bot is capable of tasks like the following: {high_level_actions}. The user setting should reflect a unique persona, such as a student seeking academic assistance, a traveler planning a vacation, or a homeowner looking for home improvement tips. Do not specify a specific task to complete in the setting. Ensure that the user's preferences, goals, and communication style are realistic to facilitate engaging simulated dialogs. Be very concise, do not generate any actual dialogue."
 
-    user_setting = chat_chatgpt(sys_prompt, [], model="gpt-3.5-turbo", temperature=1.0)
+    user_setting = chat_chatgpt(sys_prompt, [], chatgpt_model, temperature=1.0)
     return user_setting
 
 
@@ -274,24 +308,30 @@ def evaluate_conversation(
     level_driven=False,
     domain_level_actions=None,
     verbose=True,
+    chatgpt_model=None,
 ):
     prev_hi_action = None
     prev_lo_action_ind = None
 
-    user_setting = generate_user_setting(domain)
+    user_setting = generate_user_setting(
+        domain, domain_level_actions.keys(), chatgpt_model
+    )
     print(f"User Setting: {user_setting}\n\n")
 
     user_assistant = []
     for i in range(num_turns):
-        user_turn, is_adversarial = user_bot(domain, user_setting, user_assistant)
+        user_turn, is_adversarial = user_bot(
+            domain, user_setting, num_turns, user_assistant
+        )
         # user_turn = input("\nUser: ")
-        if user_turn == "QUIT":
-            break
         user_assistant += [{"role": "user", "content": user_turn}]
         print(f"User: {user_turn}\n\n")
+        if user_turn == "QUIT" or "END" in user_turn:
+            break
         assistant_turn, prev_hi_action, prev_lo_action_ind = assistant_bot(
             domain,
             user_assistant,
+            num_turns,
             schema=schema,
             level_driven=level_driven,
             domain_level_actions=domain_level_actions,
@@ -302,7 +342,7 @@ def evaluate_conversation(
         user_assistant += [{"role": "assistant", "content": assistant_turn}]
         print(f"Assistant: {assistant_turn}\n\n")
 
-    scores = evaluator_bot(domain, user_assistant)
+    scores = evaluator_bot(domain, user_assistant, chatgpt_model)
     print(f"Evaluator: {scores}\n\n")
 
     json_log = {
@@ -327,6 +367,7 @@ def evaluate(
     domain_level_actions=None,
     verbose=True,
     dir_log=None,
+    chatgpt_model=None,
 ):
     print(f"Domain: {domain}\n")
     overall_log = []
@@ -342,48 +383,62 @@ def evaluate(
 
     modified_domain_name = domain.replace(" ", "_")
     filename = f"{save_dir}/simulated_{modified_domain_name}.txt"
-    with open(filename, "w") as f:
-        for i in tqdm(range(num_conversations)):
-            print(f"Conversation {i}")
-            try:
-                conversation_log = evaluate_conversation(
-                    i,
-                    domain,
-                    num_turns,
-                    schema=schema,
-                    level_driven=level_driven,
-                    domain_level_actions=domain_level_actions,
-                    verbose=verbose,
-                )
+    open(filename, "w")  # clear file
+    for i in tqdm(range(num_conversations)):
+        print(f"Conversation {i}")
+        try:
+            conversation_log = evaluate_conversation(
+                i,
+                domain,
+                num_turns,
+                schema=schema,
+                level_driven=level_driven,
+                domain_level_actions=domain_level_actions,
+                verbose=verbose,
+                chatgpt_model=chatgpt_model,
+            )
 
+            with open(filename, "a") as f:
                 json.dump(conversation_log, f)
                 f.write("\n")
-                overall_log.append(conversation_log)
-            except:
-                print(f"Conversation {i} failed.")
-                continue
+            overall_log.append(conversation_log)
+        except:
+            print(f"Conversation {i} failed.")
+            continue
 
     return overall_log
 
 
-def main(domain):
+def main(
+    domain,
+    num_conversations,
+    num_turns,
+    schema_dir,
+    level_dir,
+    saving_dir,
+    model_name,
+    chatgpt_model,
+):
+    # Load model
+    load_llm_model(model_name)
     # e.g. Load in schema from schemas/restaurant_booking.txt
     modified_domain_name = domain.replace(" ", "_")
     with open(
-        f"../../schemas/MetaWoz/merged/{modified_domain_name}_code.txt", "r"
+        # f"../../schemas/MetaWoz/merged/{modified_domain_name}_code.txt", "r"
+        f"{schema_dir}/merged/{modified_domain_name}_code.txt",
+        "r",
     ) as f:
         schema = f.read()
     domain_level_actions = json.load(
         open(
-            f"../../high_low_level_actions/MetaWoz/merged/{modified_domain_name}_code.json"
+            # f"../../high_low_level_actions/MetaWoz/merged/{modified_domain_name}_code.json"
+            f"{level_dir}/{modified_domain_name}_code.json"
         )
     )
 
     # Get saving directory
-    dir_log = f"../../conversations/simulated_dialogs"
-
-    num_conversations = 3
-    num_turns = 1
+    # dir_log = f"../../conversations/simulated_dialogs"
+    dir_log = f"{saving_dir}/merged"
 
     # Evaluate level driven
     log_with_schema = evaluate(
@@ -395,6 +450,7 @@ def main(domain):
         domain_level_actions=domain_level_actions,
         verbose=True,
         dir_log=dir_log,
+        chatgpt_model=chatgpt_model,
     )
 
     # Evaluate schema only
@@ -407,6 +463,7 @@ def main(domain):
         domain_level_actions=domain_level_actions,
         verbose=True,
         dir_log=dir_log,
+        chatgpt_model=chatgpt_model,
     )
 
     # Evaluate no schema
@@ -419,22 +476,88 @@ def main(domain):
         domain_level_actions=domain_level_actions,
         verbose=True,
         dir_log=dir_log,
+        chatgpt_model=chatgpt_model,
     )
 
 
 if __name__ == "__main__":
-    main("movie listing")
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--num_conversations",
+        type=int,
+        default=5,
+        help="The number of conversations to generate",
+    )
+    parser.add_argument(
+        "--num_turns",
+        type=int,
+        default=7,
+        help="The maximum number of turns per conversation",
+    )
+    parser.add_argument(
+        "--schema_dir",
+        type=str,
+        default="../../schemas/MetaWoz/dev",
+        help="The directory containing the schema files",
+    )
+    parser.add_argument(
+        "--level_dir",
+        type=str,
+        default="../../high_low_level_actions/MetaWoz/dev",
+        help="The directory containing the high and low level action files",
+    )
+    parser.add_argument(
+        "--saving_dir",
+        type=str,
+        default="../../conversations/simulated_dialogs/dev",
+        help="The directory to save the generated conversations",
+    )
+    parser.add_argument(
+        "--model_name",
+        type=str,
+        default="mistralai/Mistral-7B-Instruct-v0.2",
+        help="The name of the model to use for the evaluator bot",
+    )
+    parser.add_argument(
+        "--chatgpt_model",
+        type=str,
+        default="gpt-3.5-turbo",
+        help="The name of the model to use for the user setting generation and evaluator bot",
+    )
+    args = parser.parse_args()
+    domains = []
+    files = glob.glob(f"{args.schema_dir}/merged/*.txt")
+    for file in files:
+        filename = file.split("/")[-1]
+        domain = " ".join(filename.split("_")[:-1])
+        domains.append(domain)
+    for domain in domains:
+        main(
+            domain,
+            args.num_conversations,
+            args.num_turns,
+            args.schema_dir,
+            args.level_dir,
+            args.saving_dir,
+            args.model_name,
+            args.chatgpt_model,
+        )
 
 # Progress
-# Put high temp for GPT 4 and tell it to generate a new user setting each time before conversation
+# Put high temp for GPT and tell it to generate a new user setting each time before conversation
 # change this prompt for each domain
 
 # 1. do it for domain only, schema only, and HL driven
 # 2. fix evaluator bot, use gpt-4, evaluate once per conversation.
 # 3. save logs to file
+# Split folders into dev/test splits (Nishi and Stuti should know which ones)
+# Give the user bot the domain name along with domain knowledge (can't be expected to know everything based on movie listings), different for each domain (do this for dev set)
+# Tell the user and the bot that it should finish up in 7 turns (instead of just truncating)
+# fix args to run from cmdline
+# Fix splitting at user or bot
+# Manually go through conversations to see if they are good or not
+# Dev for 5 convs
+# Improve GPT evaluator.
 
 # TODO
-# Improve GPT evaluator. Switch to GPT 4 and find a good prompt.
-# Better way to generate max length. Think that might be why "Hey there movie" keeps happening, prompt is very long
-# Find a better way to handle the best match in response than substring matching
-# Add in information into the overleaf
+# Once confident, swich to GPT 4 and generate for 100 conversations
