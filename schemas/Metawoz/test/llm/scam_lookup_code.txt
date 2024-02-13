@@ -1,0 +1,30 @@
+   B0[Bot: Greeting and Asks About Suspected Scam] --> U1[User: Received a Suspicious Email]
+   B0 --> U2[User: Encountered a Suspicious Call]
+   B0 --> U3[User: Faced a Suspicious Text Message]
+   B0 --> U4[User: Dealing with a Potential Online Scam]
+  
+   U1 --> B1[Bot: Offers to Analyze Email Content]
+   U2 --> B2[Bot: Suggests Reporting the Call and Checking Known Scam Numbers]
+   U3 --> B3[Bot: Advises on SMS Scam Indicators]
+   U4 --> B4[Bot: Proposes Steps to Verify Website Authenticity]
+ 
+   B1 --> U5[User: Provides Details from the Email]
+   B2 --> U5[User: Describes the Call and Any Information Given]
+   B3 --> U5[User: Shares Text Message Content]
+   B4 --> U5[User: Questions About Secure Online Practices]
+
+   U5 --> B5[Bot: Gives Detailed Analysis and Safety Tips]
+   B5 --> U6[User: Asks How to Prevent Future Scams]
+   U6 --> B6[Bot: Educates on Scam Prevention and Security Measures]
+   U6 --> B7[Bot: Provides Additional Resources for Scam Reporting and Education]
+   U7[User: Wants to Learn About Common Scam Tactics]
+   U8[User: Inquires About Scam Victim Support]
+   B0 --> U7
+   B0 --> U8
+   U7 --> B5
+   U8 --> B6
+   U10[User: Concerned About Identity Theft Resulting from Scam]
+   U11[User: Considering Legal Recourse Against Scam]
+   U10 --> B5
+   U11 --> B5
+   B1 --> U11

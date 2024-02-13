@@ -1,0 +1,36 @@
+   B0[Bot: Greeting and Asks for Reservation Needs] --> U1[User: Wants to Make a Reservation]
+   B0 --> U2[User: Inquires About Restaurant Options]
+   B0 --> U3[User: Asks About Special Accommodations]
+   B0 --> U4[User: Needs to Modify an Existing Reservation]
+
+   U1 --> B1a[Bot: Assists with Standard Reservation]
+   U1 --> B1b[Bot: Provides Info on Special Event Reservations]
+   U2 --> B2a[Bot: Offers Recommendations Based on User Preferences]
+   U2 --> B2b[Bot: Informs About Cancellation Policy]
+   U3 --> B3[Bot: Discusses Special Accommodations]
+   U4 --> B4[Bot: Helps Modify Existing Reservation]
+
+
+   B1a --> U5[User: Specifies Date, Time, and Party Size for Standard Reservation]
+   B1b --> U6[User: Discusses Special Event Reservation Details]
+   B2a --> U7[User: Chooses a Restaurant from Recommendations]
+   B2b --> U8[User: Inquires Further About Cancellation Policies]
+   B3 --> U9[User: Confirms Accommodation Details]
+   B4 --> U10[User: Provides New Reservation Details]
+
+   U5 --> B5[Bot: Confirms Standard Reservation Details]
+   U6 --> B6[Bot: Finalizes Special Event Reservation]
+   U7 --> B7[Bot: Confirms Restaurant Selection and Reservation]
+   U8 --> B8[Bot: Provides Cancellation Policy Information]
+   U9 --> B9[Bot: Confirms Special Accommodations]
+   U10 --> B10[Bot: Updates Reservation as Requested]
+   
+   B5 --> U11[User: Satisfied with Standard Reservation or Has Further Requests]
+   B6 --> U11
+   B7 --> U11
+   B8 --> U11
+   B9 --> U11
+   B10 --> U11
+
+   U11 --> B11[Bot: Concludes Assistance or Offers Additional Help]
+

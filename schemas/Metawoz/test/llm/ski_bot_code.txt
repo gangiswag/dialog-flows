@@ -1,0 +1,44 @@
+
+   B0[Bot: Greeting and Asks What the User Needs] --> U1[User: Interested in Ski Equipment]
+   B0 --> U2[User: Looking for Ski Resorts]
+   B0 --> U3[User: Seeking Skiing Tips]
+ 
+   U1 --> B1[Bot: Recommends Ski Equipment Categories]
+   U2 --> B2[Bot: Provides Information on Ski Resorts]
+   U3 --> B3[Bot: Offers Skiing Tips and Advice]
+
+   B1 --> U4[User: Interested in Skis]
+   B1 --> U5[User: Wants Ski Clothing]
+   B2 --> U6[User: Asks About Ski Resort Locations]
+   B2 --> U7[User: Inquires About Ski Resort Prices]
+   B3 --> U8[User: Seeks Snow Conditions Tips]
+   U4 --> B4[Bot: Displays Ski Options]
+   U5 --> B4
+   U6 --> B5[Bot: Provides Ski Resort Locations]
+   U7 --> B5
+   U8 --> B6[Bot: Gives Snow Condition Tips]
+   B4 --> U9[User: Selects Skis]
+   B5 --> U10[User: Chooses Ski Resort]
+   B6 --> U11[User: Thanks and Asks for Skiing Techniques]
+   U9 --> B7[Bot: Provides Ski Details]
+   U10 --> B7
+   U11 --> B7
+   B7 --> U12[User: Proceeds to Checkout for Skis]
+   U12 --> B8[Bot: Asks for Payment Method]
+  
+   B8 --> U13[User: Enters Payment Details for Skis]
+   U13 --> B10[Bot: Confirms Ski Purchase]
+
+   U13 --> B11[Bot: Cancels Ski Purchase]
+
+   B10 --> U14[User: Thanks and Completes Ski Purchase]
+   B11 --> U15[User: Decides Not to Buy Skis]
+   U14 --> B12[Bot: Sends Ski Order Confirmation]
+
+   B12 --> U16[User: Asks About Ski Delivery Time]
+   U16 --> B13[Bot: Provides Ski Delivery Details]
+   
+   U16 --> B14[Bot: Ends Conversation]
+   U15 --> B14
+   B10[Bot: Suggests Ski Lessons]
+   B11[Bot: Offers Special Events at Resorts]

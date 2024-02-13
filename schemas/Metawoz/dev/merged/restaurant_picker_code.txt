@@ -1,0 +1,73 @@
+B0[Bot: Greet & Ask for User Need] --> U1[User: Asks for Restaurant Suggestions]
+B0 --> U2[User: Specific Cuisine Request]
+B0 --> U3[User: Location-Based Request]
+B0 --> U4[User: Dietary Restrictions]
+B0 --> U5[User: Price Range Request]
+B0 --> U20[User: Inquires About Budget Options]
+
+
+U1 --> B1[Bot: Ask for Specific Cuisine Preference]
+U2 --> B2[Bot: Suggest Restaurants Based on Cuisine]
+U3 --> B3[Bot: Suggest Restaurants in Specified Location]
+U4 --> B4[Bot: Suggest Restaurants Meeting Dietary Needs]
+U5 --> B5[Bot: Suggest Restaurants Within Price Range]
+U20 --> B3[Bot: Offers Options Based on Budget]
+
+
+B1 --> U6[User: States Cuisine Preference]
+B2 --> U7[User: Accepts or Rejects Suggestion]
+B3 --> U8[User: Accepts or Asks for Alternatives]
+B4 --> U9[User: Chooses or Requests Different Options]
+B5 --> U10[User: Happy with Option or Asks for More]
+
+
+
+
+U6 --> B6[Bot: Suggest Restaurants Matching Specific Cuisine Preference]
+U7 --> B7[Bot: Provide Alternative Restaurant Options]
+U8 --> B8[Bot: Offer More Options or Details]
+U9 --> B9[Bot: Refine Options Based on Detailed User Feedback]
+U10 --> B10[Bot: Conclude Interaction with Confirmation or Further Assistance]
+
+
+
+
+B6 --> U11[User: Accepts or Asks for More]
+B7 --> U12[User: Makes a Selection or Declines]
+B8 --> U13[User: Decides or Requests Further Assistance]
+B9 --> U14[User: Satisfied or Continues to Explore]
+B10 --> U15[User: Finalizes Choice or Exits Conversation]
+
+
+U1 --> B16[Bot: Handle User Dissatisfaction & Provide Options]
+U2 --> B16
+U3 --> B16
+U4 --> B16
+U5 --> B16
+
+
+U7 --> B17[Bot: Provide Restaurant Features & Reviews]
+U8 --> B17
+U9 --> B17
+U10 --> B17
+
+
+B6 --> U16[User: Asks for Recommendations Based on an Event]
+B7 --> U17[User: Seeks Last-Minute Suggestions]
+B10 --> U18[User: Feedback After Restaurant Visit]
+B10 --> U19[User: Requests Best Restaurant in a Category]
+B10 --> U20[User: Special Requests or Queries]
+
+
+U16 --> B18[Bot: Handle Special Requests & Booking Assistance]
+U17 --> B18
+U18 --> B18
+U19 --> B18
+U20 --> B18
+U11 --> B18
+U12 --> B18
+U13 --> B18
+U14 --> B18
+U15 --> B18
+
+

@@ -1,0 +1,51 @@
+B0[Bot: Greeting and Assistance Offer]
+    B0 --> U1[User: Interested in Ski Equipment]
+    B0 --> U2[User: Looking for Ski Resorts]
+    B0 --> U3[User: Seeking Skiing Tips]
+    B0 --> U4[User: Inquire about Skiing Weather]
+    B0 --> U5[User: Book a Ski Trip]
+    B0 --> U6[User: General Help or Other Inquiries]
+
+U1 --> B1[Bot: Recommend Ski Equipment and Provide Purchase Options]
+U2 --> B2[Bot: Provide Information on Ski Resorts Including Locations and Prices]
+U3 --> B3[Bot: Offers Skiing Tips, Techniques, and Snow Condition Advice]
+U4 --> B4[Bot: Share Weather Conditions and Best Ski Times]
+U5 --> B5[Bot: Assist with Ski Trip Booking and Details]
+U6 --> B6[Bot: Provide General Assistance or Specific Inquiry Help]
+
+B1 --> U7[User: Makes a Selection or Asks for More Information]
+B2 --> U8[User: Chooses a Resort or Needs Further Details]
+B3 --> U9[User: Requests More Advanced Tips or Specific Technique Advice]
+B4 --> U10[User: Seeks Additional Weather Details]
+B5 --> U11[User: Confirms Trip Details or Modifies Booking]
+B6 --> U12[User: Needs Further Clarification or Additional Services]
+
+U7 --> B7[Bot: Finalize Equipment Purchase or Provide More Details]
+U8 --> B8[Bot: Book Resort Stay or Offer More Resort Options]
+U9 --> B9[Bot: Provide Advanced Skiing Techniques or Safety Tips]
+U10 --> B10[Bot: Update on Latest Weather Forecast or Best Ski Times]
+U11 --> B11[Bot: Confirm Booking and Provide Confirmation Details]
+U12 --> B12[Bot: Address Specific Inquiry or Direct to Appropriate Resources]
+
+B7 --> U13[User: Thanks or Asks About Additional Products]
+B8 --> U14[User: Inquires About Additional Activities at Resort]
+B9 --> U15[User: Seeks More Personalized Training Information]
+B10 --> U16[User: Wants to Know About Best Ski Periods]
+B11 --> U17[User: Asks About Payment Methods or Cancellation Policy]
+B12 --> U18[User: Requests More Help or Concludes Inquiry]
+
+U13 --> B13[Bot: Provide Product Information or Conclude Sale]
+U14 --> B14[Bot: Detail Resort Activities or Booking Add-ons]
+U15 --> B15[Bot: Offer Personalized Training Recommendations or Resources]
+U16 --> B16[Bot: Suggest Optimal Ski Periods Based on Weather]
+U17 --> B17[Bot: Discuss Payment Options and Cancellation Policies]
+U18 --> B18[Bot: Conclude Assistance or Offer Further Help]
+
+B13 --> U19
+B14 --> U19
+B15 --> U19
+B16 --> U19
+B17 --> U19
+B18 --> U19[User: Further Assistance Needed?]
+
+U19 --> B19[Bot: Thank User and Close Conversation]

@@ -1,0 +1,53 @@
+B0[Bot: Greeting and Initial Request]
+    B0 --> U1[User: Inquires about store location]
+    B0 --> U2[User: Asks for store hours]
+    B0 --> U3[User: Wants to know about products available]
+    B0 --> U4[User: Requests information on special services]
+    B0 --> U9[User: Inquires about return policies]
+    B0 --> U10[User: Asks about loyalty programs]
+    B0 --> U11[User: Wants to manage online orders]
+    B0 --> U12[User: Wishes to give feedback or read reviews]
+    B0 --> U7[User: Ask About Services]
+    B0 --> U13[User: Request to Purchase a Product]
+    B0 --> U14[User: Find Closest Bank Branch]
+
+U1 --> B1[Bot: Provides store location]
+U2 --> B2[Bot: Shares store hours]
+U3 --> B3[Bot: Lists available products]
+U4 --> B4[Bot: Describes special services]
+U9 --> B7[Bot: Provides info on return policies]
+U10 --> B8[Bot: Details about loyalty programs]
+U11 --> B9[Bot: Assists with online order inquiries]
+U12 --> B10[Bot: Offers feedback options or shows reviews]
+U7 --> B11[Bot: Describe Services Offered]
+U13 --> B12[Bot: Request Product Details]
+U14 --> B13[Bot: Provide Nearby Bank Information]
+
+B1 --> U5[User: Asks for directions to store]
+B1 --> U6[User: Expresses satisfaction or has further queries]
+B2 --> U6
+B3 --> U15[User: Inquires about a specific product]
+B3 --> U6
+B4 --> U16[User: Asks about service booking]
+B4 --> U6
+B7 --> U6
+B8 --> U6
+B9 --> U6
+B10 --> U6
+B11 --> U6
+B12 --> U17[User: Confirm Purchase Details]
+B13 --> U6
+
+U5 --> B5[Bot: Gives directions to store]
+U15 --> B6[Bot: Provides details on specific product]
+U16 --> B14[Bot: Explains how to book services]
+U17 --> B15[Bot: Process Purchase]
+U17 --> B16[Bot: Modify Purchase Request]
+B5 --> U18[User: Requests more info or ends conversation]
+B6 --> U18
+B14 --> U18
+B15 --> U18
+B16 --> B12
+
+U6 --> B17[Bot: Provides further assistance or concludes the conversation]
+U18 --> B17

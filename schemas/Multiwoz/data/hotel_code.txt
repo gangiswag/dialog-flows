@@ -1,0 +1,60 @@
+
+B1[Bot: Greeting and ask for preferences] --> U1[User: Requests specific accommodation type]
+B1 --> U2[User: Requests accommodation with specific amenities]
+B1 --> U3[User: Asks for recommendations without specifics]
+
+
+
+U1 --> B2[Bot: Ask for user's preferred location and price range]
+U2 --> B3[Bot: Provide hotel options with free wifi and parking]
+U3 --> B4[Bot: Suggest accommodation based on user preferences and past dataBot: Suggest Accommodation based on available data]
+
+
+B2 --> U4[User: Specifies location and price]
+B3 --> U5[User: Selects hotel and requests booking]
+B3 --> U6[User: Requests more information]
+B4 --> U7[User: Requests booking based on suggestion]
+U4 --> B5[Bot: Offer alternative hotel options]
+U5 --> B6[Bot: Confirm booking success and offer further assistanceBot: Confirm Booking Success]
+U6 --> B7[Bot: Provide additional hotel details]
+U7 --> B6
+B5 --> U9[User: Book reservation]
+B5 --> U10[User: End Conversation]
+B6 --> U11[User: Request further assistance]
+B6 --> U10
+B7 --> U12[User: Decide to book or ask further]
+B8 --> U13[User: Specify further preferences or end conversation]
+
+U9 --> B6
+U11 --> B9[Bot: Farewell with assistance offer]
+U12 --> B10[Bot: Confirm booking or provide more details]
+U13 --> B11[Bot: Narrow down options based on new preferences]
+
+
+
+
+B7[Bot: Address dissatisfaction or changes requested]
+U15[User: Requests change to booking]
+U16[User: Requests cancellation]
+B8[Bot: Offer to modify booking]
+B9[Bot: Offer to cancel booking]
+B10[Bot: Confirm cancellation]
+B11[Bot: Ask for revised preferences]
+U17[User: Provides revised preferences]
+B12[Bot: Process booking modification]
+B13[Bot: Process booking cancellation]
+B14[Bot: Provide revised options]
+U15 --> B8
+U16 --> B9
+B7 --> U15
+B7 --> U16
+B8 --> B12
+B9 --> B13
+B10 --> U10
+U6 --> B11
+U13 --> B11
+U17 --> B14
+B11 --> U17
+B12 --> U11
+B13 --> U10
+B14 --> U5

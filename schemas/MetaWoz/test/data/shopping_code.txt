@@ -1,0 +1,56 @@
+  B0[Bot: Greeting and Asks for Shopping Preferences] --> U1[User: Looking for Electronics]
+   B0 --> U2[User: Interested in Clothing]
+   B0 --> U3[User: Wants to Buy Groceries]
+  
+   U1 --> B1[Bot: Suggests Electronics Categories]
+   U2 --> B2[Bot: Recommends Clothing Styles]
+   U3 --> B3[Bot: Asks for Grocery List]
+   B1 --> U4[User: Interested in Laptops]
+   B1 --> U5[User: Looking for Mobile Phones]
+   B2 --> U6[User: Prefers Casual Clothing]
+   B2 --> U7[User: Wants Formal Wear]
+   B3 --> U8[User: Lists Grocery Items]
+   U4 --> B4[Bot: Displays Laptop Options]
+   U5 --> B4
+   U6 --> B5[Bot: Shows Casual Clothing Collection]
+   U7 --> B5
+   U8 --> B6[Bot: Adds Grocery Items to Cart]
+   B4 --> U9[User: Selects a Laptop]
+   B5 --> U10[User: Chooses Casual Outfit]
+   B6 --> U11[User: Asks About Total Bill]
+   U9 --> B7[Bot: Provides Laptop Details]
+   U10 --> B7
+   U11 --> B7
+   B7 --> U12[User: Proceeds to Checkout]
+   U12 --> B8[Bot: Asks for Payment Method]
+   
+   U12 --> B9[Bot: Abandons Cart]
+
+   B8 --> U13[User: Enters Credit Card Details]
+   U13 --> B10[Bot: Confirms Payment]
+ 
+   U13 --> B11[Bot: Cancels Payment]
+
+   B10 --> U14[User: Thanks and Completes Purchase]
+   B11 --> U15[User: Decides Not to Buy]
+   U14 --> B12[Bot: Sends Order Confirmation]
+  
+   B12 --> U16[User: Asks for Delivery Time]
+   U16 --> B13[Bot: Provides Delivery Details]
+=
+   U16 --> B14[Bot: Ends Conversation]
+   U15 --> B14
+   U17[User: Wants to Leave Feedback]
+   U18[User: Inquires About Product Returns/Exchanges]
+   U19[User: Seeks Customer Support]
+   U20[User: Interested in Loyalty Programs]
+   B12 --> U17
+   B12 --> U18
+   B12 --> U19
+   B12 --> U20
+   U17 --> B13[Bot: Manages Feedback and Inquiries]
+   U18 --> B13
+   U19 --> B13
+   U20 --> B13
+   B13 --> U21[User: Leaves Feedback or Inquires]
+   U21 --> B14[Bot: Ends Conversation]

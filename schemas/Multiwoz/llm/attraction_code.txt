@@ -1,0 +1,50 @@
+   b0[Bot: Greet & Ask for Attraction Preferences] --> u1[User: Looking for Adventure Attractions]
+   b0 --> u2[User: Interested in Cultural Attractions]
+   b0 --> u3[User: Wants Family-Friendly Options]
+   b0 --> u4[User: Inquires About Discounts]
+  
+
+
+
+
+   u1 --> b1[Bot: Suggest Adventure Attractions]
+   u2 --> b2[Bot: Suggest Cultural Attractions]
+   u3 --> b3[Bot: Suggest Family-Friendly Attractions]
+   u4 --> b4[Bot: Inform About Discounts & Offers]
+
+
+
+
+
+
+   b1 --> u5[User: Chooses an Attraction]
+   b1 --> u6[User: Asks for More Options]
+   b2 --> u7[User: Chooses an Attraction]
+   b2 --> u8[User: Asks for Location Details]
+   b3 --> u9[User: Chooses an Attraction]
+   b3 --> u10[User: Needs Assistance with Accessibility]
+   b4 --> u11[User: Wants to Book with Discount]
+   b4 --> u12[User: Asks About Discount Eligibility]
+
+
+   u5 --> b5[Bot: Continue to Booking Options]
+   u6 --> b5
+   u7 --> b5
+   u8 --> b5
+   u9 --> b5
+   u10 --> b5
+   u11 --> b5
+   u12 --> b5
+
+   b5 --> u13[User: Confirm Booking]
+   b5 --> u14[User: Ask About Cancellation Policy]
+   b5 --> u15[User: Wants Directions]
+   b5 --> u16[User: Book with Accessibility Needs]
+   b5 --> u17[User: Inquire About Other Offers]
+
+
+   u13 --> b6[Bot: Finalize Booking & Offer Further Assistance]
+   u14 --> b6
+   u15 --> b6
+   u16 --> b6
+   u17 --> b6

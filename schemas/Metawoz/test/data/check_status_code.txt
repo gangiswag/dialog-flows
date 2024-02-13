@@ -1,0 +1,30 @@
+   B0[Bot: Greeting and Asks for Status Inquiry] --> U1[User: Wants to Check Order Status]
+   B0 --> U2[User: Inquires About Service Availability]
+   B0 --> U3[User: Asks About Delivery Time]
+   B0 --> U4[User: Needs Update on Support Ticket]
+   B0 --> U40[User: Expresses Dissatisfaction]
+   B0 --> U41[User: Reports Issues with Order]
+   B0 --> U42[User: Inquires About Refunds/Cancellations]
+   B0 --> U43[User: Faces Complex Service Issues]
+
+   U1 --> B1[Bot: Provides Order Status Information]
+   U2 --> B2[Bot: Informs About Service Availability]
+   U3 --> B3[Bot: Gives Delivery Time Estimate]
+   U4 --> B4[Bot: Updates on Support Ticket Status]
+   U40 --> B10[Bot: Addresses User Dissatisfaction]
+   U41 --> B11[Bot: Handles Order Issues]
+   U42 --> B12[Bot: Discusses Refunds and Cancellations]
+   U43 --> B6[Bot: Manages Complex Service Issues]
+
+
+   B1 --> U5[User: Asks for More Order Details or Further Support]
+   B2 --> U5
+   B3 --> U5
+   B4 --> U5
+   B10 --> U5
+   B11 --> U5
+   B12 --> U5
+   B6 --> U5
+
+   U5 --> B13[Bot: Provides Additional Support and Information]
+

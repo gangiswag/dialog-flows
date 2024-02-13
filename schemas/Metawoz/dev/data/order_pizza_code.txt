@@ -1,0 +1,36 @@
+B0["Bot: Greet and ask for assistance"] --> U1["User: Request to order pizza"]
+U1 --> B1["Bot: Ask about pizza details size, toppings"]
+
+B1 --> U2["User: Asks for recommendations"]
+U2 --> B2["Bot: Suggests pizza options"]
+B2 --> U4["User: Selects a suggested pizza"]
+U4 --> B4["Bot: Finalize order with suggested pizza"]
+
+B1 --> U3["User: Specifies pizza size and toppings"]
+U3 --> B3["Bot: Confirm order with available toppings"]
+B3 --> U5["User: Confirms order as is"]
+U5 --> B6["Bot: Finalize order as initially requested"]
+
+B3 --> U6["User: Accepts suggestion or provides alternative topping"]
+U6 --> B5["Bot: Finalize order with alternative topping"]
+
+B1 --> U7["User: Inquires about non-pizza items"]
+U7 --> B7["Bot: Ask about deals or promotions"]
+B7 --> U8["User: Inquires about non-pizza items"]
+U8 --> B8["Bot: Provide information on non-pizza items"]
+B8 --> U9["User: Confirms non-pizza item inquiry"]
+
+U9 --> B10["Bot: Provides order summary and payment details"]
+B4 --> U13["User: Confirms and completes order"]
+U13 --> B10
+B5 --> U13
+U13 --> B10
+B6 --> U13
+U13 --> B10
+
+B6 --> U10["User: Requests modification or cancellation"]
+U10 --> B11["Bot: Handle modification or cancellation"]
+B10 --> U11["User: Provides feedback or rating"]
+U11 --> B12["Bot: Acknowledges feedback and concludes conversation"]
+
+

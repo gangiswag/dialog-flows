@@ -1,0 +1,75 @@
+B0[Greeting] --> U0[Request for help with phone contacts update]
+B0 --> U1[Inquire about the maximum number of phone numbers allowed per contact.]
+B0 --> U2[End Conversation]
+
+U0 --> B1[Requesting contact name for update]
+U1 --> B2[Specify the maximum number of phone numbers allowed per contact.]
+U2 --> B13[Farewell]
+
+
+B1 --> U3[Update contact name]
+B1 --> U4[Add name to contact]
+
+U3 --> B20[Update contact name and Confirming completion]
+U4 --> B20
+
+B2 --> U5[Express dissatisfaction]
+B2 --> U6[Request for additional assistance]
+
+U5 --> B5[Offer linking contacts and creating groups as a solution]
+U6 --> B6[Offer to create a copy of a contact]
+
+
+B20 --> U7[Request for additional updates]
+
+
+U7 --> B7[Request for additional assistance]
+
+
+
+B20 --> U9[Request to add more information]
+
+
+U9 --> B9[Request additional information details]
+
+
+
+
+B5 --> U11[Accept solution]
+B5 --> U12[Reject solution]
+
+U11 --> B11[Confirming completion]
+U12 --> B12[Express further dissatisfaction]
+
+
+B6 --> U13[Provide details for the new contact]
+U13 --> B11
+
+
+B7 --> U14[Specify additional update]
+U14 --> B11
+
+
+B9 --> U15[Provide additional information]
+U15 --> B11
+
+
+B11 --> U16[End Conversation]
+U16 --> B12
+
+
+B2 --> U17[Inquire about merging contacts]
+B2 --> U18[Inquire about syncing contacts]
+B20 --> U19[Report an error during update]
+B11 --> U20[Provide feedback]
+B2 --> U21[Ask about importing/exporting contacts]
+
+U17 --> B14[Explain linking contacts and creating groups]
+U18 --> B17[Syncing contacts across devices]
+U20 --> B19[Asking for user feedback]
+U21 --> B16[Importing/exporting contacts]
+
+B14 --> U16
+B16 --> U16
+B17 --> U16
+B19 --> U2
