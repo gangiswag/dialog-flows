@@ -274,13 +274,17 @@ def main(dataset, model, conversations, schemas, results):
     domains = {
         "metawoz_test_domains" : ["alarm_set", "apartment_finder", "appointment_reminder","bank_bot", "bus_schedule_bot","catalogue_bot", "city_info", "edit_playlist", "event_reserve","guiness_check", "insurance", "library_request", "look_up_info", "music_suggester", "name_suggester", "pet_advice", "scam_lookup", "shopping", "ski_bot", "sports_info", "store_details", "update_calendar", "update_contact", "wedding_planner"],
         "metawoz_dev_domains" : ["phone_plan", "order_pizza", "movie_listings", "restaurant_picker", "weather_check"],
-        "multiwoz_domains" : ["attraction", "hotel", "restaurant", "taxi", "train"]
+        "multiwoz_domains" : ["attraction", "hotel", "restaurant", "taxi", "train"],
+        "simulated_dialogs" : ["alarm_set", "apartment_finder", "appointment_reminder","bank_bot", "bus_schedule_bot","catalogue_bot", "city_info", "edit_playlist", "event_reserve","guiness_check", "insurance", "library_request", "look_up_info", "music_suggester", "name_suggester", "pet_advice", "scam_lookup", "shopping", "ski_bot", "sports_info", "store_details", "update_calendar", "update_contact", "wedding_planner"]
+        
     }
     
 
     # # Check if the provided paths exist
     # if not all(map(os.path.exists, [conversations, schemas, results])):
     #     raise ValueError("One or more paths do not exist.")
+    if not os.path.exists(results):
+        os.makedirs(results)
 
     # run the model
     run_model(model)
