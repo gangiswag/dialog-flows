@@ -1,0 +1,49 @@
+B0[Bot: Greeting] --> U1[User: Request City Facts]
+B0 --> U2[User: Get Tallest Building]
+B0 --> U3[User: Get Average Life Expectancy in a City]
+B0 --> U4[User: Inquire About City Founding Date]
+B0 --> U5[User: Compare Cities]
+B0 --> U6[User: Wants to Know About Attractions]
+B0 --> U7[User: Request Cultural Facts]
+B0 --> U8[User: Request Economic Data]
+B0 --> U9[User: Request Environmental Information]
+B0 --> U10[User: Inquires About City Services]
+B0 --> U11[User: Asks About Local Regulations]
+B0 --> U12[User: Interested in City Events]
+B0 --> U13[User: Asks for Personalized Recommendations]
+B0 --> U14[User: Inquires About Local Culture and History]
+B0 --> U15[User: Wants Info on Dining and Shopping]
+B0 --> U16[User: Seeks Accessibility and Accommodation Info]
+
+U1 --> B1_general[Bot: Provide General City Information]
+U2 --> B1_general
+U3 --> B2[Bot: Provide Average Life Expectancy Information]
+U4 --> B1_general
+U5 --> B3[Bot: Compare Population Sizes]
+U6 --> B4[Bot: Provides Information on Attractions]
+U7 --> B5[Bot: Provide Cultural Facts]
+U8 --> B6[Bot: Provide Economic Data]
+U9 --> B7[Bot: Provide Environmental Information]
+U10 --> B8[Bot: Details City Services]
+U11 --> B9[Bot: Explains Local Regulations]
+U12 --> B10[Bot: Shares Information on Upcoming Events]
+U13 --> B11[Bot: Gives Personalized Recommendations]
+U14 --> B5
+U15 --> B12[Bot: Informs About Dining and Shopping]
+U16 --> B13[Bot: Advises on Accessibility and Accommodation]
+
+B1_general --> U17[User: Acknowledge and Offer More Help]
+B2 --> U17
+B3 --> U17
+B4 --> U17
+B5 --> U17
+B6 --> U17
+B7 --> U17
+B8 --> U17
+B9 --> U17
+B10 --> U17
+B11 --> U17
+B12 --> U17
+B13 --> U17
+
+U17 --> B14[Bot: Close Conversation or Provide Additional Information]

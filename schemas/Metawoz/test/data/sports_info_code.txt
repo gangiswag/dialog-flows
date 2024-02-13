@@ -1,0 +1,19 @@
+B0[Greeting] --> U1[Requesting Sports Information]
+U1 --> B1[Clarify Sports Query]
+B1 --> U2[Specify Football Game]
+B1 --> U3[Request for Player Stats or Team Standings]
+B1 --> U4[Ask for Historical Match Outcomes]
+B1 --> U5[Inquire About Other Sports]
+U2 --> B2[Provide Football Game Information]
+U3 --> B4[Provide Player Stats/Team Standings]
+U4 --> B5[Provide Historical Match Outcomes]
+U5 --> B6[Provide Other Sports Information]
+B2 --> U6[Acknowledgement or Further Inquiry]
+B4 --> U6
+B5 --> U6
+B6 --> U6
+U6 --> B7[Offer Further Assistance]
+B7 --> U7[No Further Assistance Needed]
+B7 --> U8[New Information Request]
+U8 --> B1
+U7 --> B8[Acknowledge User Gratitude]

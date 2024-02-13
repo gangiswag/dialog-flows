@@ -1,0 +1,41 @@
+B0["Bot: Greeting and Inquiry"] --> U0["User: General Inquiry"]
+U0 --> B1["Bot: Asks for Clarification"]
+B0 --> U1["User: Requests Specific Movie"]
+B1 --> U1
+U1 --> B2["Bot: Provides Specific Movie Info"]
+B2 --> U2["User: Requests Additional Info"]
+U2 --> B3["Bot: Provides Additional Info"]
+B0 --> U3["User: Requests Movie Showing Time"]
+U3 --> B4["Bot: Provides Showtimes for Specific Movie"]
+B4 --> U4["User: Asks for Reservation"]
+U4 --> B14["Bot: Explains reservation limits"]
+B0 --> U5["User: Requests Ticket Information"]
+U0 --> B5["Bot: Handles Errors and Misunderstandings"]
+U5 --> B6["Bot: Informs About Ticket Prices"]
+B6 --> U6["User: Asks About Different Ticket Types"]
+U6 --> B7["Bot: Informs About Other Ticket Prices"]
+B1 --> U7["User: Requests Listings"]
+U7 --> U5
+U3 --> B5
+U7 --> B8["Bot: Lists Movies at Local Theater"]
+B8 --> U8["User: Asks About a Specific Movie from List"]
+U8 --> B9["Bot: Provides Specific Movie Info from List"]
+B8 --> U9["User: Asks for Contact Info"]
+B14 --> U9
+U9 --> B10["Bot: Provides Contact Info"]
+B10 --> U11["User: Thanks and Ends Conversation"]
+U11 --> B12["Bot: Asks for Feedback/Satisfaction"]
+U4 --> B13["Bot: Offers Escalation to Human Operator"]
+U9 --> B13
+B2 --> U11
+B3 --> U11
+B4 --> U11
+B6 --> U11
+B7 --> U11
+B8 --> U11
+B9 --> U11
+B10 --> U11
+U2 --> B12
+U6 --> B12
+U8 --> B12
+U9 --> B12

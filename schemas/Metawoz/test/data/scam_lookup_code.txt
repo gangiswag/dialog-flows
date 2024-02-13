@@ -1,0 +1,32 @@
+
+B0[Bot: Greeting and Request for User's Query] --> U1[User: Requesting scam information and assistance]
+B0 --> U2[User: Asking for advice on suspicious messages/emails with links]
+B0 --> U3[User: Request for number lookup]
+B0 --> U4[User: Inquire about legitimacy of free iPod pop-up]
+
+style B0 fill:#f9d5e5
+
+U1 --> B1[User: Request for more information]
+U2 --> B1
+U3 --> B2[User: Confirming or Denying Scam Status]
+U4 --> B3[User: Advising against clicking links from unknown numbers]
+
+U5[User: Providing details of suspicious activity] --> B4[User: Block, Report, and Give General Safety Advice]
+U6[User: Acknowledgement of gratitude] --> B9[User: Closing and offer of further help]
+U7[User: Request for guidance on next steps] --> B12
+U8[User: Seeking proactive scam identification tips] --> B10[User: Providing proactive scam identification tips]
+U11[User: Inquiring actions after personal information disclosure] --> B11[User: Advising on steps after personal information disclosure]
+
+B1 --> U5
+B2 --> U6
+B3 --> U7
+B10 --> U9[User: Seeking Advice/Information]
+B11 --> U10[User: Confirmation and Thanks]
+
+B4 --> U8
+B4 --> U11
+
+U9 --> B5[User: Provide Detailed Scam Prevention Strategies]
+B5 --> U10
+
+B12[User: Guiding on reporting scams to external entities] --> U10

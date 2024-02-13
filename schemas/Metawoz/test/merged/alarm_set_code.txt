@@ -1,0 +1,41 @@
+B0[Bot: Greeting] --> U1[User: Express need for alarm assistance]
+
+U1 --> B1[Bot: Prompt for alarm action]
+
+B1 --> U2[User: Set alarm]
+B1 --> U3[User: Edit alarm]
+B1 --> U4[User: Delete alarm]
+B1 --> U5[User: Copy alarm]
+
+U2 --> B2[Bot: Set Alarm]
+U3 --> B3[Bot: Ask for alarm details]
+U4 --> B4[Bot: Ask which alarm to delete]
+U5 --> B9[Bot: Ask details for copying alarm]
+
+B2 --> U6[User: Confirm alarm set]
+B2 --> U7[User: Request to set repeat]
+U6 --> B7[Bot: Confirm Completion]
+U7 --> B8[Bot: Set repeat and confirm]
+
+B3 --> U8[User: Specify alarm edit details]
+B4 --> U9[User: Specify alarm to delete]
+B9 --> U14[User: Confirm copy details]
+
+U8 --> B5[Bot: Perform edit and confirm]
+U9 --> B6[Bot: Delete alarm and confirm]
+U14 --> B10[Bot: Copy alarm and confirm]
+
+B5 --> U10[User: Confirm edit]
+B6 --> U11[User: Request additional deletion]
+B6 --> U12[User: End conversation]
+B10 --> U15[User: Request further changes]
+B10 --> U16[User: End conversation]
+
+U10 --> B7
+U11 --> B6
+U12 --> B11[Bot: Expressing gratitude and farewell]
+U15 --> B3
+U16 --> B11
+
+B8 --> U13[User: End Conversation]
+U13 --> B11

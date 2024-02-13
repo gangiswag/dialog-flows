@@ -1,0 +1,46 @@
+B0[Bot: Greeting and Assistance Offer] --> U1[User: Wants to Know About Specific Record]
+B0 --> U2[User: Inquires How to Apply for a Record]
+B0 --> U3[User: Asks About Record Verification Process]
+B0 --> U4[User: Interested in Record Categories]
+B0 --> U5[User: Queries About Previous Record Holders]
+B0 --> U6[User: Wants to Know How to Break a Record]
+B0 --> U7[User: Inquires About Record History]
+B0 --> U8[User: Interested in Record Publicity and Celebration]
+B0 --> U9[User: Seeks Trivia and Lesser-Known Record Facts]
+B0 --> U10[User: General Interest in World Records]
+B0 --> U11[User: Requests Assistance]
+
+U1 --> B1[Bot: Provide Specific Record Information]
+U2 --> B2[Bot: Explain Record Application Process]
+U3 --> B3[Bot: Describe Record Verification Steps]
+U4 --> B4[Bot: List Different Record Categories]
+U5 --> B5[Bot: Share Info on Previous Record Holders]
+U6 --> B6[Bot: Discuss How to Break a Record]
+U7 --> B7[Bot: Talk About Record History]
+U8 --> B6
+U9 --> B7
+U10 --> B8[Bot: Guide on World Record Categories]
+U11 --> B9[Bot: Offer General Assistance]
+
+B1 --> U12[User: Asks for More Details or Similar Records]
+B2 --> U13[User: Needs Guidance on Application Requirements]
+B3 --> U14[User: Wants to Know Verification Timeframes]
+B4 --> U15[User: Seeks Information on a Specific Category]
+B5 --> U16[User: Inquires About Record Challenges]
+B6 --> U17[User: Further Inquiry on Breaking a Record]
+B7 --> U18[User: More Questions on Record History]
+B8 --> U19[User: Selects a Category for More Info]
+B9 --> U20[User: Clarifies Request]
+
+U12 --> B10[Bot: Provides Additional Details and Clarifications]
+U13 --> B10
+U14 --> B10
+U15 --> B10
+U16 --> B10
+U17 --> B10
+U18 --> B10
+U19 --> B10
+U20 --> B10
+
+B10 --> U21[User: Satisfied with Information or Has More Questions]
+U21 --> B11[Bot: Concludes or Offers Further Assistance]

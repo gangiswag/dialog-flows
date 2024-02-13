@@ -1,0 +1,42 @@
+ B0[Bot: Greeting and Asks for Home Assistance Needs] --> U1[User: Wants to Control Home Appliances]
+   B0 --> U2[User: Needs Help with Home Maintenance Schedule]
+   B0 --> U3[User: Inquires About Home Security Systems]
+   B0 --> U4[User: Seeks Entertainment Options]
+
+
+   U1 --> B1[Bot: Assists with Appliance Control Settings]
+   U2 --> B2[Bot: Helps Plan Home Maintenance Schedule]
+   U3 --> B3[Bot: Provides Information on Security Systems]
+   U4 --> B4[Bot: Suggests Entertainment Options]
+
+
+   B1 --> U5[User: Adjusts Specific Appliance Settings]
+   B2 --> U6[User: Asks About Specific Maintenance Tasks]
+   B3 --> U7[User: Has Queries on Security Features]
+   B4 --> U8[User: Wants Recommendations for Shows or Music]
+
+   U5 --> B5[Bot: Confirms Appliance Adjustments]
+   U6 --> B6[Bot: Advises on Maintenance Details]
+   U7 --> B7[Bot: Clarifies Security System Features]
+   U8 --> B8[Bot: Recommends Shows or Music Based on Preferences]
+
+   B5 --> U9[User: Confirms Changes or Needs Further Assistance]
+   B6 --> U9
+   B7 --> U9
+   B8 --> U9
+
+   U9 --> B9[Bot: Finalizes Tasks or Provides More Help]
+
+
+   U13[User: Troubleshoots Appliance Issues]
+   U14[User: Seeks Energy-Saving Tips]
+   U15[User: Inquires About Smart Home Integrations]
+   U16[User: Needs Help with Emergency Protocols]
+   B0 --> U13
+   B0 --> U14
+   B0 --> U15
+   B0 --> U16
+   U13 --> B9
+   U14 --> B9
+   U15 --> B9
+   U16 --> B9

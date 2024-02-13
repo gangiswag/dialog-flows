@@ -1,0 +1,49 @@
+B0[Bot: Greeting and Initial Help Request] --> U1[User: Requesting help with playlists]
+B0 --> U2[User: Create/Edit Playlist]
+B0 --> U3[User: End Conversation]
+B0 --> U4[User: Wants to Add Songs to Playlist]
+B0 --> U5[User: Needs to Remove Songs from Playlist]
+B0 --> U6[User: Inquires About Rearranging Tracks]
+B0 --> U7[User: Seeks Song Recommendations for Playlist]
+B0 --> U8[User: Wants to Create New Playlist]
+B0 --> U9[User: Seeks Music Based on Mood or Genre]
+B0 --> U10[User: Inquires About Integrating with Other Platforms]
+B0 --> U11[User: Experiences Syncing Issues]
+
+U1 --> B1[Bot: Confirm Ability to Assist and Request Details]
+U2 --> B2[Bot: Request Playlist Action]
+U3 --> B3[Bot: Greeting and Farewell]
+U4 --> B4[Bot: Assists with Adding Songs to Playlist]
+U5 --> B5[Bot: Helps Remove Songs from Playlist]
+U6 --> B6[Bot: Guides on Rearranging Playlist Tracks]
+U7 --> B7[Bot: Provides Song Recommendations]
+U8 --> B8[Bot: Assists with Creating New Playlist]
+U9 --> B9[Bot: Suggests Music Based on Mood or Genre]
+U10 --> B10[Bot: Discusses Integration with Other Platforms]
+U11 --> B11[Bot: Addresses Syncing Issues]
+
+B1 --> U12[User: Specify Editing Needs]
+B2 --> U13[User: Specify Modification Details]
+B4 --> U14[User: Specifies Songs to Add]
+B5 --> U15[User: Identifies Songs to Remove]
+B6 --> U16[User: Decides on New Track Order]
+B7 --> U17[User: Selects Songs from Recommendations]
+B8 --> U18[User: Provides Details for New Playlist]
+B9 --> U19[User: Chooses Preferred Mood or Genre]
+B10 --> U20[User: Agrees on Integration Approach]
+B11 --> U21[User: Reports Sync Details]
+
+U12 --> B12[Bot: Execute Requested Edits and Confirm]
+U13 --> B12
+U14 --> B12
+U15 --> B12
+U16 --> B12
+U17 --> B12
+U18 --> B12
+U19 --> B12
+U20 --> B12
+U21 --> B12
+
+B12 --> U22[User: End Conversation or Request Further Help]
+
+U22 --> B13[Bot: Provide Further Assistance or End Conversation]
