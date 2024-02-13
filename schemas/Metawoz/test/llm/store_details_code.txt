@@ -1,0 +1,37 @@
+
+   B0[Bot: Greet and ask what info the user wants] --> U1[User: Inquires about store location]
+   B0 --> U2[User: Asks for store hours]
+   B0 --> U3[User: Wants to know about products available]
+   B0 --> U4[User: Requests information on special services]
+   B0 --> U9[User: Inquires about return policies]
+   B0 --> U10[User: Asks about loyalty programs]
+   B0 --> U11[User: Wants to manage online orders]
+   B0 --> U12[User: Wishes to give feedback or read reviews]
+   U1 --> B1[Bot: Provides store location]
+   U2 --> B2[Bot: Shares store hours]
+   U3 --> B3[Bot: Lists available products]
+   U4 --> B4[Bot: Describes special services]
+   U9 --> B7[Bot: Provides info on return policies]
+   U10 --> B8[Bot: Details about loyalty programs]
+   U11 --> B9[Bot: Assists with online order inquiries]
+   U12 --> B10[Bot: Offers feedback options or shows reviews]
+   B1 --> U5[User: Asks for directions to store]
+   B1 --> U6[User: Expresses satisfaction or has further queries]
+   B2 --> U6
+   B3 --> U7[User: Inquires about a specific product]
+   B3 --> U6
+   B4 --> U8[User: Asks about service booking]
+   B4 --> U6
+   B7 --> U6
+   B8 --> U6
+   B9 --> U6
+   B10 --> U6
+   U5 --> B5[Bot: Gives directions to store]
+   U7 --> B6[Bot: Provides details on specific product]
+   U8 --> B11[Bot: Explains how to book services]
+   B5 --> U13[User: Requests more info or ends conversation]
+   B6 --> U13
+   B11 --> U13
+U6 --> B12
+   U13 --> B12[Bot: Provides further assistance or concludes the conversation]
+

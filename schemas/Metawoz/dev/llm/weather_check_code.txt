@@ -1,0 +1,37 @@
+B0[Bot: Greet and Ask What Weather Information is Needed] --> U1[User: Asks for Current Weather]
+B0 --> U2[User: Wants to Know the Weekly Forecast]
+B0 --> U3[User: Inquires About Weather Warnings]
+B0 --> U8[User: Inquires About Humidity Levels]
+B0 --> U9[User: Asks About Wind Speed]
+
+
+U1 --> B1[Bot: Provides Current Weather Details]
+U2 --> B2[Bot: Shares Weekly Weather Forecast]
+U3 --> B3[Bot: Informs About Any Weather Warnings]
+
+
+B1 --> U4[User: Asks for Temperature Details]
+B1 --> U5[User: Inquires About Precipitation Chances]
+B2 --> U6[User: Wants Specific Day's Forecast]
+B3 --> U7[User: Asks for Safety Tips in Bad Weather]
+
+
+U4 --> B4[Bot: Gives Temperature Details]
+U5 --> B5[Bot: Provides Precipitation Information]
+U6 --> B6[Bot: Gives Forecast for the Chosen Day]
+U7 --> B7[Bot: Offers Safety Tips for Bad Weather]
+U8 --> B8[Bot: Provides Humidity Level Details]
+U9 --> B9[Bot: Shares Wind Speed Information]
+
+
+B4 --> U10[User: Needs More Info/Ends Conversation]
+B5 --> U10
+B6 --> U10
+B7 --> U10
+B8 --> U10
+B9 --> U10
+
+
+U10 --> B10[Bot: Provides More Info or Closes Conversation]
+
+

@@ -1,0 +1,88 @@
+   b0[Bot: Greet & Ask for Preferences] --> u1[User: Wants to Book a Room]
+   b0 --> u2[User: Inquiry About Facilities]
+   b0 --> u3[User: Needs Assistance]
+   b0 --> u2_1[User: Requests accommodation with specific amenities]
+   b0 --> u3_1[User: Asks for recommendations without specifics]
+  
+
+
+
+
+   u1 --> b1[Bot: Ask Booking Details]
+   u2 --> b2[Bot: Provide Facility Info]
+   u3 --> b3[Bot: Offer Assistance Options]
+   u2_1 --> b3_1[Bot: Provide hotel options with free wifi and parking]
+   u3_1 --> b4_1[Bot: Suggest Accommodation based on available data]
+
+
+
+
+   b1 --> u4[User: Provides Details]
+   b1 --> u5[User: Asks for Offers]
+   b2 --> u6[User: More Info on Facilities]
+   b3 --> u8[User: Specific Request]
+   b3_1 --> u5_1[User: Selects hotel and requests booking]
+   b3_1 --> u6_1[User: Requests more information]
+   b4_1 --> u7_1[User: Requests booking based on suggestion]
+
+
+   u4 --> b4[Bot: Confirm Details & Book]
+   u5 --> b5[Bot: Show Offers]
+   u6 --> b6[Bot: Detailed Facility Info]
+   u8 --> b7[Bot: Handle Specific Request]
+   u5_1 --> b6_1[Bot: Confirm Booking Success]
+   u6_1 --> b7_1[Bot: Provide Additional Hotel Details]
+   u7_1 --> b6_1
+
+
+
+
+   b4 --> u10[User: Confirm Booking]
+   b4 --> u11[User: Modify Details]
+   b5 --> u4
+   b7 --> u12[User: Satisfied with Assistance]
+   u10 --> b8[Bot: Booking Confirmed]
+   u11 --> b14[Bot: Offer alternative hotel options]
+   u12 --> b9[Bot: Confirm Assistance Satisfaction]
+  
+   b14 --> u9[User: Book Reservation]
+
+
+   b6_1 --> u11_1[User: Request Further Assistance]
+
+
+   b7_1 --> u12_1[User: Decide to Book or Ask Further]
+
+
+   u9 --> b6_1
+   u11_1 --> b9_1[Bot: Farewell with Assistance Offer]
+   u12_1 --> b10_1[Bot: Confirm Booking or Provide More Details]
+
+
+
+
+   b10[Bot: Compare Room Types] --> u14[User: Requests Comparison]
+   b11[Bot: Handle Complaints] --> u15[User: Provides Feedback]
+   b12[Bot: Arrange External Services] --> u16[User: Requests Service]
+   b13[Bot: Clarify Misunderstandings] --> u17[User: Needs Further Clarification]
+
+
+   u14 --> b6
+   u15 --> b9
+   u16 --> b8
+   u17 --> b3
+
+
+   u2 --> b10
+   u3 --> b11
+   u1 --> b12
+   u6 --> b13
+
+
+
+
+
+
+
+
+   b10_1 --> u9

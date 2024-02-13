@@ -1,0 +1,53 @@
+  B0[Bot: Greeting and Asks for Music Preferences] --> U1[User: Likes a Specific Genre]
+   B0 --> U2[User: Prefers Certain Artists]
+   B0 --> U3[User: Looking for Mood-Based Music]
+   B0 --> U4[User: Wants Music for a Specific Activity]
+
+
+   U1 --> B1[Bot: Suggests Songs from Chosen Genre]
+   U2 --> B2[Bot: Recommends Tracks by Preferred Artists]
+   U3 --> B3[Bot: Proposes Music Based on Mood]
+   U4 --> B4[Bot: Provides Playlist for Activity]
+
+
+
+   B1 --> U5[User: Asks for More Songs in Genre]
+   B2 --> U5[User: Requests Similar Artists]
+   B3 --> U5[User: Seeks Different Mood Music]
+   B4 --> U5[User: Wants Other Activity-Based Playlists]
+
+   U5 --> B5[Bot: Offers Additional Suggestions and Expands Selection]
+
+
+   B5 --> U6[User: Satisfied with Suggestions or Inquires More]
+   U6 --> B6[Bot: Finalizes Suggestions or Continues Assisting]
+
+
+   U7[User: Needs Help Discovering New Music]
+   U8[User: Inquires About Music Events or Concerts]
+   U9[User: Interested in Music Trends and News]
+   B0 --> U7
+   B0 --> U8
+   B0 --> U9
+   U7 --> B5
+   U8 --> B6
+   U9 --> B5
+
+   B9[Bot: Guides on Using Music Platforms]
+   B10[Bot: Provides Music Lessons and Theory Knowledge]
+   B11[Bot: Creates Personalized Playlists]
+ 
+   U7 --> B10
+
+   U8 --> B9
+   U8 --> B10
+   U8 --> B11
+   U9 --> B9
+
+   B9 --> U10[User: Explores Platform Options]
+   B10 --> U11[User: Seeks Specific Lessons]
+   B11 --> U12[User: Requests Custom Playlist Adjustments]
+
+   U10 --> B12[Bot: Assists with Platform Usage]
+   U11 --> B13[Bot: Provides Lesson Details]
+   U12 --> B14[Bot: Customizes Playlists Further]

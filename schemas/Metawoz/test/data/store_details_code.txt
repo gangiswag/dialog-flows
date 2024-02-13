@@ -1,0 +1,27 @@
+B0[Greeting] --> U1[Request Store Information]
+B0 --> U2[Request to Purchase a Product]
+B0 --> U3[Find Closest Bank Branch]
+B0 --> U7[Ask About Services]
+
+U1 --> B1[Provide Store Details]
+U2 --> B2[Request Product Details]
+U3 --> B3[Provide Nearby Bank Information]
+U7 --> B4[Describe Services Offered]
+
+
+B1 --> U5
+B2 --> U4[Confirm Purchase Details]
+B4 --> U5
+
+
+U4 --> B6[Process Purchase]
+U4 --> B7[Modify Purchase Request]
+B6 --> U5
+B7 --> B2
+
+
+U5[Need Further Help?]
+U5 --> B8[Farewell and Offer Further Contact Info]
+B7 --> U5
+B3 --> U8
+U8[Thank and End Conversation]

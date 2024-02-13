@@ -1,0 +1,28 @@
+
+    B0[Bot: Greeting and Ask for User's Need] --> U1[User: States Specific Need]
+    B0 --> U2[User: Asks for Information]
+    B0 --> U3[User: Expresses Confusion]
+    B0 --> U12[User: Expresses Dissatisfaction]
+    B0 --> U13[User: Makes Unrelated Inquiry]
+    B0 --> U14[User: Provides Feedback]
+    B0 --> U15[User: Technical Issue/Request for Human Assistance]
+ 
+    U1 --> B1[Bot: Provide Specific Assistance]
+    U2 --> B1
+    U3 --> B2[Bot: Offer Clarification and Assistance]
+    U12 --> B11[Bot: Address Dissatisfaction and Provide Resolution]
+    U13 --> B12[Bot: Respond to Unrelated Inquiry and Direct Appropriately]
+    U14 --> B13[Bot: Acknowledge Feedback and Offer Assistance]
+    U15 --> B14[Bot: Assist with Technical Issue/Refer to Human]
+ 
+
+    B1 --> U16[User: Response to Assistance]
+    B2 --> U17[User: Response to Clarification]
+    B11 --> U16
+    B12 --> U16
+    B13 --> U16
+    B14 --> U16
+
+    U16 --> B15[Bot: Conclude or Further Action]
+    U17 --> B15
+

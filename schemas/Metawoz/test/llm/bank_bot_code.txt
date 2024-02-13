@@ -1,0 +1,42 @@
+   B0[Bot: Greeting and Asks for Banking Service Inquiry] --> U1[User: Inquires About Account Balance]
+   B0 --> U2[User: Wants to Open a New Account]
+   B0 --> U3[User: Needs Help with Online Banking]
+   B0 --> U4[User: Has a Query About Loan Services]
+   B0 --> U5[User: Asks About Credit Card Options]
+   B0 --> U6[User: Seeks Investment Advice]
+   B0 --> U7[User: Reports a Lost or Stolen Card]
+   B0 --> U8[User: Needs Information on Bank Charges]
+   B0 --> U11[User: Inquires About International Banking Services]
+   B0 --> U12[User: Wants Information on Wire Transfers]
+   B0 --> U13[User: Asks About Digital Wallet Services]
+   B0 --> U14[User: Concerned About Fraud Alerts]
+   B0 --> U15[User: Seeks Regulatory and Compliance Information]
+
+   U1 --> B1[Bot: Provides Account Balance Information]
+   U2 --> B2[Bot: Assists with New Account Opening]
+   U3 --> B3[Bot: Guides Through Online Banking Process]
+   U4 --> B4[Bot: Discusses Loan Options and Procedures]
+   U5 --> B5[Bot: Offers Credit Card Information]
+   U6 --> B6[Bot: Gives Investment Advice and Options]
+   U7 --> B7[Bot: Helps with Lost/Stolen Card Issues]
+   U8 --> B8[Bot: Explains Bank Charges and Fees]
+   U11 --> B9[Bot: Discusses International Banking Services]
+   U12 --> B9
+   U13 --> B9
+   U14 --> B9
+   U15 --> B9
+
+   B1 --> U9[User: Requests Transaction Details]
+   B2 --> U9[User: Asks Additional Account Opening Questions]
+   B3 --> U9[User: Needs More Help with Online Features]
+   B4 --> U9[User: Inquires About Loan Eligibility]
+   B5 --> U9[User: Wants to Know About Rewards and Benefits]
+   B6 --> U9[User: Seeks More Investment Information]
+   B7 --> U9[User: Needs Urgent Assistance]
+   B8 --> U9[User: Has Queries on Specific Charges]
+   B9 --> U9[User: Seeks More Information on International Services, etc.]
+
+   U9 --> B10[Bot: Provides Further Details and Assistance]
+   
+
+   B10 --> U10[User: Satisfied with Information or Requires More Help]
