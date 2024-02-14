@@ -1,0 +1,64 @@
+B0[Bot: Greeting & What can I help you with today?]
+    B0 --> U1[User: I want to plan a trip]
+    B0 --> U2[User: Can you recommend destinations?]
+    B0 --> U3[User: How do I book a trip?]
+
+U1 --> B1[Bot: Where would you like to go?]
+U2 --> B2[Bot: Here are some top destinations. What interests you?]
+U3 --> B3[Bot: Let's get your trip booked. Where to?]
+
+B1 --> U4[User: Chooses a destination]
+B2 --> U4
+B3 --> U4
+
+U4 --> B4[Bot: When are you planning to travel?]
+
+B4 --> U5[User: Selects travel dates]
+
+U5 --> B5[Bot: Would you like to see accommodation options?]
+
+B5 --> U6[User: Yes, show me options]
+B5 --> U7[User: No, just flights]
+
+U6 --> B6[Bot: Here are accommodations based on your preferences]
+U7 --> B7[Bot: All set with flights. Need help with anything else?]
+
+B6 --> U8[User: Chooses accommodation]
+U8 --> B8[Bot: Accommodation booked. Need help with activities or anything else?]
+
+B8 --> U9[User: Yes, activities]
+B8 --> U10[User: No, that's all]
+
+U9 --> B9[Bot: Suggests activities at the destination]
+
+B9 --> U11[User: Books an activity]
+U11 --> B10[Bot: Activity booked. Do you need assistance with anything else?]
+
+B10 --> U10
+B7 --> U10
+
+U10 --> B11[Bot: Your trip is all set. Have a great journey!]
+
+B6 --> U45[User: Interested in transportation options]
+B6 --> U46[User: Inquire about travel insurance]
+B6 --> U47[User: Have special accommodation needs]
+
+B8 --> U48[User: Looking for personalized recommendations]
+B8 --> U49[User: Concerned about travel restrictions]
+B8 --> U50[User: Yes, I have specific interests]
+
+U45 --> B21[Bot: Discuss transportation modes within your destination]
+U46 --> B22[Bot: Provide information on travel insurance options]
+U47 --> B23[Bot: Address special accommodation requests]
+U48 --> B24[Bot: Offer personalized recommendations based on your preferences]
+U49 --> B25[Bot: Provide travel restrictions and safety information]
+U50 --> B26[Bot: Any other specific interests or requests?]
+
+B21 --> B26
+B22 --> B26
+B23 --> B26
+B24 --> B26
+B25 --> B26
+
+B26 --> U51[User: No more questions]
+U51 --> B11
