@@ -1,0 +1,50 @@
+B0[Bot: Greeting & What service do you need?]
+    B0 --> U1[User: I need a ride]
+    B0 --> U2[User: How does this service work?]
+    B0 --> U3[User: What are the rates?]
+    B0 --> U22[User: Yes, special accommodations needed]
+    B0 --> U23[User: Lost something]
+    B0 --> U24[User: Schedule a ride in advance]
+    B0 --> U26[User: Ask about pet policy]
+
+U1 --> B1[Bot: Where to?]
+U2 --> B2[Bot: Explains service process]
+U3 --> B3[Bot: Provides rate information]
+U22 --> B11[Bot: Do you need any special accommodations?]
+U23 --> B12[Bot: Have you lost something in a ride?]
+U24 --> B13[Bot: Interested in scheduling a ride in advance?]
+U26 --> B15[Bot: Would you like to know about our pet policy?]
+
+B1 --> U4[User: Specifies destination]
+B1 --> U25[User: Need a child seat]
+B1 --> U29[User: Apply a promo code]
+B1 --> U30[User: Check fare estimate]
+
+U4 --> B4[Bot: Select ride type]
+U25 --> B14[Bot: Do you require a child seat or have any other specific requests?]
+U29 --> B18[Bot: Apply a promo code or check fare estimate?]
+U30 --> B18
+
+B4 --> U7[User: Economy]
+B4 --> U8[User: Premium]
+B4 --> U9[User: Pool]
+
+U7 --> B5[Bot: Confirm booking details for Economy]
+U8 --> B6[Bot: Confirm booking details for Premium]
+U9 --> B7[Bot: Confirm booking details for Pool]
+
+U10 --> B8[Bot: Booking confirmed]
+U11 --> B9[Bot: Modify booking options]
+
+B8 --> U12[User: Cancel my ride]
+B8 --> U13[User: Modify my booking]
+B8 --> U14[User: That's all, thanks]
+B8 --> U27[User: Track the ride]
+B8 --> U28[User: Leave feedback]
+
+U12 --> B9[Bot: Ride cancelled]
+U13 --> B4
+U13 --> B10
+U14 --> B10[Bot: You're welcome! Have a safe trip.]
+U27 --> B16[Bot: Your ride is on the way. Want to track the ride or share ride details?]
+U28 --> B17[Bot: How was your ride? We appreciate your feedback.]
