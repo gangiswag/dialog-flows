@@ -1,0 +1,52 @@
+B0[Bot: Greeting & What do you want?]
+    B0 --> U1[User: I want to book a table]
+    B0 --> U2[User: Can I see the menu?]
+    B0 --> U3[User: Do you have vegetarian options?]
+    B0 --> U18[User: Interested in special deals]
+    B0 --> U19[User: What’s the parking situation?]
+    B0 --> U20[User: I’d like outdoor seating]
+
+U1 --> B1[Bot: For how many people?]
+U2 --> B10[Bot: Do you have any dietary restrictions or preferences?]
+U3 --> B10
+U18 --> B12[Bot: Here are our special deals. Interested in anything?]
+U19 --> B14[Bot: Here’s parking info and accessibility details.]
+U20 --> B1
+
+B1 --> U4[User: For four people]
+B1 --> U5[User: Just browsing]
+B1 --> U17[User: It’s a special occasion]
+
+U17 --> B11[Bot: Any specific occasion we should know about?]
+
+B10 --> U16[User: I have dietary restrictions]
+U16 --> B2[Bot: Here's our menu. Any preferences?]
+
+B2 --> U6[User: What's the special today?]
+B2 --> U7[User: I want to book a table]
+
+U6 --> B6[Bot: Today's special is...]
+U7 --> B1
+
+U4 --> B4[Bot: What date and time?]
+U5 --> B5[Bot: Let me know if you need help.]
+
+B4 --> U10[User: Tomorrow at 7 PM]
+B4 --> U11[User: Do you have earlier times?]
+U11 --> B13[Bot: Can I get a name for the reservation?]
+
+U10 --> B7[Bot: Table booked. Anything else?]
+U11 --> B8[Bot: Earliest is 6 PM. Book?]
+
+B7 --> U12[User: That's all, thanks]
+B7 --> U13[User: Can I see the menu?]
+B7 --> U21[User: I’d like to leave feedback]
+
+B8 --> U14[User: Yes, book it]
+B8 --> U15[User: I'll think about it]
+
+U12 --> B9[Bot: You're welcome! Enjoy your meal.]
+U13 --> B2
+U14 --> B7
+U15 --> B5
+U21 --> B15[Bot: Would you like to leave feedback or join our loyalty program?]
