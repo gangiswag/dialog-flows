@@ -283,10 +283,10 @@ def find_domains_to_use(dataset, conversations):
     
 def main(dataset, model, conversations, schemas, results):
     domains = {
-        "metawoz_test_domains" : ["alarm_set", "apartment_finder", "appointment_reminder","bank_bot", "bus_schedule_bot","catalogue_bot", "city_info", "edit_playlist", "event_reserve","guiness_check", "insurance", "library_request", "look_up_info", "music_suggester", "name_suggester", "pet_advice", "scam_lookup", "shopping", "ski_bot", "sports_info", "store_details", "update_calendar", "update_contact", "wedding_planner"],
+        "metawoz_test_domains" : ["alarm_set", "apartment_finder", "appointment_reminder","bank_bot", "bus_schedule_bot", "city_info", "edit_playlist", "event_reserve","guinness_check", "library_request", "look_up_info", "music_suggester", "name_suggester", "pet_advice", "scam_lookup", "shopping", "ski_bot", "sports_info", "store_details", "update_calendar", "update_contact", "wedding_planner"],
         "metawoz_dev_domains" : ["phone_plan", "order_pizza", "movie_listings", "restaurant_picker", "weather_check"],
         "multiwoz_domains" : ["attraction", "hotel", "restaurant", "taxi", "train"],
-        "simulated_dialogs_test" : ["alarm_set", "apartment_finder", "appointment_reminder","bank_bot", "bus_schedule_bot","catalogue_bot", "city_info", "edit_playlist", "event_reserve","guiness_check", "insurance", "library_request", "look_up_info", "music_suggester", "name_suggester", "pet_advice", "scam_lookup", "shopping", "ski_bot", "sports_info", "store_details", "update_calendar", "update_contact", "wedding_planner"],
+        "simulated_dialogs_test" : ["alarm_set", "apartment_finder", "appointment_reminder","bank_bot", "bus_schedule_bot", "city_info", "edit_playlist", "event_reserve","guiness_check", "library_request", "look_up_info", "music_suggester", "name_suggester", "pet_advice", "scam_lookup", "shopping", "ski_bot", "sports_info", "store_details", "update_calendar", "update_contact", "wedding_planner"],
         "simulated_dialogs_dev" : ["movie_listings", "order_pizza", "phone_plan", "restaurant_picker", "weather_check"]
     }
     
@@ -307,7 +307,7 @@ def main(dataset, model, conversations, schemas, results):
     else:
         methods = ["llm", "data", "merged"]
     
-    for domain in domains[domains_to_use]:
+    for domain in domains[domains_to_use][6:]:
         print("running for", domain)
         domain_results = {}
         try:
