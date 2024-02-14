@@ -245,9 +245,9 @@ def match_utterances_to_labels(dataset, conversations, user_node_names, bot_node
         for i, utterance in enumerate(conversation):
             if len(context) == 3:
                 context.pop(0)
-            if (i % 2 == 0 and dataset == "metawoz") or (i % 2 != 0 and dataset == "multiwoz"):
+            if (i % 2 == 0 and dataset == "metawoz") or (i % 2 != 0 and (dataset == "multiwoz" or dataset == "simulated_dialogs")):
                 context.append("Bot: "+ utterance)
-            elif (i % 2 != 0 and dataset == "metawoz") or (i % 2 == 0 and dataset == "multiwoz"):
+            elif (i % 2 != 0 and dataset == "metawoz") or (i % 2 == 0 and (dataset == "multiwoz" or dataset == "simulated_dialogs")):
                 context.append("User: " + utterance)
 
             if i % 2 == 0:
@@ -269,6 +269,8 @@ def find_domains_to_use(dataset, conversations):
             return "metawoz_test_domains" 
     elif dataset == "multiwoz":
         return "multiwoz_domains"
+    elif dataset == "simulated_dialogs":
+        return "simulated_dialogs"
 
 def main(dataset, model, conversations, schemas, results):
     domains = {
