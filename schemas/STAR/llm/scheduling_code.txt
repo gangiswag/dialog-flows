@@ -1,0 +1,44 @@
+B0[Bot: Greeting & What can I help you with?]
+    B0 --> U1[User: I want to schedule an appointment]
+    B0 --> U2[User: Can I change my appointment?]
+    B0 --> U3[User: What appointments do I have?]
+    B0 --> U31[User: Yes, it’s an emergency]
+    B0 --> U32[User: Interested in virtual consultation]
+    B0 --> U33[User: I have insurance questions]
+    B0 --> U34[User: Tell me about health & safety protocols]
+
+U1 --> B1[Bot: What type of appointment?]
+U2 --> B2[Bot: Which appointment do you want to change?]
+U3 --> B3[Bot: Here are your upcoming appointments]
+U31 --> B11[Bot: Do you need an emergency appointment?]
+U32 --> B12[Bot: Interested in a virtual consultation?]
+U33 --> B13[Bot: Do you have any insurance inquiries?]
+U34 --> B14[Bot: Would you like information on health & safety protocols?]
+
+B1 --> U4[User: A dental appointment]
+B1 --> U5[User: A medical consultation]
+U4 --> B4[Bot: Select a date and time for your dental appointment]
+U5 --> B5[Bot: Select a date and time for your medical consultation]
+
+B4 --> U6[User: Choose specific date and time]
+B5 --> U6
+U6 --> B6[Bot: Appointment is scheduled. Do you need anything else?]
+
+B6 --> U8[User: No, that's all]
+U8 --> B7[Bot: You're welcome! Have a great day.]
+
+B2 --> U9[User: I want to reschedule my dental appointment]
+B2 --> U10[User: I want to cancel my medical consultation]
+U9 --> B4
+U10 --> B8[Bot: Your medical consultation has been canceled. Anything else?]
+
+B8 --> U8
+
+B11 --> U6
+B12 --> U6
+B13 --> U6
+B14 --> U6
+B6 --> U35[User: Need prescription refill]
+B6 --> U36[User: What’s the no-show policy?]
+U35 --> B15[Bot: Need help with prescription refills or lab tests?]
+U36 --> B16[Bot: Let’s discuss our no-show policy.]
