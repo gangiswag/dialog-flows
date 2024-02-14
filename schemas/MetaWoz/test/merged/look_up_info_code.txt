@@ -1,0 +1,33 @@
+
+    B0[Bot: Greeting and Asks for Information Inquiry] --> U1[User: Wants to Know About a Specific Topic]
+    B0 --> U2[User: Needs Help Finding a Location]
+    B0 --> U3[User: Seeks Historical Information]
+    B0 --> U4[User: Inquires About Current Events]
+    B0 --> U10[User: Seeks Advice or Opinions on a Topic]
+    B0 --> U11[User: Requests Step-by-Step Guides or Tutorials]
+    B0 --> U12[User: Inquires About Multimedia Resources]
+    B0 --> U13[User: Wants to Compare Different Viewpoints]
+    
+    U1 --> B1[Bot: Provides Information on the Specified Topic]
+    U2 --> B2[Bot: Assists with Location Lookup]
+    U3 --> B3[Bot: Shares Historical Data]
+    U4 --> B4[Bot: Updates on Current Events]
+    U10 --> B5[Bot: Offers Advice or Opinions]
+    U11 --> B6[Bot: Gives Step-by-Step Guides or Tutorials]
+    U12 --> B7[Bot: Discusses Multimedia Resources]
+    U13 --> B8[Bot: Explores Different Viewpoints]
+    
+    B1 --> U5[User: Asks for More Details or Related Information]
+    B2 --> U5
+    B3 --> U5
+    B4 --> U5
+    B5 --> U5
+    B6 --> U5
+    B7 --> U5
+    B8 --> U5
+    
+    U5 --> B9[Bot: Provides Further Information or Clarifications]
+    B9 --> U6[User: Satisfied with Information or Has Additional Queries]
+    U6 --> B10[Bot: Concludes Assistance or Continues Providing Info]
+
+  
