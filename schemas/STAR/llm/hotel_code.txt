@@ -1,0 +1,45 @@
+B0[Bot: Greet & Ask How Can I Assist?]
+    B0 --> U1[User: Book a Room]
+    B0 --> U2[User: Inquire About Amenities]
+    B0 --> U3[User: Request Special Accommodations]
+    B0 --> U9[User: Ask About Location]
+    B0 --> U18[User: Provide/Request Feedback]
+    B0 --> U19[User: Inquire About Loyalty Program]
+    B0 --> U20[User: Ask About Event Accommodations]
+    B0 --> U21[User: Ask About Payment and Policies]
+
+U1 --> B1[Bot: Ask Booking Details]
+U2 --> B2[Bot: Provide Amenities Info]
+U3 --> B3[Bot: Ask for Accommodation Details]
+U9 --> B10[Bot: Provide Location Info]
+U18 --> B18[Bot: Collect/Give Feedback]
+U19 --> B19[Bot: Provide Loyalty Program Info]
+U20 --> B20[Bot: Discuss Event Accommodations]
+U21 --> B21[Bot: Explain Payment and Policies]
+
+B1 --> U4[User: Provide Booking Details]
+B1 --> U5[User: Ask About Cancellation Policy]
+
+B3 --> U6[User: Specify Accommodations]
+B3 --> U7[User: Inquire About Additional Costs]
+
+B2 --> U8[User: Ask More About a Specific Amenity]
+
+U4 --> B4[Bot: Confirm Booking & Provide Details]
+U5 --> B5[Bot: Explain Cancellation Policy]
+U6 --> B6[Bot: Confirm Accommodations & Costs]
+U7 --> B7[Bot: Provide Cost Details]
+U8 --> B8[Bot: Give Detailed Amenity Info]
+
+B4 --> U10[User: Need Further Assistance?]
+B5 --> U10
+B6 --> U10
+B7 --> U10
+B8 --> U10
+B10 --> U10
+B18 --> U10
+B19 --> U10
+B20 --> U10
+B21 --> U10
+
+U10 --> B9[Bot: Offer Further Assistance]
