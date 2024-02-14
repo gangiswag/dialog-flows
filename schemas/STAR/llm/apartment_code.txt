@@ -1,0 +1,39 @@
+B0[Bot: Greet & Ask How Can I Assist?]
+    B0 --> U1[User: Look for an Apartment]
+    B0 --> U2[User: Inquire About Amenities]
+    B0 --> U3[User: Ask About Lease Terms]
+    B0 --> U4[User: Request Special Accommodations]
+    B0 --> U14[User: Provide Viewing Feedback]
+    B0 --> U15[User: Ask About Maintenance & Policies]
+
+U1 --> B1[Bot: Ask Preferences]
+U2 --> B2[Bot: List Available Amenities]
+U3 --> B3[Bot: Provide Lease Terms Info]
+U4 --> B4[Bot: Inquire Specific Accommodations]
+U14 --> B14[Bot: Collect Feedback & Suggest Alternatives]
+U15 --> B15[Bot: Explain Maintenance Policies & Utilities]
+
+B1 --> U5[User: Specify Preferences]
+B1 --> U6[User: Ask for Price Range]
+
+B2 --> U7[User: Ask More About Specific Amenity]
+B3 --> U8[User: Inquire About Fees]
+
+U5 --> B5[Bot: Show Matching Apartments]
+U6 --> B6[Bot: Show Apartments in Price Range]
+U7 --> B7[Bot: Provide Detailed Amenity Info]
+U8 --> B8[Bot: Explain Fees Details]
+
+B4 --> U9[User: Confirm Special Requests]
+U9 --> B9[Bot: Confirm Request Can Be Met]
+
+B5 --> U10[User: Schedule a Viewing]
+B6 --> U10
+B7 --> U10
+B8 --> U10
+B9 --> U10
+
+U10 --> B10[Bot: Schedule Viewing & Provide Details]
+
+B10 --> U11[User: Any Other Questions?]
+U11 --> B11[Bot: Answer Questions & Offer Further Help]
