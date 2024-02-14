@@ -1,0 +1,34 @@
+B0[Bot: Greet & Ask Travel Needs]
+    B0 --> U1[User: Book a Flight]
+    B0 --> U2[User: Choose Seat Preference]
+    B0 --> U3[User: Add Extra Luggage]
+    B0 --> U4[User: Request Special Meal]
+
+U1 --> B1[Bot: Ask Flight Details]
+U2 --> B2[Bot: Seat Options Available]
+U3 --> B3[Bot: Luggage Policy & Costs]
+U4 --> B4[Bot: Meal Options]
+
+B1 --> U5[User: Provide Flight Details]
+B2 --> U6[User: Select Seat]
+B3 --> U7[User: Confirm Extra Luggage]
+B4 --> U8[User: Choose Meal]
+
+U5 --> B5[Bot: Confirm Flight & Offer More Services]
+U6 --> B6[Bot: Seat Confirmed & Offer More Services]
+U7 --> B7[Bot: Extra Luggage Added & Offer More Services]
+U8 --> B8[Bot: Meal Confirmed & Offer More Services]
+
+B5 --> U9[User: Need Other Services?]
+
+U9 --> B9[Bot: Offer Additional Services]
+U9 --> B10[Bot: Finalize Booking]
+
+B9 --> U10[User: Select Another Service]
+U10 --> B1
+U10 --> B2
+U10 --> B3
+U10 --> B4
+
+B10 --> U15[User: Thank for help]
+U15 --> B11[Bot: Booking Finalized & Provide Details]
