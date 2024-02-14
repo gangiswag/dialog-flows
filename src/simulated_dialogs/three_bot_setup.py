@@ -45,7 +45,8 @@ def pick_closest_match_llm(query, candidates, attempts=10):
             for candidate in candidates:
                 if candidate in response:
                     return candidate
-        except:
+        except Exception as e:
+            print(e)
             continue
 
     print(f"Failed to find a match for {query}")
@@ -171,7 +172,8 @@ def get_chatgpt_float(system_prompt, conversation, model, attempts=10):
             )
             result = float(result)
             return result
-        except:
+        except Exception as e:
+            print(e)
             continue
     return ""
 
@@ -405,8 +407,8 @@ def evaluate(
                 json.dump(conversation_log, f)
                 f.write("\n")
             overall_log.append(conversation_log)
-        except:
-            print(f"Conversation {i} failed.")
+        except Exception as e:
+            print(f"Conversation {i} failed with error {e}")
             continue
 
     return overall_log
@@ -420,12 +422,9 @@ def main(
     schema_dir,
     level_dir,
     saving_dir,
-    model_name,
     chatgpt_model,
     verbose,
 ):
-    # Load model
-    load_llm_model(model_name)
     # e.g. Load in schema from schemas/restaurant_booking.txt
     modified_domain_name = domain.replace(" ", "_")
     with open(
@@ -550,6 +549,8 @@ if __name__ == "__main__":
         domain = " ".join(filename.split("_")[:-1])
         domains.append(domain)
     print(domains)
+    # Load model
+    load_llm_model(args.model_name)
     for domain in domains:
         main(
             domain,
@@ -559,7 +560,6 @@ if __name__ == "__main__":
             args.schema_dir,
             args.level_dir,
             args.saving_dir,
-            args.model_name,
             args.chatgpt_model,
             args.verbose,
         )
