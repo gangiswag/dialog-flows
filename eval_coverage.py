@@ -122,7 +122,7 @@ def load_conversations(conversation_file):
 
     return convos
 
-def chat_model(context, candidates, utterance, temperature=1.0):
+def chat_model(context, candidates, utterance, temperature=1.0, gen_length=4):
     generate_prompt = format_prompt(context, candidates, utterance)
 
     sampling = False
@@ -137,7 +137,7 @@ def chat_model(context, candidates, utterance, temperature=1.0):
         num_return_sequences=1,
         eos_token_id=tokenizer.eos_token_id,
         pad_token_id=tokenizer.eos_token_id,
-        max_new_tokens=4,
+        max_new_tokens=gen_length,
     )
 
     generated_text = sequences[0]["generated_text"].strip()
@@ -162,7 +162,7 @@ def format_prompt(context, candidates, utterance):
     ### Utterance: Tickets for A Quiet Place at AMC are $13.95.
     ### Action: 11
 
-    Now, you are provided with the following dialog history and the current task-oriented bot utterance. You need to classify the given bot utterance into a dialog action from the given candidate actions. You should use the dialog history as additional context when deciding the most appropriate dialog action. You need to ONLY generate the action ID. DO NOT generate the entire action name.
+    Now, you are provided with the following dialog history and the current task-oriented bot utterance. You need to classify the given bot utterance into a dialog action from the given candidate actions. You should use the dialog history as additional context when deciding the most appropriate dialog action. Generate ONLY the action ID corresponding to the dialog action. Do NOT generate anything else.
 
     ### Context: {context}
 
@@ -187,14 +187,21 @@ def pick_closest_match(query, candidates, context, attempts=3):
     
     num_retries = 0
     temperature = 0.0
+    gen_length = 4
     while num_retries < attempts:
-        generated_text = chat_model(query, candidates, context, temperature=temperature)
-        pattern = r"^\d+"
+        generated_text = chat_model(query, candidates, context, temperature=temperature, gen_length=gen_length)
+        pattern = r"\d+"
         match = re.search(pattern, generated_text)
         if match:
-            return candidates[int(match.group(0))-1]
+            if int(match.group(0)) <= len(candidates):
+                return candidates[int(match.group(0))-1]
+            else:
+                temperature = 1.0
+                gen_length = 50
+                num_retries +=1
         else:
             temperature = 1.0
+            gen_length = 50
             num_retries +=1        
 
     return candidates[0]
@@ -245,9 +252,9 @@ def match_utterances_to_labels(dataset, conversations, user_node_names, bot_node
         for i, utterance in enumerate(conversation):
             if len(context) == 3:
                 context.pop(0)
-            if (i % 2 == 0 and dataset == "metawoz") or (i % 2 != 0 and (dataset == "multiwoz" or dataset == "simulated_dialogs")):
+            if (i % 2 == 0 and dataset == "metawoz") or (i % 2 != 0 and (dataset == "multiwoz" or "simulated_dialogs" in dataset)):
                 context.append("Bot: "+ utterance)
-            elif (i % 2 != 0 and dataset == "metawoz") or (i % 2 == 0 and (dataset == "multiwoz" or dataset == "simulated_dialogs")):
+            elif (i % 2 != 0 and dataset == "metawoz") or (i % 2 == 0 and (dataset == "multiwoz" or  "simulated_dialogs" in dataset)):
                 context.append("User: " + utterance)
 
             if i % 2 == 0:
@@ -269,16 +276,16 @@ def find_domains_to_use(dataset, conversations):
             return "metawoz_test_domains" 
     elif dataset == "multiwoz":
         return "multiwoz_domains"
-    elif dataset == "simulated_dialogs":
-        return "simulated_dialogs"
-
+    else:
+        return dataset
+    
 def main(dataset, model, conversations, schemas, results):
     domains = {
         "metawoz_test_domains" : ["alarm_set", "apartment_finder", "appointment_reminder","bank_bot", "bus_schedule_bot","catalogue_bot", "city_info", "edit_playlist", "event_reserve","guiness_check", "insurance", "library_request", "look_up_info", "music_suggester", "name_suggester", "pet_advice", "scam_lookup", "shopping", "ski_bot", "sports_info", "store_details", "update_calendar", "update_contact", "wedding_planner"],
         "metawoz_dev_domains" : ["phone_plan", "order_pizza", "movie_listings", "restaurant_picker", "weather_check"],
         "multiwoz_domains" : ["attraction", "hotel", "restaurant", "taxi", "train"],
-        "simulated_dialogs" : ["alarm_set", "apartment_finder", "appointment_reminder","bank_bot", "bus_schedule_bot","catalogue_bot", "city_info", "edit_playlist", "event_reserve","guiness_check", "insurance", "library_request", "look_up_info", "music_suggester", "name_suggester", "pet_advice", "scam_lookup", "shopping", "ski_bot", "sports_info", "store_details", "update_calendar", "update_contact", "wedding_planner"]
-        
+        "simulated_dialogs_test" : ["alarm_set", "apartment_finder", "appointment_reminder","bank_bot", "bus_schedule_bot","catalogue_bot", "city_info", "edit_playlist", "event_reserve","guiness_check", "insurance", "library_request", "look_up_info", "music_suggester", "name_suggester", "pet_advice", "scam_lookup", "shopping", "ski_bot", "sports_info", "store_details", "update_calendar", "update_contact", "wedding_planner"],
+        "simulated_dialogs_dev" : ["movie_listings", "order_pizza", "phone_plan", "restaurant_picker", "weather_check"]
     }
     
 
@@ -300,7 +307,10 @@ def main(dataset, model, conversations, schemas, results):
         try:
             for method in methods:
                 schema_file = os.path.join(schemas, method, f"{domain}_code.txt")
-                conversation_file = os.path.join(conversations, f"{dataset}_test_{domain}.txt")
+                if "simulated_dialogs" in dataset:
+                    
+                else:
+                    conversation_file = os.path.join(conversations, f"{dataset}_test_{domain}.txt")
                 nodes_g, node_name_to_no, user_node_names, bot_node_names, schema_g = create_graph_from_edges(schema_file)
                 convos = load_conversations(conversation_file)
                 convos_nodes = match_utterances_to_labels(dataset, convos, user_node_names, bot_node_names, node_name_to_no)
