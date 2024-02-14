@@ -1,0 +1,33 @@
+B0[Bot: Greeting & Would you like to play trivia?]
+    B0 --> U1[User: Yes, let's play]
+    B0 --> U2[User: No, thanks]
+
+U1 --> B1[Bot: Choose a category: History, Science, or Pop Culture]
+U2 --> B2[Bot: Okay, have a great day!]
+
+B1 --> U3[User: History]
+B1 --> U4[User: Science]
+B1 --> U5[User: Pop Culture]
+
+U3 --> B3[Bot: Presents a History question]
+U4 --> B4[Bot: Presents a Science question]
+U5 --> B5[Bot: Presents a Pop Culture question]
+
+B3 --> U6[User: Answers History question]
+B4 --> U6
+B5 --> U6
+
+U6 --> B6[Bot: Provides feedback on answer & asks if user wants another question or needs a hint]
+B6 --> U7[User: Yes, another question]
+B6 --> U8[User: No, I'm done]
+B6 --> U12[User: I'd like a hint]
+
+U7 --> B1
+U8 --> B7[Bot: Thanks for playing trivia!]
+U12 --> B8[Bot: Provides a hint and then returns to question]
+
+B1 --> U13[User: Choose difficulty level]
+U13 --> B9[Bot: Difficulty level set, now choose a category again]
+B9 --> U3
+B9 --> U4
+B9 --> U5
