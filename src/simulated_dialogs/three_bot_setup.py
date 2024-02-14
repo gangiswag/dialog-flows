@@ -69,24 +69,6 @@ def get_formatted_chat(system, user_assistant):
                 "content": f"{system}",
             },
         ]
-
-    # try to just stuff system into the last turn
-    # if user_assistant:
-    #     next_role = "user" if user_assistant[-1]["role"] == "assistant" else "assistant"
-    #     last_user_turn = user_assistant[-1]["content"]
-    #     chat = user_assistant[:-1] + [
-    #         {
-    #             "role": next_role,
-    #             "content": f"{system} {last_user_turn}",
-    #         },
-    #     ]
-    # else:
-    #     chat = [
-    #         {
-    #             "role": "user",
-    #             "content": f"{system}",
-    #         },
-    #     ]
     return chat
 
 
@@ -95,7 +77,6 @@ def get_formatted_chat(system, user_assistant):
 def chat_model(system, user_assistant, temperature=1.0):
     chat = get_formatted_chat(system, user_assistant)
 
-    # print(f"Pre-templated chat: {chat}")
     query = tokenizer.apply_chat_template(
         chat, tokenize=False, add_generation_prompt=True
     )
@@ -105,6 +86,7 @@ def chat_model(system, user_assistant, temperature=1.0):
             query,
             do_sample=False,
             num_return_sequences=1,
+            return_full_text=False,
             eos_token_id=tokenizer.eos_token_id,
             pad_token_id=tokenizer.eos_token_id,
             max_length=len(query) + 2048,
@@ -115,15 +97,22 @@ def chat_model(system, user_assistant, temperature=1.0):
             do_sample=True,
             temperature=temperature,
             num_return_sequences=1,
+            return_full_text=False,
             eos_token_id=tokenizer.eos_token_id,
             pad_token_id=tokenizer.eos_token_id,
             max_length=len(query) + 2048,
         )
 
-    generated_text = sequences[0]["generated_text"]
-    response = generated_text[
-        len(query) :
-    ]  ##Here we are removing the query that we pass onto our llm.
+    response = sequences[0]["generated_text"]
+    # response = generated_text[
+    #     len(query) :
+    # ]  ##Here we are removing the query that we pass onto our llm.
+    response = format_response(response)
+
+    return response
+
+
+def format_response(response):
     response = response.strip()
 
     first_word = response.split()[0].lower()
@@ -135,6 +124,9 @@ def chat_model(system, user_assistant, temperature=1.0):
     response = re.split("user]:", response, flags=re.IGNORECASE)[0]
     response = re.split("bot:", response, flags=re.IGNORECASE)[0]
     response = re.split("bot]:", response, flags=re.IGNORECASE)[0]
+
+    response = response.replace("[", "").replace("]", "")
+    response = response.replace("{", "").replace("}", "")
 
     return response.strip()
 
@@ -152,19 +144,20 @@ def chat_chatgpt(system, user_assistant, model, temperature=1.0):
 
 
 # User Bot
-def user_bot(domain, user_setting, num_turns, conversation):
-    system_prompt = f"Here is your setting: {user_setting}. You are a user of a chatbot that performs {domain}, and you must use this setting to continue the conversation with the bot. You should respond as a user by CONTINUING this conversation and responding to the chatbot appropriately. If the conversation should end, include [END] in your response. You should produce exactly one user response and no bot responses. YOU CANNOT INCLUDE THE WORDS 'user' or 'bot' IN YOUR RESPONSE. "
-    is_adversarial = False
-    # Use a random variable with a 0.3 probability of being true to determine whether to produce a relevant or irrelevant response.
-    # if random.random() < 0.3:
-    #     user_prompt += (
-    #         f"Produce only a user response that is completely irrelevant to {domain}."
-    #     )
-    #     is_adversarial = True
+def user_bot(domain, user_setting, num_turns, conversation, cur_turn):
+    system_prompt = ""
+    # Add user setting in the second turn to introduce variability (if right away, then all conversations become too similar)
+    if cur_turn == 1:
+        system_prompt = f"Here is your setting: {user_setting}. You must use this setting to continue the conversation with the bot."
+    system_prompt += f"You are a user of a chatbot that performs {domain}. You should respond as a user by CONTINUING this conversation and responding to the chatbot appropriately, but you should never act as the chatbot. If the conversation should end, include [END] in your response. You should produce exactly one user response and no bot responses. YOU CANNOT INCLUDE THE WORDS 'user' or 'bot' IN YOUR RESPONSE. "
 
-    user_response = chat_model(system_prompt, conversation, temperature=0.5)
+    # increase temperature in the first turn to introduce variability
+    if cur_turn == 0:
+        user_response = chat_model(system_prompt, conversation, temperature=1.0)
+    else:
+        user_response = chat_model(system_prompt, conversation, temperature=0.5)
 
-    return user_response, is_adversarial
+    return user_response
 
 
 def get_chatgpt_float(system_prompt, conversation, model, attempts=10):
@@ -231,6 +224,8 @@ def assistant_bot(
 
     best_hl_match = None
     to_do_ll_action_ind = -1
+
+    # level_driven
     if level_driven:
         high_level_actions = list(domain_level_actions.keys())
         last_user_turn = conversation[-1]["content"]
@@ -250,17 +245,20 @@ def assistant_bot(
                 and prev_lo_action_ind
                 < len(domain_level_actions[prev_hi_action]["bot_actions"]) - 2
             ):
-                print(f"{prev_hi_action=}, {best_hl_match=}, {prev_lo_action_ind=}")
+                if verbose:
+                    print(f"{prev_hi_action=}, {best_hl_match=}, {prev_lo_action_ind=}")
                 possible_lla = domain_level_actions[prev_hi_action]["user_actions"][
                     prev_lo_action_ind + 1
                 ]
-                print(f"Bot picking between {possible_lla} and {best_hl_match}")
+                if verbose:
+                    print(f"Bot picking between {possible_lla} and {best_hl_match}")
                 if should_stay_on_prev_lla(last_user_turn, possible_lla, best_hl_match):
                     print("Bot chose to bias towards staying on previous HLA")
                     best_hl_match = prev_hi_action
                     to_do_ll_action_ind = prev_lo_action_ind + 1
                 else:
-                    print("Bot chose to bias towards moving to new HLA")
+                    if verbose:
+                        print("Bot chose to bias towards moving to new HLA")
 
         to_do_ll_action = domain_level_actions[best_hl_match]["bot_actions"][
             to_do_ll_action_ind
@@ -278,9 +276,11 @@ def assistant_bot(
         system_prompt += f"You are currently in the category of {best_hl_match}. "
         system_prompt += f"For the following nodes, U means User, and B means Bot. You should constrain your responses according to the following low level action: {to_do_ll_action}. "
 
+    # schema_driven
     if schema and not level_driven:
         system_prompt += f"Given the following schema: {schema}. "
 
+    # no_schema
     if not schema and not level_driven:
         pass
 
@@ -316,18 +316,18 @@ def evaluate_conversation(
     user_setting = generate_user_setting(
         domain, domain_level_actions.keys(), chatgpt_model
     )
-    print(f"User Setting: {user_setting}\n\n")
+    if verbose:
+        print(f"User Setting: {user_setting}\n\n")
 
     user_assistant = []
     for i in range(num_turns):
-        user_turn, is_adversarial = user_bot(
-            domain, user_setting, num_turns, user_assistant
-        )
+        user_turn = user_bot(domain, user_setting, num_turns, user_assistant, i)
         # user_turn = input("\nUser: ")
-        user_assistant += [{"role": "user", "content": user_turn}]
-        print(f"User: {user_turn}\n\n")
-        if user_turn == "QUIT" or "END" in user_turn:
+        if user_turn == "QUIT" or "END" in user_turn:  # early stopping
             break
+        user_assistant += [{"role": "user", "content": user_turn}]
+        if verbose:
+            print(f"User: {user_turn}\n\n")
         assistant_turn, prev_hi_action, prev_lo_action_ind = assistant_bot(
             domain,
             user_assistant,
@@ -340,18 +340,21 @@ def evaluate_conversation(
             prev_lo_action_ind=prev_lo_action_ind,
         )
         user_assistant += [{"role": "assistant", "content": assistant_turn}]
-        print(f"Assistant: {assistant_turn}\n\n")
+        if verbose:
+            print(f"Assistant: {assistant_turn}\n\n")
 
-    scores = evaluator_bot(domain, user_assistant, chatgpt_model)
-    print(f"Evaluator: {scores}\n\n")
+    # scores = evaluator_bot(domain, user_assistant, chatgpt_model)
+    # print(f"Evaluator: {scores}\n\n")
+    utterances = [turn["content"] for turn in user_assistant]
+    roles = ["USER" if turn["role"] == "user" else "BOT" for turn in user_assistant]
 
     json_log = {
         "session_id": conversation_id,
         "domain": domain,
         "task": domain,
-        "utterances": [turn["content"] for turn in user_assistant],
-        "roles": [turn["role"] for turn in user_assistant],
-        "scores": scores,
+        "utterances": utterances,
+        "roles": roles,
+        # "scores": scores,
     }
 
     return json_log
@@ -382,7 +385,7 @@ def evaluate(
     Path(save_dir).mkdir(parents=True, exist_ok=True)
 
     modified_domain_name = domain.replace(" ", "_")
-    filename = f"{save_dir}/simulated_{modified_domain_name}.txt"
+    filename = f"{save_dir}/simulated_dialogs_test_{modified_domain_name}.txt"
     open(filename, "w")  # clear file
     for i in tqdm(range(num_conversations)):
         print(f"Conversation {i}")
@@ -411,6 +414,7 @@ def evaluate(
 
 def main(
     domain,
+    method,
     num_conversations,
     num_turns,
     schema_dir,
@@ -418,70 +422,78 @@ def main(
     saving_dir,
     model_name,
     chatgpt_model,
+    verbose,
 ):
     # Load model
     load_llm_model(model_name)
     # e.g. Load in schema from schemas/restaurant_booking.txt
     modified_domain_name = domain.replace(" ", "_")
     with open(
-        # f"../../schemas/MetaWoz/merged/{modified_domain_name}_code.txt", "r"
-        f"{schema_dir}/merged/{modified_domain_name}_code.txt",
+        f"{schema_dir}/{modified_domain_name}_code.txt",
         "r",
     ) as f:
         schema = f.read()
     domain_level_actions = json.load(
-        open(
-            # f"../../high_low_level_actions/MetaWoz/merged/{modified_domain_name}_code.json"
-            f"{level_dir}/{modified_domain_name}_code.json"
-        )
+        open(f"{level_dir}/{modified_domain_name}_code.json")
     )
 
     # Get saving directory
-    # dir_log = f"../../conversations/simulated_dialogs"
-    dir_log = f"{saving_dir}/merged"
+    dir_log = f"{saving_dir}"
 
-    # Evaluate level driven
-    log_with_schema = evaluate(
-        domain,
-        num_conversations,
-        num_turns,
-        schema=schema,
-        level_driven=True,
-        domain_level_actions=domain_level_actions,
-        verbose=True,
-        dir_log=dir_log,
-        chatgpt_model=chatgpt_model,
-    )
+    if method == "level_driven":
+        # Evaluate level driven
+        log_with_schema = evaluate(
+            domain,
+            num_conversations,
+            num_turns,
+            schema=schema,
+            level_driven=True,
+            domain_level_actions=domain_level_actions,
+            verbose=verbose,
+            dir_log=dir_log,
+            chatgpt_model=chatgpt_model,
+        )
 
-    # Evaluate schema only
-    log_with_schema = evaluate(
-        domain,
-        num_conversations,
-        num_turns,
-        schema=schema,
-        level_driven=False,
-        domain_level_actions=domain_level_actions,
-        verbose=True,
-        dir_log=dir_log,
-        chatgpt_model=chatgpt_model,
-    )
+    elif method == "schema_driven":
+        # Evaluate schema only
+        log_with_schema = evaluate(
+            domain,
+            num_conversations,
+            num_turns,
+            schema=schema,
+            level_driven=False,
+            domain_level_actions=domain_level_actions,
+            verbose=verbose,
+            dir_log=dir_log,
+            chatgpt_model=chatgpt_model,
+        )
 
-    # Evaluate no schema
-    log_with_schema = evaluate(
-        domain,
-        num_conversations,
-        num_turns,
-        schema=False,
-        level_driven=False,
-        domain_level_actions=domain_level_actions,
-        verbose=True,
-        dir_log=dir_log,
-        chatgpt_model=chatgpt_model,
-    )
+    elif method == "no_schema":
+        # Evaluate no schema
+        log_no_schema = evaluate(
+            domain,
+            num_conversations,
+            num_turns,
+            schema=None,
+            level_driven=False,
+            domain_level_actions=domain_level_actions,
+            verbose=verbose,
+            dir_log=dir_log,
+            chatgpt_model=chatgpt_model,
+        )
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
+
+    # arg experimental setting must either be level_driven, schema_driven, or no_schema
+    parser.add_argument(
+        "--method",
+        type=str,
+        default="level_driven",
+        help="The method to use for generating the conversations. Must be either `level_driven`, `schema_driven`, or `no_schema`",
+    )
+
     parser.add_argument(
         "--num_conversations",
         type=int,
@@ -497,7 +509,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--schema_dir",
         type=str,
-        default="../../schemas/MetaWoz/dev",
+        default="../../schemas/MetaWoz/dev/merged",
         help="The directory containing the schema files",
     )
     parser.add_argument(
@@ -524,16 +536,24 @@ if __name__ == "__main__":
         default="gpt-3.5-turbo",
         help="The name of the model to use for the user setting generation and evaluator bot",
     )
+    parser.add_argument(
+        "--verbose",
+        type=bool,
+        default=False,
+        help="Whether to print the conversation logs",
+    )
     args = parser.parse_args()
     domains = []
-    files = glob.glob(f"{args.schema_dir}/merged/*.txt")
+    files = glob.glob(f"{args.schema_dir}/*.txt")
     for file in files:
         filename = file.split("/")[-1]
         domain = " ".join(filename.split("_")[:-1])
         domains.append(domain)
+    print(domains)
     for domain in domains:
         main(
             domain,
+            args.method,
             args.num_conversations,
             args.num_turns,
             args.schema_dir,
@@ -541,6 +561,7 @@ if __name__ == "__main__":
             args.saving_dir,
             args.model_name,
             args.chatgpt_model,
+            args.verbose,
         )
 
 # Progress
