@@ -118,6 +118,8 @@ def load_conversations(conversation_file):
     conversations_df = pd.DataFrame(conversations)
     convos = []
     for i, row in conversations_df.iterrows():
+        if len(row["utterances"]) < 6: 
+            continue
         convos.append(row["utterances"])
 
     return convos
@@ -300,7 +302,11 @@ def main(dataset, model, conversations, schemas, results):
 
     domains_to_use = find_domains_to_use(dataset, conversations)
 
-    methods = ["llm", "data", "merged"]
+    if "simulated_dialogs" in dataset:
+        methods = ["merged"]
+    else:
+        methods = ["llm", "data", "merged"]
+    
     for domain in domains[domains_to_use]:
         print("running for", domain)
         domain_results = {}
@@ -308,9 +314,12 @@ def main(dataset, model, conversations, schemas, results):
             for method in methods:
                 schema_file = os.path.join(schemas, method, f"{domain}_code.txt")
                 if "simulated_dialogs" in dataset:
-                    
+                    conversation_file = os.path.join(conversations, f"simulated_dialogs_test_{domain}.txt")
                 else:
                     conversation_file = os.path.join(conversations, f"{dataset}_test_{domain}.txt")
+                if not os.path.exists(conversation_file):
+                    print("File doesn't exit: ", conversation_file)
+                    continue
                 nodes_g, node_name_to_no, user_node_names, bot_node_names, schema_g = create_graph_from_edges(schema_file)
                 convos = load_conversations(conversation_file)
                 convos_nodes = match_utterances_to_labels(dataset, convos, user_node_names, bot_node_names, node_name_to_no)
