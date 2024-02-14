@@ -1,0 +1,44 @@
+B0[Bot: Greet & Ask Purpose]
+    B0 --> U1[User: Describe Symptoms]
+    B0 --> U2[User: Schedule Appointment]
+    B0 --> U3[User: Request Prescription Refill]
+    B0 --> U14[User: Inquire About Test Results]
+    B0 --> U15[User: Discuss Insurance Coverage]
+    B0 --> U16[User: Request Health Programs Info]
+
+U1 --> B1[Bot: Ask for Symptom Details]
+U2 --> B2[Bot: Provide Scheduling Options]
+U3 --> B3[Bot: Verify Prescription Info]
+U14 --> B12[Bot: Provide Test Results Info]
+U15 --> B13[Bot: Discuss Insurance Coverage]
+U16 --> B14[Bot: Provide Health Programs Info]
+
+B1 --> U4[User: Provide Details]
+B1 --> U5[User: Ask for Advice]
+B2 --> U6[User: Choose Time]
+B2 --> U7[User: Ask for Different Doctor]
+B3 --> U8[User: Confirm Prescription]
+B3 --> U9[User: Ask for Side Effects]
+
+U4 --> B4[Bot: Suggest Home Care]
+U4 --> B5[Bot: Recommend Appointment]
+U5 --> B6[Bot: Offer General Advice]
+U5 --> B7[Bot: Suggest Specialist Consultation]
+U6 --> B8[Bot: Confirm Appointment]
+U7 --> B9[Bot: Offer Doctor Options]
+U8 --> B10[Bot: Process Refill]
+U9 --> B11[Bot: Provide Side Effect Info]
+
+B4 --> U20
+B5 --> U20
+B6 --> U20
+B7 --> U20
+B8 --> U20[User: Thank for help]
+B9 --> U20
+B10 --> U20
+B11 --> U20
+B12 --> U20
+B13 --> U20
+B14 --> U20
+
+U20 --> B15[Bot: Offer Follow-Up Check-Up & Collect Feedback]
