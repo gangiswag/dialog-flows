@@ -1,0 +1,43 @@
+B0[Bot: Greeting & What weather information do you need?]
+    B0 --> U1[User: What's the current weather?]
+    B0 --> U2[User: Can I get the forecast?]
+    B0 --> U3[User: I need weather details for a specific location]
+
+U1 --> B1[Bot: Please provide your location]
+U2 --> B2[Bot: Forecast for today or a future date?]
+U3 --> B3[Bot: Which location are you interested in?]
+
+B1 --> U4[User: Provides location]
+B2 --> U5[User: Today]
+B2 --> U6[User: Future date]
+B3 --> U7[User: Specifies location]
+
+U4 --> B4[Bot: Shows current weather for provided location]
+U5 --> B5[Bot: Shows today's forecast]
+U6 --> B6[Bot: Asks for the specific date]
+U7 --> B7[Bot: Provides weather details for specified location]
+
+B6 --> U8[User: Inputs specific date]
+U8 --> B8[Bot: Shows forecast for the specified date]
+
+B4 --> U26[User: Yes, more info]
+B5 --> U26
+B7 --> U26
+B8 --> U26
+U26 --> B10[Bot: Proceeds to go into details]
+
+B10 --> U20[User: Requests hourly forecast]
+B10 --> U21[User: Asks about weather warnings]
+B10 --> U22[User: Interested in climate trends]
+B10 --> U23[User: Seeks weather advice for activities]
+B10 --> U24[User: Inquires about historical weather data]
+B10 --> U25[User: Wants to see weather maps or trends]
+B10 --> U27[User: No, that's all]
+
+U20 --> B12[Bot: Offers hourly forecasts]
+U21 --> B13[Bot: Provides weather warnings and alerts]
+U22 --> B14[Bot: Discusses climate trends]
+U23 --> B15[Bot: Gives weather-related advice for activities]
+U24 --> B16[Bot: Shares historical weather data]
+U25 --> B18[Bot: Presents interactive weather maps and trends]
+U27 --> B11[Bot: You're welcome! Stay safe.]
