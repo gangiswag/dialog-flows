@@ -1,0 +1,54 @@
+B0[Bot: Greeting & What do you want to know about our spaceship?]
+    B0 --> U1[User: Tell me about the spaceship specifications]
+    B0 --> U2[User: How do I book a trip?]
+    B0 --> U3[User: What training is required for a mission?]
+    B0 --> U4[User: Can I get general information?]
+    B0 --> U37[User: Tell me about life support]
+    B0 --> U38[User: How do we communicate with Earth?]
+    B0 --> U39[User: What amenities are available?]
+
+U1 --> B1[Bot: Provides specifications details]
+U2 --> B2[Bot: Explains booking process]
+U3 --> B3[Bot: Details on mission training]
+U4 --> B4[Bot: Offers general information about the spaceship]
+U37 --> B14[Bot: Details on life support systems]
+U38 --> B15[Bot: Information on communication with Earth]
+U39 --> B16[Bot: Overview of onboard amenities]
+
+B1 --> U5[User: More details on engine]
+B1 --> U6[User: Safety features?]
+B2 --> U7[User: Booking for specific dates]
+B2 --> U8[User: Cost of the trip]
+B3 --> U9[User: Duration of training]
+B3 --> U10[User: Physical requirements]
+B4 --> U11[User: History of the spaceship]
+B4 --> U12[User: Future missions planned]
+
+U5 --> B5[Bot: Engine specifications explained]
+U6 --> B6[Bot: Discusses safety features]
+U7 --> B7[Bot: Checks availability for dates]
+U8 --> B8[Bot: Provides trip cost information]
+U9 --> B9[Bot: Training duration details]
+U10 --> B10[Bot: Lists physical requirements]
+U11 --> B11[Bot: Shares spaceship's history]
+U12 --> B12[Bot: Talks about future missions]
+
+B5 --> B20[Bot: Follow-up on another topic?]
+B6 --> B20
+B7 --> B20
+B8 --> B20
+B9 --> B20
+B10 --> B20
+B11 --> B20
+B12 --> B20
+B14 --> B20
+B15 --> B20
+B16 --> B20
+
+B20 --> U44[User: No, that’s all]
+U43 --> B0
+U44 --> B7[Bot: You're welcome!]
+
+U7 --> U14[User: Proceed with booking]
+U8 --> U14
+U14 --> B13[Bot: Booking confirmed. Enjoy your journey to the stars!]
