@@ -1,0 +1,42 @@
+B0[Bot: Greet & Ask for Service]
+    B0 --> U1[User: Check Account Balance]
+    B0 --> U2[User: Report a Lost Card]
+    B0 --> U3[User: Transfer Funds]
+
+U1 --> B1[Bot: Ask for Account Type]
+U2 --> B2[Bot: Confirm Card Cancellation]
+U3 --> B3[Bot: Ask for Transfer Details]
+
+B1 --> U4[User: Choose Savings]
+B1 --> U5[User: Choose Checking]
+
+B2 --> U6[User: Confirm Cancellation]
+B2 --> U7[User: Ask for Options]
+
+B3 --> U8[User: Provide Details]
+B3 --> U9[User: Ask for Limits]
+
+U4 --> B4[Bot: Show Savings Balance]
+U5 --> B5[Bot: Show Checking Balance]
+
+U6 --> B6[Bot: Card Cancelled & Offer Replacement]
+U7 --> B7[Bot: Explain Options]
+
+U8 --> B8[Bot: Confirm Transfer & Complete]
+U9 --> B9[Bot: Explain Transfer Limits]
+
+B4 --> U10[User: Need Additional Help?]
+B5 --> U10
+B6 --> U10
+B8 --> U10
+
+B8 --> U11[User: Inquire About Transaction Fees]
+B9 --> U11
+
+B3 --> U13[User: Proceed with Multi-Factor Authentication]
+B7 --> U13
+
+U10 --> B10[Bot: Offer Additional Services]
+U11 --> B11[Bot: Provide Fee Information]
+
+U13 --> B13[Bot: Perform MFA Steps]
