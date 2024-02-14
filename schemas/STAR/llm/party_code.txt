@@ -1,0 +1,42 @@
+B0[Bot: Greet & How Can I Assist with Your Party?]
+    B0 --> U1[User: Select a Theme]
+    B0 --> U2[User: Manage Guest List]
+    B0 --> U3[User: Book a Venue]
+    B0 --> U4[User: Choose Catering]
+    B0 --> U16[User: Decide on Entertainment]
+    B0 --> U17[User: Plan Decorations]
+
+U1 --> B1[Bot: Suggest Party Themes]
+U2 --> B2[Bot: How to Manage Guests?]
+U3 --> B3[Bot: Provide Venue Options]
+U4 --> B4[Bot: Discuss Catering Options]
+U16 --> B12[Bot: Entertainment Options]
+U17 --> B13[Bot: Decoration Ideas]
+
+B1 --> U5[User: Theme Selected]
+B2 --> U6[User: Add Guest]
+B2 --> U7[User: Remove Guest]
+B3 --> U8[User: Venue Chosen]
+B4 --> U9[User: Catering Chosen]
+B12 --> U18[User: Entertainment Decided]
+B13 --> U19[User: Decorations Planned]
+
+U5 --> B10[Bot: Confirm Venue Booking]
+U6 --> B6[Bot: Guest Added]
+U7 --> B7[Bot: Guest Removed]
+U8 --> B10
+U9 --> B11[Bot: Confirm Catering Details]
+U18 --> B14[Bot: Confirm Entertainment]
+U19 --> B15[Bot: Confirm Decoration Plans]
+
+B6 --> U16
+B7 --> U16
+
+B10 --> U11[User: Any Other Party Needs?]
+B11 --> U11
+B14 --> U11
+B15 --> U11
+
+U11 --> B16[Bot: Finalize Party Details]
+B16 --> U12[User: Review & Confirm Final Details]
+U12 --> B17[Bot: Party Details Finalized & Ready!]
