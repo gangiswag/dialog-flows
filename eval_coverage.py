@@ -343,7 +343,8 @@ def main(dataset, model, conversations, schemas, results, batch):
                 domain_results[method] = {
                     'max': np.max(scores),
                     'min': np.min(scores),
-                    'average': np.mean(scores)
+                    'average': np.mean(scores),
+                    'len': len(scores)
                 }
                 results_file_path = os.path.join(results, f"{dataset}_{domain}.json")
                 with open(results_file_path, 'w') as results_file:
