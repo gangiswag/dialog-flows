@@ -1,54 +1,38 @@
-b0[Bot: Greet and Ask for Assistance/Phone Plan Information]:::bot
-u1[User: Asks about Bot's Capabilities or Phone Plans]:::user
-u2[User: Requests Help with Mobile Plan or Has Questions About Current Plan]:::user
-u3[User: Specific Upgrade Request or Interested in Family Plans]:::user
-u4[User: Inquires about Data Plan or Plan Details]:::user
-u5[User: Provides Account Info Directly or Asks About Special Offers]:::user
-u6[User: General Inquiry about Data Left or Wants to Upgrade Plan]:::user
-u7[User: Needs Help With Billing Issue]:::user
-u8[User: Asks About Add-ons for Family Plan]:::user
-b1[Bot: Describes Capabilities and Lists Available Phone Plans]:::bot
-b2[Bot: Provides Information on Current Plan or Specific Plan or Service Needs]:::bot
-b3[Bot: Offers Specific Plan Upgrades or Describes Family Plan Options]:::bot      
-b4[Bot: Asks for Account Details or Helps Resolve Billing Issue]:::bot
-b5[Bot: Provides Data Plan Info or Details Specific Plan Features]:::bot
-b6[Bot: Informs About Current Promotions or Unable to Provide Data Usage]:::bot
-b7[Bot: Discusses Multi-Line Discount Options]:::bot
-u9[User: Decides on Plan Sign-Up, Upgrade Confirmation, or Needs Further Assistance]:::user
-b8[Bot: Finalizes Sign-Up or Plan Changes, Proceeds with Upgrade]:::bot
-b9[Bot: Provides Additional Support, Information, and Addresses Dissatisfaction/Problems]:::bot
-u10[User: Expresses Satisfaction, Dissatisfaction, or Ends Conversation]:::user
-b10[Bot: Directs to Customer Service for Complex Queries or Concludes with More Help Offer]:::bot
 
-b0 --> u1
-b0 --> u2
-b0 --> u3
-b0 --> u4
-b0 --> u5
-b0 --> u6
-b0 --> u7
-b0 --> u8
-u1 --> b1
-u2 --> b2
-u3 --> b3
-u4 --> b5
-u5 --> b3
-u5 --> b6
-u6 --> b3
-u6 --> b4
-u7 --> b4
-u8 --> b7
-b1 --> u2
-b2 --> u3
-b2 --> u4
-b3 --> u9
-b4 --> u9
-b5 --> u9
-b6 --> u9
-b7 --> u9
-u9 --> b8
-u9 --> b9
-u9 --> b10
-b8 --> u10
-b9 --> u10
-b10 --> u10
+   B0[Bot: Greet and Ask What Phone Plan Information is Needed] --> U1[User: Wants to Explore New Phone Plans]
+   B0 --> U2[User: Has Questions About Current Plan]
+   B0 --> U3[User: Interested in Family Plans]
+
+
+   U1 --> B1[Bot: Lists Available Phone Plans]
+   U2 --> B2[Bot: Provides Information on Current Plan]
+   U3 --> B3[Bot: Describes Family Plan Options]
+
+
+   B1 --> U4[User: Inquires About Plan Details]
+   B1 --> U5[User: Asks About Special Offers]
+   B2 --> U6[User: Wants to Upgrade Plan]
+   B2 --> U7[User: Needs Help With Billing Issue]
+   B3 --> U8[User: Asks About Add-ons for Family Plan]
+   B3 --> U9[User: Inquires About Multi-Line Discounts]
+
+
+   U4 --> B4[Bot: Details Specific Plan Features]
+   U5 --> B5[Bot: Informs About Current Promotions]
+   U6 --> B6[Bot: Assists With Plan Upgrade]
+   U7 --> B7[Bot: Helps Resolve Billing Issue]
+   U8 --> B8[Bot: Explains Family Plan Add-ons]
+   U9 --> B9[Bot: Discusses Multi-Line Discount Options]
+
+
+   B4 --> U10[User: Decides to Sign Up for a Plan]
+   B6 --> U10[User: Decides to Sign Up for a Plan]
+   B7 --> U11[User: Requests Further Assistance or Provides Feedback]
+   B8 --> U10[User: Decides to Sign Up for a Plan]
+   B9 --> U10[User: Decides to Sign Up for a Plan]
+
+
+   U10 --> B10[Bot: Handles Plan Sign-Ups and Upgrades]
+   U11 --> B11[Bot: Provides Additional Support or Collects Feedback]
+
+
