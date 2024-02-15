@@ -6,7 +6,7 @@ python eval_coverage.py metawoz mistralai/Mistral-7B-Instruct-v0.2 conversations
 ```
 
 ```
-python eval_coverage.py metawoz mistralai/Mistral-7B-Instruct-v0.2 conversations/Metawoz/test/ schemas/Metawoz/test/ results/Metawoz/test/ 
+python eval_coverage.py metawoz mistralai/Mistral-7B-Instruct-v0.2 conversations/Metawoz/test/ schemas/Metawoz/test/ results/Metawoz/test/ --batch {1,2,3,4,5}
 ```
 
 ```
