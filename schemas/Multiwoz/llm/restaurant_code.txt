@@ -1,4 +1,4 @@
-graph TD
+
     B0[Bot: Greetings! How can I assist you with your restaurant design needs today?]
     U1[User: I need help with layout planning.]
     U2[User: I'm interested in interior design ideas.]
