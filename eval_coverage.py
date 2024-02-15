@@ -272,20 +272,26 @@ def match_utterances_to_labels(dataset, conversations, user_node_names, bot_node
         convos_nodes.append(convo_nodes)
     return convos_nodes
         
-def find_domains_to_use(dataset, conversations):
+def find_domains_to_use(dataset, conversations, batch):
     if dataset == "metawoz":
         if conversations.split("/")[2] == "dev":
             return "metawoz_dev_domains"
         elif conversations.split("/")[2] == "test":
-            return "metawoz_test_domains" 
+            return f'metawoz_test_domains_{batch}'
     elif dataset == "multiwoz":
         return "multiwoz_domains"
     else:
         return dataset
     
-def main(dataset, model, conversations, schemas, results):
+def main(dataset, model, conversations, schemas, results, batch):
     domains = {
-        "metawoz_test_domains" : ["alarm_set", "apartment_finder", "appointment_reminder","bank_bot", "bus_schedule_bot", "city_info", "edit_playlist", "event_reserve","guinness_check", "library_request", "look_up_info", "music_suggester", "name_suggester", "pet_advice", "scam_lookup", "shopping", "ski_bot", "sports_info", "store_details", "update_calendar", "update_contact", "wedding_planner"],
+        ""
+        "metawoz_test_domains_1" : ["alarm_set", "apartment_finder", "appointment_reminder"],
+        "metawoz_test_domains_2" : ["bus_schedule_bot", "city_info", "edit_playlist", "event_reserve"],
+        "metawoz_test_domains_3" : ["bank_bot", "guinness_check", "library_request", "look_up_info"],
+        "metawoz_test_domains_4" : ["music_suggester", "name_suggester", "pet_advice", "scam_lookup", "shopping"],
+        "metawoz_test_domains_5" : ["ski_bot", "sports_info", "store_details", "update_calendar", "update_contact", "wedding_planner"],
+        "metawoz_test_domains_0" : ["alarm_set", "apartment_finder", "appointment_reminder","bank_bot", "bus_schedule_bot", "city_info", "edit_playlist", "event_reserve","guinness_check", "library_request", "look_up_info", "music_suggester", "name_suggester", "pet_advice", "scam_lookup", "shopping", "ski_bot", "sports_info", "store_details", "update_calendar", "update_contact", "wedding_planner"],
         "metawoz_dev_domains" : ["phone_plan", "order_pizza", "movie_listings", "restaurant_picker", "weather_check"],
         "multiwoz_domains" : ["attraction", "hotel", "restaurant", "taxi", "train"],
         "simulated_dialogs_test" : ["alarm_set", "apartment_finder", "appointment_reminder","bank_bot", "bus_schedule_bot", "city_info", "edit_playlist", "event_reserve","guiness_check", "library_request", "look_up_info", "music_suggester", "name_suggester", "pet_advice", "scam_lookup", "shopping", "ski_bot", "sports_info", "store_details", "update_calendar", "update_contact", "wedding_planner"],
@@ -302,14 +308,14 @@ def main(dataset, model, conversations, schemas, results):
     # run the model
     run_model(model)
 
-    domains_to_use = find_domains_to_use(dataset, conversations)
+    domains_to_use = find_domains_to_use(dataset, conversations, batch)
 
     if "simulated_dialogs" in dataset:
         methods = ["merged"]
     else:
         methods = ["llm", "data", "merged"]
     
-    for domain in domains[domains_to_use][6:]:
+    for domain in tqdm(domains[domains_to_use]):
         print("running for", domain)
         domain_results = {}
         try:
@@ -337,7 +343,8 @@ def main(dataset, model, conversations, schemas, results):
                 domain_results[method] = {
                     'max': np.max(scores),
                     'min': np.min(scores),
-                    'average': np.mean(scores)
+                    'average': np.mean(scores),
+                    'len': len(scores)
                 }
                 results_file_path = os.path.join(results, f"{dataset}_{domain}.json")
                 with open(results_file_path, 'w') as results_file:
@@ -355,9 +362,10 @@ if __name__ == "__main__":
     parser.add_argument('conversations', type=str, help='Path to the folder containing conversation files')
     parser.add_argument('schemas', type=str, help='Path to the folder containing schema files')
     parser.add_argument('results', type=str, help='Path to the folder where results will be saved')
+    parser.add_argument('--batch', type=int, default=0, help='Batch for processing (default: 0)')
 
     args = parser.parse_args()
     print("args parsed")
     
-    main(args.dataset, args.model, args.conversations, args.schemas, args.results)
+    main(args.dataset, args.model, args.conversations, args.schemas, args.results, args.batch)
 
