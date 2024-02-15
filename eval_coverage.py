@@ -234,6 +234,8 @@ def calculate_evaluation_score(convo_nodes, induced_schema):
                             node_found = True  
     
     # total_possible_transitions = sum(len(connected_nodes) for connected_nodes in induced_schema.values())
+    if len(convo_nodes) == 1:
+        return 1
     return score / (len(convo_nodes)-1)  # Normalize the score to be between 0 and 1
 
 
@@ -324,7 +326,14 @@ def main(dataset, model, conversations, schemas, results):
                 convos = load_conversations(conversation_file)
                 convos_nodes = match_utterances_to_labels(dataset, convos, user_node_names, bot_node_names, node_name_to_no)
 
-                scores = [calculate_evaluation_score(convo_nodes, schema_g) for convo_nodes in convos_nodes]
+                scores = []
+                for convo_node in convos_nodes:
+                    try:
+                        score = calculate_evaluation_score(convo_node, schema_g)
+                        scores.append(score)
+                    except Exception as e:
+                        print(f"An error occurred during calculation: {e}")
+
                 domain_results[method] = {
                     'max': np.max(scores),
                     'min': np.min(scores),
