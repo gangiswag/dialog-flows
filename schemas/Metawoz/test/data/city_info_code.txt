@@ -1,13 +1,3 @@
-style B1 fill:#f9d5e5
-style B2_general fill:#f9d5e5
-style B3 fill:#f9d5e5
-style B4_general fill:#f9d5e5
-style B5 fill:#f9d5e5
-style B9_close fill:#f9d5e5
-style B10_cultural_facts fill:#f9d5e5
-style B11_economic_data fill:#f9d5e5
-style B12_environmental_info fill:#f9d5e5
-
 
 B1[Greeting]
 B1 --> U1[Request City Facts]
