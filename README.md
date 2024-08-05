@@ -11,7 +11,7 @@ conda create --name myenv
 pip install -r requirements.txt
 ```
 
-## Run the schema coverage
+## Run the flow coverage
 
 For running the numbers for the dev set for the MetaLWoz dataset
 ```
