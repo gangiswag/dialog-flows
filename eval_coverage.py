@@ -14,7 +14,11 @@ import re
 import numpy as np
 import json
 import traceback
+from transformers import AutoConfig, AutoTokenizer
 
+# Make sure to replace 'your_token_here' with your actual Hugging Face token
+config = AutoConfig.from_pretrained("mistralai/Mistral-7B-Instruct-v0.2", use_auth_token='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')
+tokenizer = AutoTokenizer.from_pretrained("mistralai/Mistral-7B-Instruct-v0.2", use_auth_token='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')
 tokenizer = None
 llm_pipeline = None
 
