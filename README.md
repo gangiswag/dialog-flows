@@ -16,10 +16,10 @@ pip install -r requirements.txt
 
 For running the evaluation coverage on the MetaLWoz dataset
 ```
-python eval_coverage.py --dataset metawoz --model mistralai/Mistral-7B-Instruct-v0.2 --conversations conversations/Metalwoz/ --flows flows/Metawoz/ --results ./results/
+python eval_coverage.py --dataset metalwoz --model mistralai/Mistral-7B-Instruct-v0.2 --conversations conversations/Metalwoz/ --flows flows/Metalwoz/ --results ./results/
 ```
 
 For running the evaluation coverage on the MultiWOZ dataset
 ```
-python eval_coverage.py --dataset metawoz --model mistralai/Mistral-7B-Instruct-v0.2 --conversations conversations/Metalwoz/ --flows flows/Metawoz/ --results ./results/
+python eval_coverage.py --dataset multiwoz --model mistralai/Mistral-7B-Instruct-v0.2 --conversations conversations/Multiwoz/ --flows flows/Multiwoz/ --results ./results/
 ```
