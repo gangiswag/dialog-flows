@@ -1,0 +1,22 @@
+B0[Bot: Greeting and Assistance Offer] --> U1[User: Wants to Find or Reserve a Book]
+B0 --> U2[User: Inquires About Library Services or Membership]
+B0 --> U3[User: Interested in Library Events or Community Programs]
+B0 --> U4[User: Needs Information on Digital Resources or Research Support]
+B0 --> U5[User: Concerns About Account Issues - Late Fees, Renewals, or Reservations]
+
+U1 --> B1[Bot: Assist with Book Search or Reservation]
+U2 --> B2[Bot: Provide Information on Services and Membership]
+U3 --> B3[Bot: Share Details on Events and Programs]
+U4 --> B4[Bot: Offer Digital Resources and Research Assistance]
+U5 --> B5[Bot: Address Account Concerns]
+
+B1 --> U6[User: Further Inquiries or Specific Requests]
+B2 --> U6
+B3 --> U6
+B4 --> U6
+B5 --> U6
+
+U6 --> B6[Bot: Provide Further Assistance or Detailed Information]
+
+B6 --> U7[User: Satisfied with Information or Requires More Help]
+U7 --> B7[Bot: Concludes or Offers More Help]

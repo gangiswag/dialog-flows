@@ -1,0 +1,49 @@
+B0[Bot: Greeting and Asks for Apartment Preferences] --> U1[User: Specifies Location Preference]
+   B0 --> U2[User: Inquires About Price Range]
+   B0 --> U3[User: Asks for Apartment Types]
+   B0 --> U4[User: Wants to Know About Amenities]
+   B0 --> U15[User: Inquires About Lease Terms]
+   B0 --> U16[User: Asks About Pet Policies]
+   B0 --> U17[User: Expresses Dissatisfaction with Options]
+   B0 --> U18[User: Uncertain and Asks for More Help]
+
+
+   U1 --> B1[Bot: Provides Options Based on Location]
+   U2 --> B2[Bot: Asks for Specific Price Range]
+   U3 --> B3[Bot: Lists Different Apartment Types]
+   U4 --> B4[Bot: Describes Available Amenities]
+
+   B1 --> U5[User: Chooses an Apartment]
+   B12 --> U6
+   B1 --> U6[User: Requests More Options]
+   B2 --> U7[User: Provides Price Range]
+   B3 --> U8[User: Selects Apartment Type]
+   B4 --> U9[User: Inquires About Specific Amenities]
+
+
+
+   U5 --> B5[Bot: Arranges Viewing or Provides More Details]
+   U6 --> B6[Bot: Offers Additional Location-Based Options]
+   U7 --> B7[Bot: Suggests Apartments Within Price Range]
+   U8 --> B8[Bot: Shows Apartments of Selected Type]
+   U9 --> B9[Bot: Gives Information on Amenities]
+
+
+
+   B5 --> U10[User: Ready to Proceed with Viewing]
+   B5 --> U11[User: Asks for Time to Think]
+   B6 --> U5
+   B7 --> U5
+   B8 --> U5
+   B9 --> U5
+   B13 --> U6
+   U10 --> B10[Bot: Finalizes Appointment for Viewing]
+   U11 --> B11[Bot: Provides Contact Details for Further Queries]
+   U15 --> B10
+   U16 --> B11
+   U17 --> B12[Bot: Offers Further Assistance or Alternatives]
+   U18 --> B13[Bot: Provides Additional Help or Clarification]
+   U19 --> B14[Bot: Handles Feedback and Finalization]
+
+
+   B5 --> U19[User: Gives Feedback and Wants to Finalize]

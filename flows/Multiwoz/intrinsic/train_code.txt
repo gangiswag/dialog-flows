@@ -1,0 +1,58 @@
+ B0[Bot: Greetings! How can I assist you with train design today?]
+   U1[User: I'd like to know about the latest train designs.]
+   U2[User: Can you help with train safety features?]
+   U3[User: I'm interested in sustainable train technologies.]
+   U10[User: I want to know about digital technologies in trains.]
+   U11[User: Tell me about interior design innovations.]
+   U12[User: What are the latest customer comfort features?]
+   B1[Bot: Discussing the latest innovations in train design such as...]
+   B2[Bot: Exploring train safety features including...]
+   B3[Bot: Sustainable train technologies focus on reducing emissions through...]
+   B10[Bot: Discussing digital technologies in train design such as...]
+   B11[Bot: Exploring interior design innovations for enhanced passenger experience...]
+   B12[Bot: Customer comfort features include...]
+   U4[User: Tell me more about aerodynamics.]
+   U5[User: What are passive safety features?]
+   U6[User: Can you explain regenerative braking?]
+   U7[User: Thank you, that's helpful!]
+   U8[User: Can I get information on material usage?]
+
+
+
+
+   B4[Bot: Aerodynamics in train design involves...]
+   B5[Bot: Passive safety features are designed to...]
+   B6[Bot: Regenerative braking converts...]
+   B7[Bot: You're welcome! Anything else?]
+   B8[Bot: Material usage in trains includes...]
+
+
+   B0 --> U1
+   B0 --> U2
+   B0 --> U3
+   B0 --> U10
+   B0 --> U11
+   B0 --> U12
+   U1 --> B1
+   U2 --> B2
+   U3 --> B3
+   U10 --> B10
+   U11 --> B11
+   U12 --> B12
+   B1 --> U4
+   B2 --> U5
+   B3 --> U6
+   B10 --> U7
+   B11 --> U7
+   B12 --> U7
+   U4 --> B4
+   U5 --> B5
+   U6 --> B6
+   B4 --> U7
+   B5 --> U7
+   B6 --> U7
+   B4 --> U8
+   B5 --> U8
+   B6 --> U8
+   U7 --> B7
+   U8 --> B8

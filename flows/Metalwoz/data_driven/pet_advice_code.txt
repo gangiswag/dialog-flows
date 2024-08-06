@@ -1,0 +1,19 @@
+B0[Bot: Greeting and Assistance Offer] --> U1[User: Seeks Advice on Specific Pet Needs]
+B0 --> U2[User: Inquires About General Pet Care]
+
+U1 --> B1[Bot: Provide Advice on Feeding, Health, and Training]
+U2 --> B2[Bot: Offer General Pet Care Information]
+
+B1 --> U3[User: Asks for More Details on Pet Care Topics]
+B2 --> U4[User: Requests Information on Specific Aspects of Pet Care]
+
+U3 --> B3[Bot: Detail Specific Care Instructions]
+U4 --> B4[Bot: Guidance on Specialized Pet Care Areas]
+
+B3 --> U5[User: Expresses Further Interest or Queries]
+B4 --> U5
+
+U5 --> B5[Bot: Respond to Additional Inquiries]
+
+B5 --> U6[User: Satisfied or Requests More Help]
+U6 --> B6[Bot: Concludes or Offers More Assistance]

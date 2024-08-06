@@ -1,0 +1,67 @@
+
+    B0[Bot: Greetings! How can I assist you with your restaurant design needs today?]
+    U1[User: I need help with layout planning.]
+    U2[User: I'm interested in interior design ideas.]
+    U3[User: Can you suggest menu design tips?]
+    U4[User: What about incorporating sustainability practices?]
+    U13[User: Tell me about integrating digital menu boards.]
+    U14[User: How do I ensure health and safety compliance?]
+    U15[User: Can you explain leveraging technology for operational efficiency?]
+    B1[Bot: Layout planning involves considering kitchen size, dining area, and customer flow.]
+    B2[Bot: Interior design can vary greatly, focusing on themes, lighting, and furniture.]
+    B3[Bot: Menu design tips include readability, thematic alignment, and item placement.]
+    B4[Bot: Sustainability practices include using local ingredients, energy-efficient appliances, and waste reduction methods.]
+    B10[Bot: Digital menu boards can enhance customer experience and streamline operations.]
+    B11[Bot: Health and safety compliance involves understanding local regulations, designing for cleanliness, and ensuring proper ventilation.]
+    B12[Bot: Leveraging technology involves using POS systems, online reservation systems, and integrating with food delivery platforms.]
+    U5[User: Can you provide examples of themes?]
+    U6[User: How do I choose the right lighting?]
+    U7[User: Any advice on highlighting special items?]
+    U8[User: How can I start with waste reduction?]
+    B5[Bot: Popular themes include modern, minimalist, industrial, and cultural.]
+    B6[Bot: Right lighting depends on your restaurant's theme and mood you want to set.]
+    B7[Bot: Highlight special items by placing them at the top or in a separate box.]
+    B8[Bot: Start waste reduction by analyzing your waste, composting, and recycling.]
+    U9[User: Thank you, that was helpful!]
+    U10[User: I need more information.]
+    B9[Bot: You're welcome! Feel free to ask more questions or visit our resource center.]
+
+    B0 --> U1
+    B0 --> U2
+    B0 --> U3
+    B0 --> U4
+    B0 --> U13
+    B0 --> U14
+    B0 --> U15
+    U1 --> B1
+    U2 --> B2
+    U3 --> B3
+    U4 --> B4
+    U13 --> B10
+    U14 --> B11
+    U15 --> B12
+    B1 --> U5
+    B2 --> U6
+    B3 --> U7
+    B4 --> U8
+    B10 --> U9
+    B11 --> U9
+    B12 --> U9
+    B10 --> U10
+    B11 --> U10
+    B12 --> U10
+    U5 --> B5
+    U6 --> B6
+    U7 --> B7
+    U8 --> B8
+    B5 --> U9
+    B6 --> U9
+    B7 --> U9
+    B8 --> U9
+    B5 --> U10
+    B6 --> U10
+    B7 --> U10
+    B8 --> U10
+    U9 --> B9
+    U10 --> B10
+

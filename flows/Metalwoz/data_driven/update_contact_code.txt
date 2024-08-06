@@ -1,0 +1,54 @@
+B0[Bot: Greeting and Request Intent]
+    B0 --> U1[User: Update Contact Info]
+    B0 --> U2[User: Query Contact Details]
+    B0 --> U3[User: Remove Contact]
+    B0 --> U7[User: No Action Needed - End Conversation]
+    B0 --> U20[User: Provide Feedback]
+
+U1 --> B1[Bot: Ask Which Contact to Update]
+U2 --> B2[Bot: Provide Contact Details]
+U3 --> B3[Bot: Confirm Contact Removal]
+U7 --> B14[Bot: Acknowledge & End]
+
+B1 --> U4[User: Specify Contact Name]
+B1 --> U5[User: Request Contact Search]
+
+U4 --> B4[Bot: Request Specific Update Details]
+U5 --> B4
+
+B2 --> U6[User: Request Update on Details]
+U6 --> B13[Bot: Handle Input Error]
+B2 --> U21[User: Ask about Importing/Exporting Contacts]
+U21 --> B17[Bot: Importing/Exporting Contacts]
+
+B3 --> U8[User: Confirm Removal]
+B3 --> U9[User: Cancel Removal]
+U8 --> B14
+U9 --> B9[Bot: Cancel Removal & Continue]
+
+B4 --> U10[User: Provide New Details]
+B4 --> U11[User: Cancel Update]
+
+U10 --> B6[Bot: Execute Update & Confirm]
+U11 --> B14
+
+U2 --> B10[Bot: Merge Duplicate Contacts]
+U2 --> B11[Bot: Export/Import Contact Info]
+U2 --> B12[Bot: Sync Contacts from Social Media]
+
+B10 --> U12[User: Confirm Merge]
+B11 --> U13[User: Choose Import/Export]
+B12 --> U14[User: Confirm Social Media Sync]
+
+U12 --> B14
+U13 --> B14
+U14 --> B14
+
+B6 --> B14[Bot: Confirm Update & Offer Further Assistance]
+
+U20 --> B19[Bot: Asking for User Feedback]
+B19 --> U15[User: Feedback Provided]
+U15 --> B14
+
+B17 --> U16[User: End Conversation]
+U16 --> B14

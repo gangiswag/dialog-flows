@@ -1,0 +1,30 @@
+   B0[Bot: Greeting and Asks for Pet-Related Inquiry] --> U1[User: Seeks Advice on Feeding a Pet]
+   B0 --> U2[User: Inquires About Pet Health Concerns]
+   B0 --> U3[User: Wants Tips for Pet Training]
+   B0 --> U4[User: Asks About Suitable Pet Toys and Activities]
+   B0 --> U5[User: Needs Information on Pet Grooming]
+   U1 --> B1[Bot: Provides Pet Feeding Guidelines]
+   U2 --> B2[Bot: Offers Basic Health Care Tips]
+   U3 --> B3[Bot: Suggests Training Techniques]
+   U4 --> B4[Bot: Recommends Toys and Activities]
+   U5 --> B5[Bot: Gives Grooming Advice]
+   
+   B1 --> U6[User: Asks for Specific Dietary Recommendations]
+   B2 --> U6[User: Seeks Further Clarification on Health Issues]
+   B3 --> U6[User: Requests More Training Tips]
+   B4 --> U6[User: Wants to Know More About Suitable Toys]
+   B5 --> U6[User: Inquires About Specific Grooming Products]
+   U6 --> B6[Bot: Provides More Detailed Information]
+
+   B6 --> U7[User: Satisfied with Information or Has More Questions]
+   U7 --> B7[Bot: Concludes Assistance or Continues Helping]
+ 
+   B1 --> U8[User: Needs Advice on Special Diets for Pets]
+   B2 --> U9[User: Wants to Discuss Chronic Health Conditions]
+   B4 --> U10[User: Inquires About Age-Appropriate Pet Toys]
+   U8 --> B7
+   U9 --> B7
+   U10 --> B7
+   B8[Bot: Provides Behavioral Advice]
+   U7 --> B8
+    

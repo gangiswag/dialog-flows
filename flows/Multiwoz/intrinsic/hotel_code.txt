@@ -1,0 +1,57 @@
+    b0[Bot: Greet & Ask for Needs] --> u1[User: Wants to Book a Room]
+   b0 --> u2[User: Inquiry About Facilities]
+   b0 --> u3[User: Needs Assistance]
+  
+
+
+   u1 --> b1[Bot: Ask Booking Details]
+   u2 --> b2[Bot: Provide Facility Info]
+   u3 --> b3[Bot: Offer Assistance Options]
+
+
+   b1 --> u4[User: Provides Details]
+   b1 --> u5[User: Asks for Offers]
+   b2 --> u6[User: More Info on Facilities]
+
+
+   b3 --> u8[User: Specific Request]
+   
+   u4 --> b4[Bot: Confirm Details & Book]
+   u5 --> b5[Bot: Show Offers]
+   u6 --> b6[Bot: Detailed Facility Info]
+
+
+   u8 --> b7[Bot: Handle Specific Request]
+  
+   u10[User: Confirm Booking] --> b8[Bot: Booking Confirmed]
+   u11[User: Modify Details] --> b14
+   u12[User: Satisfied with Assistance] --> b9[Bot: Confirm Assistance Satisfaction]
+ 
+
+   b10[Bot: Compare Room Types] --> u14[User: Requests Comparison]
+   b11[Bot: Handle Complaints] --> u15[User: Provides Feedback]
+   b12[Bot: Arrange External Services] --> u16[User: Requests Service]
+   b13[Bot: Clarify Misunderstandings] --> u17[User: Needs Further Clarification]
+  
+   u14 --> b6
+   u15 --> b9
+   u16 --> b8
+   u17 --> b3
+  
+   u2 --> b10
+   u3 --> b11
+   u1 --> b12
+   u6 --> b13
+ 
+  
+   b4 --> u10
+   b4 --> u11
+   b5 --> u4
+   b7 --> u12
+
+
+  
+   u10 --> b14[Bot: Conclusion & Thanks]
+   u12 --> b14
+   u15 --> b14
+   u16 --> b14

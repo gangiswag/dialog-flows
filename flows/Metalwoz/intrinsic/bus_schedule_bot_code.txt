@@ -1,0 +1,36 @@
+
+   B0[Bot: Greeting and Asks for Bus Schedule Inquiry] --> U1[User: Requests Schedule for a Specific Route]
+   B0 --> U2[User: Asks About Bus Fares]
+   B0 --> U3[User: Inquires About Bus Stop Locations]
+   B0 --> U4[User: Wants Real-Time Bus Arrival Information]
+   B0 --> U29[User: Inquires About Accessibility Options]
+   B0 --> U30[User: Asks About Special Services]
+   B0 --> U31[User: Queries Service Changes and Alerts]
+   B0 --> U32[User: Seeks Multi-modal Transportation Info]
+  
+
+   U1 --> B1[Bot: Provides Schedule for Requested Route]
+   U2 --> B2[Bot: Informs About Bus Fares]
+   U3 --> B3[Bot: Lists Nearby Bus Stop Locations]
+   U4 --> B4[Bot: Gives Real-Time Arrival Information]
+   U29 --> B5[Bot: Discusses Accessibility Options]
+   U30 --> B6[Bot: Talks About Special Services]
+   U31 --> B7[Bot: Informs About Service Changes and Alerts]
+   U32 --> B8[Bot: Provides Multi-modal Transportation Info]
+
+
+   B1 --> U10[User: Requests Further Details or Another Schedule]
+   B2 --> U10
+   B3 --> U10
+   B4 --> U10
+   B5 --> U10
+   B6 --> U10
+   B7 --> U10
+   B8 --> U10
+
+   U10 --> B9[Bot: Provides Additional Information or Another Schedule]
+
+
+   B9 --> U33[User: Provides Feedback or Needs More Help]
+   U33 --> B10[Bot: Addresses Feedback and Offers Further Assistance]
+

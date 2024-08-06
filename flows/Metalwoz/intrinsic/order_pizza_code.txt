@@ -1,0 +1,40 @@
+B0[Bot: Greet and Ask for Pizza Preferences] --> U1[User: Wants to Choose Pizza Type]
+B0 --> U2[User: Asks for Recommendations]
+B0 --> U3[User: Inquires About Special Deals]
+
+
+U1 --> B1[Bot: Lists Pizza Types]
+U2 --> B2[Bot: Suggests Popular Pizzas]
+U3 --> B3a[Bot: Describes Veg Specials]
+U3 --> B3b[Bot: Describes Non-Veg Specials]
+
+
+B1 --> U4[User: Selects a Specific Pizza Type]
+B1 --> U5[User: Asks for Customization Options]
+B2 --> U6[User: Chooses a Recommended Pizza]
+B2 --> U7[User: Wants to Know More About Ingredients]
+B3a --> U8[User: Chooses a Veg Special Deal]
+B3b --> U9[User: Chooses a Non-Veg Special Deal]
+
+
+U4 --> B12[Bot: Confirms Order with Details]
+U5 --> B4[Bot: Provides Customization Choices]
+U6 --> B12[Bot: Confirms Order with Details]
+U7 --> B5[Bot: Details Ingredients and Options]
+U8 --> B12[Bot: Confirms Order with Details]
+U9 --> B6[Bot: Offers Information on Combo Deals]
+
+
+B4 --> U10[User: Makes Final Customization Choices]
+B5 --> U11[User: Finalizes Pizza Based on Ingredients]
+B6 --> U12[User: Decides on Combo Deal]
+
+
+U10 --> B12[Bot: Confirms Order with Details]
+U11 --> B12[Bot: Confirms Order with Details]
+U12 --> B11[Bot: Gathers Post-Order Feedback]
+
+
+U1 --> B10[Bot: Provides Information on Dietary Restrictions]
+
+

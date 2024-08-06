@@ -1,0 +1,49 @@
+B0[Bot: Greet & Ask for Planning Needs] --> U1[User: Inquire About Venues]
+B0 --> U2[User: Ask About Catering Options]
+B0 --> U3[User: Discuss Photography Packages]
+B0 --> U4[User: Need Help with Invitations]
+U1 --> B1[Bot: Provide Venue Options]
+U2 --> B2[Bot: Discuss Catering Services]
+U3 --> B3[Bot: Show Photography Portfolio]
+U4 --> B4[Bot: Offer Invitation Designs]
+U1 --> B12[Bot: Discuss Entertainment Options]
+U1 --> B13[Bot: Provide Transportation Solutions]
+U1 --> B14[Bot: Offer Accommodation Options]
+B1 --> U6[User: Book Venue]
+B1 --> U7[User: More Information on Venues]
+B2 --> U8[User: Select Menu]
+B2 --> U9[User: More Information on Catering]
+B3 --> U10[User: Choose Photographer]
+B3 --> U11[User: More Information on Photography]
+B4 --> U12[User: Customize Invitations]
+B4 --> U13[User: More Information on Invitations]
+B12 --> U14[User: Discuss Entertainment Details]
+B13 --> U15[User: Discuss Transportation Details]
+B14 --> U16[User: Discuss Accommodation Details]
+
+U6 --> B5[Bot: Confirm Venue Booking]
+U7 --> B6[Bot: Provide Detailed Venue Information]
+U8 --> B7[Bot: Confirm Catering Booking]
+U9 --> B6[Bot: Provide Detailed Catering Information]
+U10 --> B8[Bot: Confirm Photographer Booking]
+U11 --> B6[Bot: Provide Detailed Photography Information]
+U12 --> B9[Bot: Confirm Invitation Order]
+U13 --> B6[Bot: Provide Detailed Invitation Information]
+U14 --> B6[Bot: Provide Detailed Entertainment Information]
+U15 --> B6[Bot: Provide Detailed Transportation Information]
+U16 --> B6[Bot: Provide Detailed Accommodation Information]
+
+B5 --> U17[User: Any Other Planning Needs After Venue?]
+B7 --> U17
+B8 --> U17
+B9 --> U17
+B6 --> U17
+
+U17 --> B15[Bot: Personalize Recommendations]
+U17 --> B16[Bot: Summarize & Confirm Booking]
+
+
+B15 --> U18[User: Confirm Personalized Recommendations]
+U18 --> B16
+
+B16 --> U19[User: Final Confirmation]

@@ -1,0 +1,39 @@
+B0[Bot: Greet & Ask for Intent] --> U1[User: Requests Calendar Update]
+B0 --> U2[User: Asks for Calendar Details]
+B0 --> U3[User: Wants to Cancel Appointment]
+
+U1 --> B1[Bot: Ask for Update Details]
+U2 --> B2[Bot: Provide Calendar Overview]
+U3 --> B3[Bot: Confirm Cancellation Request]
+
+B1 --> U4[User: Provides Update Details]
+B1 --> U5[User: Requests to View Calendar First]
+B2 --> U6[User: Selects Specific Appointment to Update]
+U6 --> B11
+B2 --> U7[User: Decides Not to Update]
+B3 --> U8[User: Confirms Cancellation]
+B3 --> U9[User: Cancels Cancellation Request]
+
+U4 --> B4[Bot: Update Calendar & Confirm]
+U5 --> B2
+U7 --> B11[Bot: Acknowledge & Provide Next Steps]
+U8 --> B11
+U9 --> B11
+
+U1 --> B8[Bot: Provide Free Time Slots]
+U1 --> B9[Bot: Handle Appointment Conflicts]
+U4 --> B10[Bot: Set Reminder for Appointment]
+
+B4 --> U10[User: Acknowledge Update & End]
+B8 --> U11[User: Choose Free Time Slot]
+B9 --> U12[User: Resolve Conflict & Choose]
+B10 --> U13[User: Confirm Reminder & End]
+
+U10 --> B11
+U11 --> B1
+U12 --> B1
+U13 --> B11
+
+
+  
+

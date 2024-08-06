@@ -1,0 +1,33 @@
+  B0[Bot: Greeting and Asks for Name Suggestion Criteria] --> U1[User: Seeks a Baby Name]
+   B0 --> U2[User: Looking for a Pet Name]
+   B0 --> U3[User: Wants a Business Name]
+   B0 --> U4[User: Needs a Character Name for a Story]
+   B0 --> U13[User: Seeks Names with Cultural Significance]
+   B0 --> U14[User: Interested in Trending or Popular Names]
+   B0 --> U15[User: Looks for Unique and Creative Names]
+
+
+   U1 --> B1[Bot: Asks for Preferences in Baby Names]
+   U2 --> B2[Bot: Inquires About Type of Pet and Owner's Preferences]
+   U3 --> B3[Bot: Discusses Business Type and Naming Style]
+   U4 --> B4[Bot: Seeks Details About the Story and Character]
+   U13 --> B9[Bot: Suggests Names with Cultural Relevance]
+   B9 --> U6
+   B10 --> U6
+   U14 --> B10[Bot: Offers Trending and Popular Name Options]
+   U15 --> B11[Bot: Provides Unique and Creative Name Ideas]
+
+
+   B1 --> U5[User: Provides Specific Preferences for Baby Name]
+   B2 --> U5[User: Describes Pet and Naming Preferences]
+   B3 --> U5[User: Details Business Concept and Name Ideas]
+   B4 --> U5[User: Gives Character Background and Name Themes]
+   U5 --> B5[Bot: Suggests Names Based on Provided Criteria]
+  
+   B5 --> U6[User: Considers Suggestions and Asks for More Options]
+   U6 --> B6[Bot: Offers Additional Name Suggestions]
+  
+
+   B6 --> U7[User: Decides on a Name or Needs Further Assistance]
+   U7 --> B7[Bot: Finalizes the Suggestion or Continues to Provide Options]
+   B11 --> U6

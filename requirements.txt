@@ -1,0 +1,3 @@
+transformers==4.36.2
+torch==1.13.0+cu117
+openai==0.28.0

@@ -1,0 +1,53 @@
+B0[Bot: Greeting and Offer Assistance] --> U1[User: Request for apartment search assistance]
+
+U1 --> B1[Bot: Request City]
+
+B1 --> U2[User: Specify Location]
+B1 --> U7[User: Specify Cost Range]
+B1 --> U14[User: Ask about amenities]
+B1 --> U15[User: Inquire about lease terms]
+B1 --> U16[User: Question on pet policy]
+
+U2 --> B2[Bot: Ask for number of bedrooms]
+
+B2 --> U3[User: Find apartment for 5 people with shared bedroom]
+B2 --> U4[User: No specific requirement]
+
+U3 --> B3_location[Bot: Provide options based on location]
+
+U4 --> B3_size[Bot: Provide options based on size]
+
+U7 --> B3_price[Bot: Provide options based on price]
+
+B3_location --> U5[User: Request more details]
+B3_size --> U5
+B3_price --> U5
+
+U5 --> B4[Bot: Provide apartment options and their corresponding prices]
+
+B4 --> U6[User: Confirming agreement]
+B4 --> U14
+B4 --> U15
+B4 --> U16
+
+U6 --> B5[Bot: Send details to contact method]
+
+U14 --> B9[Bot: Provide information on amenities]
+
+U15 --> B10[Bot: Discuss lease terms]
+
+U16 --> B11[Bot: Inform about pet policy]
+
+B5 --> U9[User: Acknowledge and Thank]
+
+U9 --> B7[Bot: Anything else you need?]
+
+B7 --> U12[User: Yes, additional help]
+B7 --> U13[User: No, that's all]
+
+U12 --> B7
+U13 --> B8[Bot: Goodbye and well wishes]
+
+B9 --> U9
+B10 --> U9
+B11 --> U9

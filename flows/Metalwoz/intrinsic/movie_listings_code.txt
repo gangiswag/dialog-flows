@@ -1,0 +1,30 @@
+B0[Bot: Greet and Ask for Movie Preferences or Needs] --> U1[User: Requests Latest Movie Listings]
+B0 --> U2[User: Asks for Movies in a Specific Genre]
+B0 --> U3[User: Wants to Know About Kid-Friendly Movies]
+
+
+U1 --> B1[Bot: Provides Latest Movie Listings]
+U2 --> B2[Bot: Suggests Movies in Chosen Genre]
+U3 --> B3[Bot: Lists Kid-Friendly Movies]
+
+B1 --> U4[User: Selects a Movie from Listings]
+B1 --> U5[User: Asks for Movie Showtimes]
+B2 --> U6[User: Inquires About a Specific Movie]
+B3 --> U7[User: Wants to Know Age Suitability]
+
+U4 --> B4[Bot: Provides Details on Selected Movie]
+U5 --> B5[Bot: Shares Showtimes for Chosen Movies]
+U6 --> B6[Bot: Gives Information on Specific Movie]
+U7 --> B7[Bot: Informs About Age Suitability and Ratings]
+
+B4 --> U8[User: Asks for Theater Locations Showing the Movie]
+B5 --> U9[User: Decides to Book Tickets]
+B6 --> U10[User: Requests Booking or More Information]
+B7 --> U11[User: Makes a Movie Choice or Asks for More Options]
+
+
+U8 --> B8[Bot: Provides Theater Locations]
+U9 --> B9[Bot: Assists with Ticket Booking]
+U10 --> B9
+U11 --> B1
+

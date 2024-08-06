@@ -1,0 +1,26 @@
+B0[Bot: Initial Bot Greeting]
+B0 --> U0[User: Simple User Greeting]
+B0 --> U1[User: Ticketing Information]
+B0 --> U2[User: Location-specific Theater Information]
+
+U0 --> B1[Bot: Suggest Queries]
+
+B1 --> U1[User: Ticketing Information]
+B1 --> U2[User: Location-specific Theater Information]
+B1 --> U3[User: Movie Showtimes]
+B1 --> U4[User: Genre-based Recommendations]
+B1 --> U5[User: Movie Details (Synopsis, Cast, Ratings)]
+B1 --> U6[User: Special Offers and Discounts]
+B1 --> U7[User: Accessibility Information]
+
+U1 --> B2[Bot: Ticketing Options]
+B2 --> U3[User: Movie Showtimes]
+B2 --> U6[User: Special Offers and Discounts]
+B2 --> U7[User: Accessibility Information]
+
+U2 --> B3[Bot: Theater Location Options]
+B3 --> U3[User: Movie Showtimes]
+B3 --> U4[User: Genre-based Recommendations]
+B3 --> U5[User: Movie Details (Synopsis, Cast, Ratings)]
+B3 --> U6[User: Special Offers and Discounts]
+B3 --> U7[User: Accessibility Information]

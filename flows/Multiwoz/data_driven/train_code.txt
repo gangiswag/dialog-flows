@@ -1,0 +1,48 @@
+b0[Bot: Greetings! How can I assist you today?]
+    b0 --> u1[User: I'd like to know about the latest train designs.]
+    b0 --> u2[User: Can you help with train safety features?]
+    b0 --> u3[User: I'm interested in sustainable train technologies.]
+    b0 --> u10[User: I want to know about digital technologies in trains.]
+    b0 --> u11[User: Tell me about interior design innovations.]
+    b0 --> u12[User: What are the latest customer comfort features?]
+    b0 --> u20[User: Specify need for booking information.]
+
+u1 --> b1[Bot: Discussing the latest innovations in train design such as...]
+u2 --> b2[Bot: Exploring train safety features including...]
+u3 --> b3[Bot: Sustainable train technologies focus on reducing emissions through...]
+u10 --> b10[Bot: Discussing digital technologies in train design such as...]
+u11 --> b11[Bot: Exploring interior design innovations for enhanced passenger experience...]
+u12 --> b12[Bot: Customer comfort features include...]
+u20 --> b20[Bot: Ask for Departure and Arrival Information]
+
+b1 --> u4[User: Tell me more about aerodynamics.]
+b2 --> u5[User: What are passive safety features?]
+b3 --> u6[User: Can you explain regenerative braking?]
+b10 --> u7[User: Thank you, that's helpful!]
+b11 --> u7
+b12 --> u7
+b20 --> u21[User: Provide Departure and Arrival Details]
+
+u4 --> b4[Bot: Aerodynamics in train design involves...]
+u5 --> b5[Bot: Passive safety features are designed to...]
+u6 --> b6[Bot: Regenerative braking converts...]
+u21 --> b21a[Bot: Offer Fastest Train Option]
+u21 --> b21b[Bot: Offer Cheapest Train Option]
+
+b4 --> u7
+b5 --> u7
+b6 --> u7
+b21a --> u22[User: Choose Train Option]
+b21b --> u22
+
+u22 --> b22[Bot: Confirm Booking & Provide Reference Number]
+b22 --> u23[User: Confirm Booking Details]
+u23 --> b23[Bot: Process Payment] --> u24[User: Choose Payment Method]
+
+u24 --> b25[Bot: Payment Failure] --> u25[User: Report Payment Issue]
+u25 --> b26[Bot: Offer Alternative Payment Options] --> u26[User: Retry Payment]
+u26 --> b27
+b27[Bot: Farewell and Thank You]
+
+u7 --> b27
+

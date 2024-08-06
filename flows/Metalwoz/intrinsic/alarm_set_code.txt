@@ -1,0 +1,33 @@
+ B0[Bot: Greeting and Ask for Alarm Setting] --> U1[User: Specifies Time for Alarm]
+   B0 --> U2[User: Asks How to Set Alarm]
+   B0 --> U3[User: Requests Alarm Options]
+   B0 --> U11[User: Encounters an Error in Setting Alarm]
+   B0 --> U12[User: Requests a Recurring Alarm]
+   B0 --> U13[User: Requests a Specific Alarm Tone]
+
+
+   U1 --> B1[Bot: Confirm Alarm Time and Set Alarm]
+   U2 --> B2[Bot: Provides Instructions for Setting Alarm]
+   U3 --> B3[Bot: Lists Alarm Options]
+   U11 --> B14[Bot: Assists with Error Handling]
+   U12 --> B15[Bot: Sets Up Recurring Alarm]
+   U13 --> B16[Bot: Sets Up Alarm with Specific Tone]
+
+   B1 --> U4[User: Confirms Alarm Setting]
+   B1 --> U5[User: Changes Alarm Time]
+   B2 --> U7[User: Sets Alarm Following Instructions]
+   B2 --> U8[User: Needs More Help]
+   B3 --> U9[User: Selects an Alarm Option]
+   B3 --> U10[User: Asks for More Options]
+   B14 --> U4
+   B15 --> U4
+   B16 --> U4
+
+   U4 --> B17[Bot: Acknowledges and Concludes Interaction]
+   U5 --> B5[Bot: Changes Alarm Time as Requested]
+   U7 --> B17
+   U8 --> B7[Bot: Offers Additional Assistance or to Connect with Human Support]
+   U9 --> B1
+   U10 --> B8[Bot: Provides Additional Alarm Options]
+   B8 -->U4
+

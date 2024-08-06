@@ -1,0 +1,39 @@
+B0[Bot: Greetings! How can I assist you today?]
+B0 --> U1[User: I need help with layout planning.]
+B0 --> U2[User: I'm interested in interior design ideas.]
+B0 --> U3[User: Can you suggest menu design tips?]
+B0 --> U4[User: What about incorporating sustainability practices?]
+B0 --> U13[User: Tell me about integrating digital menu boards.]
+B0 --> U14[User: How do I ensure health and safety compliance?]
+B0 --> U15[User: Can you explain leveraging technology for operational efficiency?]
+B0 --> U16[User: Specify Cuisine Preference]
+B0 --> U17[User: Specify Location]
+B0 --> U18[User: Specify Price Range]
+
+U1 --> B1[Bot: Layout planning involves considering kitchen size, dining area, and customer flow.]
+U2 --> B2[Bot: Interior design can vary greatly, focusing on themes, lighting, and furniture.]
+U3 --> B3[Bot: Menu design tips include readability, thematic alignment, and item placement.]
+U4 --> B4[Bot: Sustainability practices include using local ingredients, energy-efficient appliances, and waste reduction methods.]
+U13 --> B10[Bot: Digital menu boards can enhance customer experience and streamline operations.]
+U14 --> B11[Bot: Health and safety compliance involves understanding local regulations, designing for cleanliness, and ensuring proper ventilation.]
+U15 --> B12[Bot: Leveraging technology involves using POS systems, online reservation systems, and integrating with food delivery platforms.]
+U16 --> B13[Bot: Provide Cuisine Options]
+U17 --> B14[Bot: Provide Location Options]
+U18 --> B15[Bot: Provide Price Range Options]
+
+U1 --> B19[Bot: Can I assist you with anything else?]
+U2 --> B19
+U3 --> B19
+U4 --> B19
+U13 --> B19
+U14 --> B19
+U15 --> B19
+U16 --> B19
+U17 --> B19
+U18 --> B19
+
+B19 --> U19[User: Yes, I have more questions.]
+B19 --> U20[User: No, thank you.]
+
+U19 --> B0
+U20 --> B21[Bot: You're welcome! Feel free to visit our resource center for more information. Farewell and Thank You.]

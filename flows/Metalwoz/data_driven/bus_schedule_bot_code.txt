@@ -1,0 +1,58 @@
+B0[Bot: Greeting] --> U1[User: Request Bus Schedule Assistance]
+B0 --> U2[User: Request Subway Schedule Assistance]
+B0 --> U3[User: Check Subway Service Availability]
+B0 --> U4[User: Get Nearest Subway Station]
+B0 --> U5[User: Say Hi]
+B0 --> U20[User: Asks About Bus Fares]
+B0 --> U21[User: Inquires About Bus Stop Locations]
+B0 --> U22[User: Wants Real-Time Bus Arrival Information]
+B0 --> U23[User: Inquires About Accessibility Options]
+B0 --> U24[User: Asks About Special Services]
+B0 --> U25[User: Queries Service Changes and Alerts]
+B0 --> U26[User: Seeks Multi-modal Transportation Info]
+
+U1 --> B1[Bot: Provide next bus arrival time]
+U2 --> B2[Bot: Provide next train schedule]
+U3 --> B3[Bot: Check Subway Station Service]
+U4 --> B4[Bot: Request User Location]
+U5 --> B5[Bot: How may I help you?]
+U20 --> B12[Bot: Informs About Bus Fares]
+U21 --> B13[Bot: Lists Nearby Bus Stop Locations]
+U22 --> B14[Bot: Gives Real-Time Arrival Information]
+U23 --> B15[Bot: Discusses Accessibility Options]
+U24 --> B16[Bot: Talks About Special Services]
+U25 --> B17[Bot: Informs About Service Changes and Alerts]
+U26 --> B18[Bot: Provides Multi-modal Transportation Info]
+
+B1 --> U6[User: Check Another Bus Schedule]
+B1 --> U11[User: End Conversation]
+U11 --> B20[Bot: Bot ends conversation]
+B2 --> U11
+B2 --> U9[User: Check Another Train Schedule]
+B3 --> U10[User: Provide Subway Station Name]
+B3 --> U11
+B4 --> U12[User: Provide Location]
+B4 --> U11
+B5 --> U14[User: Make a Service Request]
+B5 --> U11
+B12 --> U11
+B13 --> U11
+B14 --> U11
+B15 --> U11
+B16 --> U11
+B17 --> U11
+B18 --> U11
+
+U6 --> B6[Bot: Provide information about another bus arrival time]
+U9 --> B7[Bot: Provide information about another train schedule]
+U10 --> B8[Bot: Provide Subway Service Availability]
+U12 --> B9[Bot: Provide Nearest Subway Station]
+U14 --> B10[Bot: Provide Requested Service Information]
+
+B6 --> U11
+B7 --> U11
+B8 --> U11
+B9 --> U16[User: Ask for Directions]
+B9 --> U11
+B10 --> U11
+U16 --> B11[Bot: Provide Directions]

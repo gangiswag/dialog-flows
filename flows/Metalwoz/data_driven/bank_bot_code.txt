@@ -1,0 +1,89 @@
+B0[Bot: Greeting and Request for User's Needs] --> U1[User: Request for Bank Account Assistance]
+B0 --> U2[User: Request for Account Information]
+B0 --> U3[User: Report Suspected Account Hacking]
+B0 --> U4[User: Inquire About Loans]
+B0 --> U5[User: Report Lost or Stolen Card]
+B0 --> U6[User: Discuss Credit Card Issue]
+B0 --> U7[User: Report Fraud Alert]
+B0 --> U8[User: Request Financial Advice]
+B0 --> U9[User: Ask About Interest Rates]
+B0 --> U10[User: Inquire About Bank Policies]
+B0 --> U11[User: Wants to Open a New Account]
+B0 --> U12[User: Needs Help with Online Banking]
+B0 --> U13[User: Has a Query About Loan Services]
+B0 --> U14[User: Asks About Credit Card Options]
+B0 --> U15[User: Seeks Investment Advice]
+B0 --> U16[User: Reports a Lost or Stolen Card]
+B0 --> U17[User: Needs Information on Bank Charges]
+B0 --> U18[User: Inquires About International Banking Services]
+B0 --> U19[User: Wants Information on Wire Transfers]
+B0 --> U20[User: Asks About Digital Wallet Services]
+B0 --> U21[User: Concerned About Fraud Alerts]
+B0 --> U22[User: Seeks Regulatory and Compliance Information]
+
+U1 --> B1[Bot: Assist with Account Services]
+U2 --> B2[Bot: Provide Account Information]
+U3 --> B3[Bot: Assist with Account Security]
+U4 --> B4[Bot: Provide Loan Information]
+U5 --> B5[Bot: Manage Lost/Stolen Card]
+U6 --> B6[Bot: Address Credit Card Issues]
+U7 --> B7[Bot: Handle Fraud Alert]
+U8 --> B8[Bot: Offer Financial Advice]
+U9 --> B8
+U10 --> B8
+U11 --> B9[Bot: Open New Account]
+U12 --> B10[Bot: Guide Through Online Banking]
+U13 --> B4
+U14 --> B6
+U15 --> B8
+U16 --> B5
+U17 --> B11[Bot: Discuss Bank Charges]
+U18 --> B12[Bot: International Banking Services]
+U19 --> B12
+U20 --> B12
+U21 --> B7
+U22 --> B13[Bot: Regulatory and Compliance Info]
+
+B1 --> U23[User: Specify Service Needed]
+B2 --> U24[User: Request Further Account Details]
+B3 --> U25[User: Secure Account Actions]
+B4 --> U26[User: Discuss Loan Details]
+B5 --> U27[User: Card Cancellation or Replacement]
+B6 --> U28[User: Credit Card Options]
+B7 --> U29[User: Fraud Alert Actions]
+B8 --> U30[User: Financial Planning]
+B9 --> U31[User: New Account Details]
+B10 --> U32[User: Online Banking Features]
+B11 --> U33[User: Explain Charges]
+B12 --> U34[User: International Services Info]
+B13 --> U35[User: Compliance Details]
+
+U23 --> B14[Bot: Perform Requested Service]
+U24 --> B15[Bot: Provide Account Details]
+U25 --> B16[Bot: Confirm Security Measures]
+U26 --> B17[Bot: Loan Options]
+U27 --> B18[Bot: Process Card Services]
+U28 --> B19[Bot: Credit Card Details]
+U29 --> B20[Bot: Fraud Alert Confirmation]
+U30 --> B21[Bot: Financial Advice Details]
+U31 --> B22[Bot: Account Opening Confirmation]
+U32 --> B23[Bot: Online Banking Assistance]
+U33 --> B24[Bot: Charges Details]
+U34 --> B25[Bot: International Banking Details]
+U35 --> B26[Bot: Compliance Information]
+
+B14 --> U36[User: End or Further Assistance]
+B15 --> U36
+B16 --> U36
+B17 --> U36
+B18 --> U36
+B19 --> U36
+B20 --> U36
+B21 --> U36
+B22 --> U36
+B23 --> U36
+B24 --> U36
+B25 --> U36
+B26 --> U36
+
+U36 --> B27[Bot: Close Conversation or Offer More Help]

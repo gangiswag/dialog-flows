@@ -1,0 +1,35 @@
+ B0[Bot: Greeting and Asks for Library Inquiry] --> U1[User: Wants to Find a Book]
+   B0 --> U2[User: Needs to Reserve a Book or Item]
+   B0 --> U3[User: Inquires About Library Services]
+   B0 --> U4[User: Interested in Library Events]
+   U1 --> B1[Bot: Helps with Book Search]
+   U2 --> B2[Bot: Assists with Reservation Process]
+   U3 --> B3[Bot: Provides Information on Library Services]
+   U4 --> B4[Bot: Shares Details on Upcoming Library Events]
+   B1 --> U5[User: Requests Specific Book Details]
+   B2 --> U6[User: Asks About Reservation Status]
+   B3 --> U7[User: Wants to Know About Membership]
+   B4 --> U8[User: Inquires Further About Event Details]
+   U5 --> B5[Bot: Provides Detailed Book Information]
+   U6 --> B6[Bot: Updates on Reservation Status]
+   U7 --> B7[Bot: Explains Membership Benefits]
+   U8 --> B8[Bot: Gives More Information on Events]
+
+   B5 --> U9[User: Decides to Borrow or Search More]
+   B6 --> U9
+   B7 --> U9
+   B8 --> U9
+   U9 --> B9[Bot: Finalizes Action or Provides Additional Help]
+
+   U10[User: Inquires About Digital Library Resources]
+   U11[User: Interested in Community Programs and Events]
+   U12[User: Seeks Reference Assistance and Research Support]
+   U13[User: Needs Information on Accessibility Services]
+   B0 --> U10
+   B0 --> U11
+   B0 --> U12
+   B0 --> U13
+   U10 --> B9
+   U11 --> B9
+   U12 --> B9
+   U13 --> B9

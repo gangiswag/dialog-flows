@@ -1,0 +1,53 @@
+B0[Bot: Greeting and Inquiry]
+    B0 --> U1[User: Request Specific Planning Help]
+    B0 --> U2[User: Inquire About Specific Wedding Options]
+    B0 --> U3[User: Discuss Budget and Preferences]
+    B0 --> U4[User: Clarify Services Offered]
+
+U1 --> B1[Bot: Introduce Planning Services]
+U2 --> B2[Bot: Ask for Details About Wedding Options]
+U3 --> B3[Bot: Discuss Budget Considerations]
+U4 --> B17[Bot: Explain Bot Capabilities]
+
+B1 --> U5[User: Provide Event Details]
+B2 --> U6[User: Specify Venue or Theme Inquiry]
+B3 --> U7[User: Share Budget and Guest Count]
+
+U5 --> B4[Bot: Collect Detailed Event Information]
+U6 --> B5[Bot: Offer Venue or Theme Suggestions]
+U7 --> B6[Bot: Provide Budget-Friendly Options]
+B17 --> U18[User: Ask About Additional Services]
+
+U18 --> B10[Bot: Discuss Entertainment Options]
+U18 --> B11[Bot: Provide Transportation Solutions]
+U18 --> B12[Bot: Offer Accommodation Options]
+
+B4 --> U8[User: Ask About Vendors]
+B5 --> U9[User: Request Vendor Selection Assistance]
+B6 --> U10[User: Inquire About Contingency Planning]
+
+U8 --> B7[Bot: Discuss Vendor Options]
+U9 --> B8[Bot: Assist With Vendor Selection]
+U10 --> B9[Bot: Advise on Contingency Plans]
+
+U11 --> B13[Bot: Close Conversation With Gratitude]
+U12 --> B14[Bot: Outline Action Plan]
+U13 --> B15[Bot: Plan Follow-Up]
+
+B7 --> U11[User: Express Gratitude]
+B8 --> U12[User: Discuss Next Steps]
+B9 --> U13[User: Request Follow-Up Information]
+
+B10 --> U14[User: Book Entertainment]
+B11 --> U15[User: Arrange Transportation]
+B12 --> U16[User: Book Accommodation]
+
+U14 --> B16[Bot: Confirm Entertainment Booking]
+U15 --> B16[Bot: Confirm Transportation Arrangement]
+U16 --> B16[Bot: Confirm Accommodation Booking]
+
+B13 --> U17[User: End Conversation]
+U17 --> B19[Bot: Bot Ends Conversation]
+B14 --> U17
+B15 --> U17
+B16 --> U17

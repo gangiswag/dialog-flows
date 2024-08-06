@@ -1,0 +1,32 @@
+B0[Bot: Greet and Ask for Dining Preferences] --> U1[User: Wants Restaurant Suggestions]
+B0 --> U2[User: Asks for Specific Cuisine]
+B0 --> U3[User: Inquires About Budget Options]
+
+
+U1 --> B1[Bot: Lists Types of Restaurants and Special Requests Options]
+U2 --> B2[Bot: Suggests Restaurants Based on Cuisine]
+U3 --> B3[Bot: Offers Options Based on Budget]
+
+
+B1 --> U4[User: Chooses a Type of Restaurant]
+B1 --> U5[User: Asks for Location-Based Options]
+B2 --> U7[User: Requests More Information]
+B3 --> U9[User: Wants to Know Best Value Options]
+
+
+U4 --> B10[Bot: Addresses Special Requests]
+U5 --> B4[Bot: Provides Location-Based Choices]
+U7 --> B5[Bot: Gives Detailed Information on Selected Restaurant]
+U9 --> B6[Bot: Suggests Best Value Restaurants]
+
+
+B4 --> U10[User: Makes Final Choice Based on Location]
+B5 --> U11[User: Decides on the Restaurant]
+B6 --> U12[User: Chooses a Best Value Restaurant]
+
+
+U10 --> B12[Bot: Confirms Final Choice]
+U11 --> B12
+U12 --> B12
+B10 --> B12
+
